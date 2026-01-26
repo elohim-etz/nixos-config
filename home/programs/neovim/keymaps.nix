@@ -2,7 +2,7 @@
 
 {
   programs.neovim = {
-    extraLuaConfig = ''
+    initLua = ''
       -- Keybindings Helper Function
       local keymap = vim.keymap.set
 

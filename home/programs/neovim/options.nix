@@ -3,7 +3,7 @@
 {
   programs.neovim = {
     # Lua configuration for Neovim options
-    extraLuaConfig = ''
+    initLua = ''
       -- Leader key (the key you press before shortcuts)
       -- Set it to Space for easy access
       vim.g.mapleader = " "
