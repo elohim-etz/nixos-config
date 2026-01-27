@@ -11,8 +11,6 @@
     ../pkgs/home-manager
     ../modules/home-manager
   ];
-
-  nixpkgs.config.allowUnfree = true;
   
   programs.home-manager.enable = true;
 }
