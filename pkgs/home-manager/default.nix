@@ -23,5 +23,12 @@
     wl-clipboard
     fzf
     less
+    jq
+    aria2
+    yt-dlp
+    ffmpeg
+    yazi
+    tree
+    zip
   ];
 }
