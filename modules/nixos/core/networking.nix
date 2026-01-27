@@ -8,9 +8,6 @@
     nameservers = [ ];
   };
 
-  # Bluetooth support
-  hardware.bluetooth.enable = true;
-
   # DNS over TLS with NextDNS
   services.resolved = {
     enable = true;

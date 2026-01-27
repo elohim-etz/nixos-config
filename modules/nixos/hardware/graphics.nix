@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  # Hardware graphics/OpenGL configuration
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -23,14 +24,4 @@
     QT_QPA_PLATFORM = "wayland";
     QT_QPA_PLATFORMTHEME = "qt6ct";
   };
-
-  # XDG Portal for Wayland/theming
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
-
-  # System services for desktop environment
-  services.dbus.enable = true;
-  programs.dconf.enable = true;
 }

@@ -11,14 +11,9 @@
     };
   };
 
-  # Power management for audio
-  services.power-profiles-daemon.enable = true;
-  services.upower.enable = true;
-
-  # System packages for audio control
+  # Audio control tools
   environment.systemPackages = with pkgs; [
     playerctl
-    upower
-    power-profiles-daemon
+    pavucontrol
   ];
 }

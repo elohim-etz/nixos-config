@@ -8,24 +8,8 @@
   };
 
   imports = [
-    ./modules/packages.nix
-    ./modules/shell.nix
-    ./modules/ui.nix
-    
-    ./niri
-    
-    ./programs/kitty
-    ./programs/vscodium
-    ./programs/gitconfig
-    ./programs/starship
-    ./programs/mpv
-    ./programs/zsh
-    ./programs/fastfetch
-    ./programs/neovim
-    ./programs/spicetify
-    ./programs/zen
-    ./programs/brave
-    ./programs/noctalia
+    ../pkgs/home-manager
+    ../modules/home-manager
   ];
 
   nixpkgs.config.allowUnfree = true;

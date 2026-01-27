@@ -425,9 +425,10 @@
         enableDdcSupport = false;
       };
       colorSchemes = {
-        useWallpaperColors = false;
+        useWallpaperColors = true;
         predefinedScheme = "Rose Pine";
         darkMode = true;
+        generationMethod = "tonal-spot";
         schedulingMode = "off";
         manualSunrise = "06:30";
         manualSunset = "18:30";
