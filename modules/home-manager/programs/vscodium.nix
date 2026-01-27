@@ -31,6 +31,8 @@
         "extensions.autoUpdate" = false;
         "workbench.statusBar.visible" = false;
 
+        "files.insertFinalNewline" = true;
+
         "terminal.external.linuxExec" = "kitty";
         "terminal.explorerKind" = "both";
         "terminal.sourceControlRepositoriesKind" = "both";
@@ -52,6 +54,22 @@
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";
       };
+
+      keybindings = [
+        {
+          key = "ctrl+v";
+          command = "workbench.action.terminal.paste";
+          when = "terminalFocus";
+        }
+        {
+          key = "shift shift";
+          command = "workbench.action.quickOpen";
+        }
+        {
+          key = "ctrl ctrl";
+          command = "workbench.action.showCommands";
+        }
+      ];
     };
   };
 }
