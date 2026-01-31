@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./neovim
     ./zen
     ./brave.nix
     ./fastfetch.nix

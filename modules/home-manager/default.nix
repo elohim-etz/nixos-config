@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./nixvim
     ./programs
     ./niri
     ./shell.nix
