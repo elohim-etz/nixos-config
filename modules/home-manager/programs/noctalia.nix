@@ -138,7 +138,7 @@
       ui = {
         fontDefault = "JetBrainsMono NFM";
         fontFixed = "";
-        fontDefaultScale = 1;
+        fontDefaultScale = 0.97;
         fontFixedScale = 1;
         tooltipsEnabled = true;
         panelBackgroundOpacity = 0.93;
@@ -425,7 +425,7 @@
         enableDdcSupport = false;
       };
       colorSchemes = {
-        useWallpaperColors = true;
+        useWallpaperColors = false;
         predefinedScheme = "Rose Pine";
         darkMode = true;
         generationMethod = "tonal-spot";
