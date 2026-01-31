@@ -8,5 +8,6 @@
     htop
     brightnessctl
     unzip
+    (pkgs.callPackage ../stremio-linux-shell.nix {})
   ];
 }
