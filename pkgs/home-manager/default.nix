@@ -30,5 +30,9 @@
     yazi
     tree
     zip
+
+    ripgrep
+    fd
+    lazygit
   ];
 }
