@@ -19,6 +19,7 @@
         "editor.fontSize" = 16;
         "editor.scrollbar.vertical" = "hidden";
         "editor.scrollbar.verticalScrollbarSize" = 0;
+        "editor.wordWrap"= "on";
 
         "security.workspace.trust.untrustedFiles" = "newWindow";
         "security.workspace.trust.startupPrompt" = "never";
