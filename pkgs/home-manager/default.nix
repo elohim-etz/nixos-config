@@ -5,7 +5,7 @@
     kitty
     android-tools
     vscodium
-    nemo
+    nautilus
     mpv
     zsh
     spicetify-cli
