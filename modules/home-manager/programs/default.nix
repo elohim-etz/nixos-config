@@ -11,6 +11,7 @@
     ./noctalia.nix
     ./spicetify.nix
     ./starship.nix
+    ./tmux.nix
     ./zsh.nix
     ./git.nix
     ./vscodium.nix
