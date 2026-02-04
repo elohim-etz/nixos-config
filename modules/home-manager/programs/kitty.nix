@@ -19,6 +19,10 @@
 
       modify_font_underline_position = -2;
 
+      term = "xterm-256color";
+
+      enable_audio_bell = "no";
+
       foreground = "#cdd6f4";
       background = "#1e1e2e";
       selection_foreground = "#1e1e2e";
