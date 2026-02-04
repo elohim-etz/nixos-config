@@ -31,5 +31,6 @@
   # System services
   services = {
     dbus.enable = true;
+    gvfs.enable = true;
   };
 }
