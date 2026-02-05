@@ -30,7 +30,7 @@
     yazi
     tree
     zip
-
+    zed-editor
     ripgrep
     fd
     lazygit
