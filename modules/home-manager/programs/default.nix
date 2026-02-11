@@ -15,5 +15,6 @@
     ./zsh.nix
     ./git.nix
     ./vscodium.nix
+    ./zed.nix
   ];
 }
