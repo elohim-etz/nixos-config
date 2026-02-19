@@ -11,5 +11,4 @@
     ./rules.nix
     ./autostart.nix
   ];
-
 }

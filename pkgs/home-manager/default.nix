@@ -15,7 +15,7 @@
     satty
     tela-circle-icon-theme
     bibata-cursors
-    waybar-mpris
+    mpvScripts.mpris
     ayugram-desktop
     tmux
     grim
@@ -34,5 +34,9 @@
     ripgrep
     fd
     lazygit
+    swww
+    blueman
+    libnotify
+    networkmanagerapplet
   ];
 }

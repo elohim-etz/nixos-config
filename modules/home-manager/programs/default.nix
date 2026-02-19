@@ -8,7 +8,6 @@
     ./git.nix
     ./kitty.nix
     ./mpv.nix
-    ./noctalia.nix
     ./spicetify.nix
     ./starship.nix
     ./tmux.nix
@@ -16,5 +15,10 @@
     ./git.nix
     ./vscodium.nix
     ./zed.nix
+    ./waybar.nix
+    ./mako.nix
+    ./wofi.nix
+    ./hyprlock.nix
+    ./wlogout.nix
   ];
 }

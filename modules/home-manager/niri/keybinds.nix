@@ -36,9 +36,8 @@ in
     in
     {
       # Quickshell
-      "Super+A"          = { action.spawn = [ "noctalia-shell" "ipc" "call" "launcher" "toggle" ]; };
-      "Ctrl+Alt+Delete"  = { action.spawn = [ "noctalia-shell" "ipc" "call" "sessionMenu" "toggle" ]; };
-      "Super+Shift+W"    = { action.spawn = [ "noctalia-shell" "ipc" "call" "wallpaper" "toggle" ]; };
+      "Super+A" = { action.spawn = [ "sh" "-c" "pkill wofi || wofi --show drun" ]; };
+      "Ctrl+Alt+Delete" = { action.spawn = [ "wlogout" ]; };
 
       # Launchers
       "Mod+T" = { action.spawn = "kitty"; };
@@ -88,7 +87,7 @@ in
       "Mod+Down"   = { action.focus-workspace-down = { }; };
       "Mod+J"      = { action.focus-workspace-down = { }; };
       "Mod+Up"     = { action.focus-workspace-up = { }; };
-      "Mod+K"      = { action.focus-workspace-up = { }; }; 
+      "Mod+K"      = { action.focus-workspace-up = { }; };
       "Mod+H"      = { action.focus-column-left = { }; };
       "Mod+L"      = { action.focus-column-right = { }; };
       "Mod+Home"   = { action.focus-column-first = { }; };

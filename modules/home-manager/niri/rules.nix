@@ -8,14 +8,6 @@
       {
         matches = [
           {
-            namespace = "^noctalia-wallpaper*";
-          }
-        ];
-        place-within-backdrop = true;
-      }
-      {
-        matches = [
-          {
             namespace = "^quickshell-overview$";
           }
         ];
@@ -154,10 +146,10 @@
         max-height = 800;
       }
     
-      # Nemo file manager
+      # Nautilus file manager
       {
         matches = [
-          { app-id = "^nemo$"; }
+          { app-id = "^org.gnome.Nautilus$"; }
         ];
         open-floating = false;
         open-maximized = false;
