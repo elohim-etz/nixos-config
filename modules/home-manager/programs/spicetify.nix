@@ -1,22 +1,30 @@
 { pkgs, inputs, ... }:
-
 let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
-  imports = [ inputs.spicetify-nix.homeManagerModules.spicetify ];
-
+  imports = [
+    inputs.spicetify-nix.homeManagerModules.default
+  ];
   programs.spicetify = {
     enable = true;
-
+    theme = spicePkgs.themes.catppuccin;
+    colorScheme = "mocha";
+    wayland = true;
     enabledExtensions = with spicePkgs.extensions; [
-      adblock
+      adblockify
       hidePodcasts
       shuffle
-      seekSong
-      playNext
+      simpleBeautifulLyrics
+      beautifulLyrics
+      betterGenres
+      fullAlbumDate
+      goToSong
+      history
+      savePlaylists
+      copyLyrics
+      fullAppDisplay
+      powerBar
     ];
-
-    theme = spicePkgs.themes.default;
   };
 }
