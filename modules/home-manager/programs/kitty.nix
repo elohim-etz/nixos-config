@@ -9,6 +9,8 @@
       italic_font = "auto";
       bold_italic_font = "auto";
       font_size = 11.0;
+      background_opacity = "0.95";
+      dynamic_background_opacity = true;
 
       confirm_os_window_close = 0;
       tab_bar_edge = "bottom";

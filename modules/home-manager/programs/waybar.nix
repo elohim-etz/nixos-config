@@ -124,25 +124,25 @@
 
         clock = {
           rotate = 0;
-        
+
           format = "{:%I:%M %p}";
           format-alt = "{:%R 󰃭 %d·%m·%y}";
-        
+
           tooltip-format = "<span>{calendar}</span>";
-        
+
           calendar = {
             mode = "month";
             mode-mon-col = 3;
             on-scroll = 1;
             on-click-right = "mode";
-        
+
             format = {
               months = "<span color='#ffead3'><b>{}</b></span>";
               weekdays = "<span color='#ffcc66'><b>{}</b></span>";
               today = "<span color='#ff6699'><b>{}</b></span>";
             };
           };
-        
+
           actions = {
             on-click-right = "mode";
             on-click-forward = "tz_up";
@@ -156,48 +156,48 @@
           justify = "center";
           interval = 1;
           max-length = 50;
-        
+
           format = "{player_icon} {title} [{position}/{length}]";
           format-paused = "{status_icon} <i>{title}</i> [{position}/{length}]";
           format-stopped = "{status_icon}";
-        
+
           dynamic-separator = "  ";
-        
+
           player-icons = {
             default = "󱅫";
             mpv = "🎵";
             spotify = " ";
             vlc = "";
           };
-        
+
           status-icons = {
             paused = "";
             playing = "";
             stopped = "";
           };
-        
+
           on-click = "playerctl play-pause";
           on-click-middle = "playerctl previous";
           on-scroll-up = "playerctl position 1-";
           on-scroll-down = "playerctl position 1+";
-        
+
           tooltip = true;
-        
+
           tooltip-format = ''
             {title}
             by: {artist}
             {position} / {length}
             Player: {player}
-        
+
             󰐎 Click to play/pause
             󰺤 Scroll to seek
             󰙤 Middle click previous
             󰙢 Right click next
           '';
-        
+
           tooltip-format-stopped = ''
             Player: {player}
-        
+
             󰐎 Click to play/pause
             󰺤 Scroll to seek
             󰙤 Middle click previous
@@ -339,7 +339,7 @@
 
       /* Left side modules */
       #custom-launcher {
-        background-color: #1e1e2e;
+        background-color: #11111b;
         color: #cdd6f4;
         padding: 0 15px;
         margin: 1px 0 1px 5px;
@@ -349,7 +349,7 @@
       #memory,
       #temperature,
       #cpu {
-        background-color: #1e1e2e;
+        background-color: #11111b;
         color: #cdd6f4;
         margin: 1px 0;
       }
@@ -374,7 +374,7 @@
       }
 
       #clock {
-        background-color: #1e1e2e;
+        background-color: #11111b;
         color: #cdd6f4;
         padding: 0 15px;
         margin: 1px 0 1px 8px;
@@ -382,7 +382,7 @@
       }
 
       #mpris {
-        background-color: #1e1e2e;
+        background-color: #11111b;
         color: #a6e3a1;
         padding: 0 15px;
         margin: 1px 8px;
@@ -391,7 +391,7 @@
 
       /* Center - workspaces */
       #workspaces {
-        background-color: #181825;
+        background-color: #11111b;
         border-radius: 8px;
         padding: 1px 6px;
         margin: 1px 4px;
@@ -419,7 +419,7 @@
 
       /* Right side modules */
       #network {
-        background-color: #1e1e2e;
+        background-color: #11111b;
         color: #cdd6f4;
         padding: 0 12px;
         margin: 1px 0 1px 8px;
@@ -428,7 +428,7 @@
 
       #pulseaudio,
       #backlight {
-        background-color: #1e1e2e;
+        background-color: #11111b;
         color: #cdd6f4;
         margin: 1px 0;
       }
@@ -447,7 +447,7 @@
       }
 
       #tray {
-        background-color: #1e1e2e;
+        background-color: #11111b;
         padding: 0 10px;
         margin: 1px 0 1px 8px;
         border-radius: 8px;
@@ -455,12 +455,12 @@
 
       #power-profiles-daemon,
       #battery {
-        background-color: #1e1e2e;
+        background-color: #11111b;
         margin: 1px 0;
       }
 
       #power-profiles-daemon {
-        background-color: #1e1e2e;
+        background-color: #11111b;
         border-radius: 8px 0 0 8px;
         margin-left: 8px;
         margin-right: 0;
@@ -468,7 +468,7 @@
       }
 
       #battery {
-        background-color: #1e1e2e;
+        background-color: #11111b;
         color: #cdd6f4;
         border-radius: 0 8px 8px 0;
         margin-left: 0;

@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    scrcpy
     kitty
     android-tools
     vscodium

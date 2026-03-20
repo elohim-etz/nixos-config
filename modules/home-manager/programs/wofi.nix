@@ -43,7 +43,7 @@
     }
   
     #outer-box {
-      background-color: @base;
+      background-color: rgba(30, 30, 46, 0.85);  /* @base with 85% opacity */
       border: 2px solid @mauve;
       border-radius: 14px;
       margin: 10px;
@@ -51,7 +51,7 @@
     }
   
     #input {
-      background-color: @surface0;
+      background-color: rgba(49, 50, 68, 0.9);   /* @surface0 with 90% opacity */
       color: @text;
       padding: 10px 15px;
       margin-bottom: 10px;
@@ -60,7 +60,7 @@
     }
   
     #input:focus {
-      background-color: @surface1;
+      background-color: rgba(69, 71, 90, 0.9);   /* @surface1 with 90% opacity */
       box-shadow: 0 0 0 2px @mauve;
     }
   
@@ -78,12 +78,12 @@
     }
   
     #entry:selected {
-      background-color: @mauve;
+      background-color: rgba(203, 166, 247, 0.9);
       color: @base;
     }
   
     #entry:hover:not(:selected) {
-      background-color: @surface0;
+      background-color: rgba(49, 50, 68, 0.7);
     }
   
     #text {
@@ -91,7 +91,7 @@
     }
   
     #text:selected {
-      color: @base;
+      color: #1e1e2e;
       font-weight: 600;
     }
   '';
