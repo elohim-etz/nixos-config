@@ -30,6 +30,7 @@
 
   environment.systemPackages = with pkgs; [
     bash
+    home-manager
   ];
   
   # Fix /bin/sh

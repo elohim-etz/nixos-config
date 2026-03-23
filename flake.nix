@@ -37,8 +37,15 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/wasabi/configuration.nix
-          inputs.home-manager.nixosModules.default
         ];
+      };
+    };
+
+    homeConfigurations = {
+      naveen = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [ ./home/home.nix ];
+        extraSpecialArgs = { inherit inputs; };
       };
     };
   };
