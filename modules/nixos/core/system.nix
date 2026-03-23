@@ -28,6 +28,13 @@
     dconf.enable = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    bash
+  ];
+  
+  # Fix /bin/sh
+  environment.binsh = "${pkgs.bash}/bin/bash";
+
   # System services
   services = {
     dbus.enable = true;
