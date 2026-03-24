@@ -10,7 +10,7 @@
       command = [
         "sh"
         "-c"
-        "sleep 1 && swww img ~/nixos-config/assets/walls/nixos-wallpaper-catppuccin-frappe.png"
+        "sleep 1 && swww img ~/nixos-config/assets/walls/degirled.png"
       ];
     }
   ];

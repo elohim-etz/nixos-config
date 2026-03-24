@@ -7,5 +7,6 @@
     ./niri
     ./shell.nix
     ./ui.nix
+    ./xdg.nix
   ];
 }

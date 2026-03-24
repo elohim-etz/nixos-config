@@ -1,12 +1,11 @@
-{ config, lib, pkgs, ... }:
-
+{ pkgs, ... }:
 {
   xdg.portal = {
     enable = true;
-    
-    # Portal implementations
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
     ];
+    config.common.default = "*";
   };
 }

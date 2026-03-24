@@ -113,6 +113,15 @@
         max-width = 800;
         max-height = 700;
       }
+
+      {
+        matches = [
+          { app-id = "^com\\.gabm\\.satty$"; }
+        ];
+        open-floating = true;
+        default-column-width.fixed = 1200;
+        default-window-height.fixed = 800;
+      }
     
       # xdg portal dialog
       {
