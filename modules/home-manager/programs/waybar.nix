@@ -33,9 +33,19 @@
           "tray"
           "power-profiles-daemon"
           "battery"
+          "custom/power"
         ];
 
         # Module configurations
+
+        "custom/power" = {
+          format = "{}";
+          rotate = 0;
+          exec = "echo ; echo  logout";
+          on-click = "wlogout";
+          interval = 86400;
+          tooltip = true;
+        };
 
         "custom/launcher" = {
           format = " ";
@@ -125,8 +135,8 @@
         clock = {
           rotate = 0;
 
-          format = "{:%I:%M %p}";
-          format-alt = "{:%R 󰃭 %d·%m·%y}";
+          format = "󰥔 {:%R 󰃭 %d·%m·%y}";
+          format-alt = "{:%I:%M %p}";
 
           tooltip-format = "<span>{calendar}</span>";
 
@@ -291,19 +301,7 @@
           format-plugged = " {capacity}%";
           format-alt = "{time} {icon}";
 
-          format-icons = [
-            "󰂎"
-            "󰁺"
-            "�"
-            "󰁼"
-            "�"
-            "�"
-            "�"
-            "󰂀"
-            "󰂁"
-            "󰂂"
-            "󰁹"
-          ];
+          format-icons = ["󰥇" "󰤾" "󰤿" "󰥀" "󰥁" "󰥂" "󰥃" "󰥄" "󰥅" "󰥆" "󰥈"];
         };
 
         "tray" = {
@@ -339,7 +337,7 @@
 
       /* Left side modules */
       #custom-launcher {
-        background-color: #11111b;
+        background-color: #181825;
         color: #cdd6f4;
         padding: 0 15px;
         margin: 1px 0 1px 5px;
@@ -349,7 +347,7 @@
       #memory,
       #temperature,
       #cpu {
-        background-color: #11111b;
+        background-color: #181825;
         color: #cdd6f4;
         margin: 1px 0;
       }
@@ -374,7 +372,7 @@
       }
 
       #clock {
-        background-color: #11111b;
+        background-color: #181825;
         color: #cdd6f4;
         padding: 0 15px;
         margin: 1px 0 1px 8px;
@@ -382,7 +380,7 @@
       }
 
       #mpris {
-        background-color: #11111b;
+        background-color: #181825;
         color: #a6e3a1;
         padding: 0 15px;
         margin: 1px 8px;
@@ -391,7 +389,7 @@
 
       /* Center - workspaces */
       #workspaces {
-        background-color: #11111b;
+        background-color: #181825;
         border-radius: 8px;
         padding: 1px 6px;
         margin: 1px 4px;
@@ -419,7 +417,7 @@
 
       /* Right side modules */
       #network {
-        background-color: #11111b;
+        background-color: #181825;
         color: #cdd6f4;
         padding: 0 12px;
         margin: 1px 0 1px 8px;
@@ -428,7 +426,7 @@
 
       #pulseaudio,
       #backlight {
-        background-color: #11111b;
+        background-color: #181825;
         color: #cdd6f4;
         margin: 1px 0;
       }
@@ -447,31 +445,35 @@
       }
 
       #tray {
-        background-color: #11111b;
+        background-color: #181825;
         padding: 0 10px;
         margin: 1px 0 1px 8px;
         border-radius: 8px;
       }
 
       #power-profiles-daemon,
-      #battery {
-        background-color: #11111b;
+      #battery,
+      #custom-power {
+        background-color: #181825;
+        color: #cdd6f4;
         margin: 1px 0;
       }
 
       #power-profiles-daemon {
-        background-color: #11111b;
         border-radius: 8px 0 0 8px;
         margin-left: 8px;
-        margin-right: 0;
         padding: 0 6px 0 12px
       }
 
       #battery {
-        background-color: #11111b;
-        color: #cdd6f4;
-        border-radius: 0 8px 8px 0;
+        border-radius: 0;
         margin-left: 0;
+        margin-right: 0;
+        padding: 0 6px 0 6px
+      }
+
+      #custom-power {
+        border-radius: 0 8px 8px 0;
         margin-right: 5px;
         padding: 0 12px 0 6px
       }
