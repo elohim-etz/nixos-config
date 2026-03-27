@@ -39,5 +39,6 @@
     blueman
     libnotify
     networkmanagerapplet
+    stremio-linux-shell
   ];
 }
