@@ -8,5 +8,6 @@
     htop
     brightnessctl
     unzip
+    cacert
   ];
 }
