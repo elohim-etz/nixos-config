@@ -35,7 +35,7 @@
     ripgrep
     fd
     lazygit
-    swww
+    awww
     blueman
     libnotify
     networkmanagerapplet
