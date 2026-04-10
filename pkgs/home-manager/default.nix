@@ -7,7 +7,6 @@
     android-tools
     vscodium
     nautilus
-    mpv
     zsh
     spicetify-cli
     starship
@@ -16,7 +15,6 @@
     satty
     tela-circle-icon-theme
     bibata-cursors
-    mpvScripts.mpris
     ayugram-desktop
     tmux
     grim
@@ -36,7 +34,6 @@
     fd
     lazygit
     awww
-    blueman
     libnotify
     networkmanagerapplet
     stremio-linux-shell

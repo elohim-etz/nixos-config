@@ -83,8 +83,8 @@
       clr = "clear";
       svim = "sudo nvim";
       
-      rebuild-nixos = "sudo nixos-rebuild switch --flake ~/nixos-config#wasabi";
-      rebuild-hm    = "home-manager switch --flake ~/nixos-config#naveen";
+      rebuild-nixos = "sudo nixos-rebuild switch --flake";
+      rebuild-hm    = "home-manager switch --flake .#naveen";
       rebuild-all   = "rebuild-nixos && rebuild-hm";
       code = "codium";
     };
