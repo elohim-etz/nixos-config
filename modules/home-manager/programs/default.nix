@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./zen
+    ./zen-beta
     ./brave.nix
     ./fastfetch.nix
     ./git.nix

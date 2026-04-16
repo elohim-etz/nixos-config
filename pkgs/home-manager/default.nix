@@ -37,5 +37,6 @@
     libnotify
     networkmanagerapplet
     stremio-linux-shell
+    nil
   ];
 }
