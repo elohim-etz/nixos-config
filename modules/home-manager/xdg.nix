@@ -1,5 +1,29 @@
 { ... }:
 {
+
+  xdg.dataFile."applications/com.ayugram.desktop.desktop".text = ''
+    [Desktop Entry]
+    Name=AyuGram Desktop
+    Comment=Desktop version of AyuGram - ToS breaking Telegram client
+    TryExec=/home/naveen/.nix-profile/bin/AyuGram
+    Exec=env DESKTOPINTEGRATION=1 /home/naveen/.nix-profile/bin/AyuGram -- %U
+    Icon=com.ayugram.desktop
+    Terminal=false
+    StartupWMClass=AyuGram
+    Type=Application
+    Categories=Chat;Network;InstantMessaging;Qt;
+    MimeType=x-scheme-handler/tg;x-scheme-handler/tonsite;
+    Keywords=tg;chat;im;messaging;messenger;sms;telegram;tdesktop;
+    Actions=quit;
+    SingleMainWindow=true
+    X-GNOME-UsesNotifications=true
+  
+    [Desktop Action quit]
+    Exec=/home/naveen/.nix-profile/bin/AyuGram -quit
+    Name=Quit AyuGram
+    Icon=application-exit
+  '';
+
   xdg.dataFile."applications/satty.desktop".text = ''
     [Desktop Entry]
     Name=Satty
