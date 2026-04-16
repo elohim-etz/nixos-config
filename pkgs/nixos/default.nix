@@ -9,5 +9,6 @@
     brightnessctl
     unzip
     cacert
+    nextdns
   ];
 }

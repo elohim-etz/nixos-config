@@ -87,7 +87,10 @@
       rebuild-hm    = "home-manager switch --flake .#naveen";
       rebuild-all   = "rebuild-nixos && rebuild-hm";
       code = "codium";
-    };
+
+      dns-nextdns = ''nmcli connection modify "$(nmcli -t -f NAME connection show --active | head -1)" ipv4.dns "127.0.0.1" ipv4.ignore-auto-dns yes && nmcli connection up "$(nmcli -t -f NAME connection show --active | head -1)" && nextdns start'';
+      dns-default = ''nextdns stop && nmcli connection modify "$(nmcli -t -f NAME connection show --active | head -1)" ipv4.dns "" ipv4.ignore-auto-dns no && nmcli connection up "$(nmcli -t -f NAME connection show --active | head -1)"'';
+};
 
     plugins = [
       {
