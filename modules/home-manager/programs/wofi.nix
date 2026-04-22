@@ -111,4 +111,113 @@
       }
     '';
   };
+
+xdg.configFile."wofi/wallpaper-picker.conf".text = ''
+  width=1000
+  height=660
+  location=center
+  show=dmenu
+  prompt=  Select Wallpaper
+  layer=overlay
+  columns=3
+  image_size=300
+  allow_images=true
+  insensitive=true
+  hide_scroll=true
+  sort_order=default
+  cache_file=/dev/null
+  lines=3
+  orientation=vertical
+  content_halign=fill
+  halign=fill
+'';
+
+xdg.configFile."wofi/wallpaper-picker.css".text = ''
+  window {
+    background-color: transparent;
+  }
+
+  #outer-box {
+    margin: 10px;
+    padding: 12px;
+    background-color: #1e1e2e;
+    border-radius: 14px;
+    border: 2px solid #cba6f7;
+  }
+
+  #inner-box {
+    margin: 0px;
+    background-color: transparent;
+  }
+
+  #input {
+    margin: 0px 0px 10px 0px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    border: 1.5px solid #45475a;
+    background-color: #313244;
+    color: #cdd6f4;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    caret-color: #cba6f7;
+  }
+
+  #input:focus {
+    border-color: #cba6f7;
+    background-color: #45475a;
+  }
+
+  #scroll {
+    margin: 0px;
+  }
+
+  #entry {
+    padding: 5px;
+    margin: 4px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-color: #181825;
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  #entry:selected {
+    border-color: #cba6f7;
+    background-color: rgba(203, 166, 247, 0.12);
+  }
+
+  #entry:hover {
+    border-color: #89b4fa;
+    background-color: #1e1e2e;
+  }
+
+  #img {
+    min-width: 290px;
+    max-width: 290px;
+    min-height: 163px;
+    max-height: 163px;
+    border-radius: 7px;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #text {
+    color: #bac2de;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 10px;
+    margin: 4px 2px 0px 2px;
+    padding: 0px;
+  }
+
+  #text:selected {
+    color: #cba6f7;
+    font-weight: bold;
+  }
+
+  scrollbar slider {
+    background-color: #cba6f7;
+    border-radius: 6px;
+    min-width: 5px;
+  }
+'';
 }

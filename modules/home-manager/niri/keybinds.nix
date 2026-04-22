@@ -130,6 +130,9 @@ in
       "Mod+8" = { action.focus-workspace = 8; };
       "Mod+9" = { action.focus-workspace = 9; };
 
+      # Wallpaper Picker
+      "Mod+Shift+W".action.spawn = [ "wallpaper-picker" ];
+
       # Move to workspace
       "Mod+Shift+1" = { action.move-column-to-workspace = 1; };
       "Mod+Shift+2" = { action.move-column-to-workspace = 2; };
