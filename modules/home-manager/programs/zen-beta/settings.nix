@@ -7,8 +7,7 @@ let
     Value = true;
     Status = "locked";
   };
-in
-{
+in {
   "zen.view.use-single-toolbar" = true;
   "zen.view.sidebar-expanded" = true;
 
@@ -207,7 +206,7 @@ in
     currentVersion = 20;
     newElementCount = 7;
     placements = {
-      widget-overflow-fixed-list = [ ];
+      widget-overflow-fixed-list = [];
       unified-extensions-area = [
         "ublock0_raymondhill_net-browser-action"
         "firemonkey_eros_man-browser-action"
@@ -232,7 +231,7 @@ in
         # "queryamoid_kaply_com-browser-action"
         # "_aecec67f-0d10-4fa7-b7c7-609a2db280cf_-browser-action"
       ];
-      toolbar-menubar = [ "menubar-items" ];
+      toolbar-menubar = ["menubar-items"];
       TabsToolbar = [
         "firefox-view-button"
         "tabbrowser-tabs"

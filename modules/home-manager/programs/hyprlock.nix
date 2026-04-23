@@ -1,15 +1,12 @@
-{ config, lib, pkgs, ... }:
-
-let
-  base     = "rgba(1e1e2eFF)";
+_: let
+  base = "rgba(1e1e2eFF)";
   surface0 = "rgba(313244FF)";
-  subtext  = "rgba(a6adc8FF)";
-  text     = "rgba(cdd6f4FF)";
-  mauve    = "rgba(cba6f7FF)";
+  subtext = "rgba(a6adc8FF)";
+  text = "rgba(cdd6f4FF)";
+  mauve = "rgba(cba6f7FF)";
   lavender = "rgba(b4befeFF)";
-  red      = "rgba(f38ba8FF)";
-in
-{
+  red = "rgba(f38ba8FF)";
+in {
   programs.hyprlock = {
     enable = true;
 

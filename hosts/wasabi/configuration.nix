@@ -1,10 +1,8 @@
-{ config, lib, pkgs, inputs, ... }:
-
-{
+{...}: {
   imports = [
     # Hardware configuration
     ./hardware-configuration.nix
-    
+
     # All system modules
     ../../modules/nixos
 

@@ -1,11 +1,9 @@
-{ config, lib, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # User configuration
   users.users.naveen = {
     isNormalUser = true;
     description = "Naveen";
-    extraGroups = [ 
+    extraGroups = [
       "wheel"
       "networkmanager"
     ];

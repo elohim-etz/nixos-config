@@ -1,14 +1,8 @@
-{
-  pkgs,
-  ...
-}:
-
-{
+{pkgs, ...}: {
   programs.niri = {
     enable = true;
     package = pkgs.niri;
     settings = {
-
       overview = {
         zoom = 0.25;
       };
@@ -22,28 +16,28 @@
       layout = {
         background-color = "transparent";
         border = {
-            enable = true;
-            width = 2;
+          enable = true;
+          width = 2;
 
-            active = {
-              gradient = {
-                from = "#704789ff";
-                to = "#cabab7ff";
-                angle = 45;
-              };
+          active = {
+            gradient = {
+              from = "#704789ff";
+              to = "#cabab7ff";
+              angle = 45;
             };
+          };
 
-            inactive = {
-              gradient = {
-                from = "#626995cc";
-                to = "#1c1d25cc";
-                angle = 45;
-              };
+          inactive = {
+            gradient = {
+              from = "#626995cc";
+              to = "#1c1d25cc";
+              angle = 45;
             };
+          };
 
-            urgent = {
-              color = "#9b0000";
-            };
+          urgent = {
+            color = "#9b0000";
+          };
         };
 
         focus-ring = {
@@ -60,7 +54,7 @@
         };
 
         default-column-width = {
-           proportion = 1.0; 
+          proportion = 1.0;
         };
       };
 

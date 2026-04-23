@@ -1,16 +1,17 @@
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   gtk = {
     enable = true;
 
     theme = {
       name = "catppuccin-mocha-blue-standard";
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ];
+        accents = ["blue"];
         size = "standard";
-        tweaks = [ ];
+        tweaks = [];
         variant = "mocha";
       };
     };
@@ -19,7 +20,7 @@
       name = "Tela-circle-dracula";
       package = pkgs.tela-circle-icon-theme.override {
         circularFolder = true;
-        colorVariants = [ "dracula" ];
+        colorVariants = ["dracula"];
       };
     };
 
@@ -43,19 +44,16 @@
     };
 
     gtk4 = {
-      theme = config.gtk.theme;
+      inherit (config.gtk) theme;
     };
   };
 
   xdg.configFile = {
-    "gtk-4.0/assets".source =
-      "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
 
-    "gtk-4.0/gtk.css".source =
-      "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
 
-    "gtk-4.0/gtk-dark.css".source =
-      "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
+    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
   };
 
   qt = {

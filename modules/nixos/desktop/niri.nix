@@ -1,6 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
-
-{
+_: {
   programs.niri = {
     enable = true;
   };

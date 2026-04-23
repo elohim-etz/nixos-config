@@ -1,9 +1,7 @@
-{ config, lib, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # Nix configuration
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
   };
 
   # Allow unfree packages
@@ -17,13 +15,13 @@
   programs = {
     # Enable zsh system-wide
     zsh.enable = true;
-    
+
     # GnuPG agent
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
     };
-    
+
     # Enable dconf for GTK applications
     dconf.enable = true;
   };
@@ -32,7 +30,7 @@
     bash
     home-manager
   ];
-  
+
   # Fix /bin/sh
   environment.binsh = "${pkgs.bash}/bin/bash";
 

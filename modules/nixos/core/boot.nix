@@ -1,6 +1,4 @@
-{ config, lib, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   boot = {
     # Bootloader configuration
     loader = {
@@ -12,10 +10,10 @@
     kernelPackages = pkgs.linuxPackages_latest;
 
     # Intel graphics kernel modules
-    kernelModules = [ "i915" ];
-    
+    kernelModules = ["i915"];
+
     # Early KMS for smoother boot
-    initrd.kernelModules = [ "i915" ];
+    initrd.kernelModules = ["i915"];
 
     # Kernel parameters for better performance
     kernel.sysctl = {

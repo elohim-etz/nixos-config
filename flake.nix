@@ -33,11 +33,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = {nixpkgs, ...} @ inputs: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/wasabi/configuration.nix
         ];
@@ -47,8 +47,8 @@
     homeConfigurations = {
       naveen = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [ ./home/home.nix ];
-        extraSpecialArgs = { inherit inputs; };
+        modules = [./home/home.nix];
+        extraSpecialArgs = {inherit inputs;};
       };
     };
   };

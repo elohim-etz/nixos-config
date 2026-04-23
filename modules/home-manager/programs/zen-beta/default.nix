@@ -3,13 +3,12 @@
   lib,
   pkgs,
   ...
-}:
-{
-  imports = [ inputs.zen-browser.homeModules.beta ];
+}: {
+  imports = [inputs.zen-browser.homeModules.beta];
 
   programs.zen-browser = {
     enable = true;
-    policies = import ./policies.nix { inherit lib; };
+    policies = import ./policies.nix {inherit lib;};
     languagePacks = [
       "en-GB"
       "en-US"
@@ -20,7 +19,7 @@
         name = "Default";
         isDefault = true;
         settings = import ./settings.nix;
-        search = import ./search.nix { inherit pkgs; };
+        search = import ./search.nix {inherit pkgs;};
         userChrome = builtins.readFile ./userChrome.css;
         userContent = builtins.readFile ./userContent.css;
         pinsForce = true;

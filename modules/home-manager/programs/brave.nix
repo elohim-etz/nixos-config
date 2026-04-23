@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+_: {
   programs.brave = {
     enable = true;
     commandLineArgs = [

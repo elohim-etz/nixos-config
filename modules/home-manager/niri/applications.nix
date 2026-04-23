@@ -1,8 +1,4 @@
-{
-  pkgs,
-}:
-
-{
+{pkgs}: {
   browser = "brave";
   terminal = "${pkgs.kitty}/bin/kitty";
   fileManager = "${pkgs.nemo}/bin/nemo";

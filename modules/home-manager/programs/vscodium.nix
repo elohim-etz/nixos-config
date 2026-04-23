@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -19,7 +17,7 @@
         "editor.fontSize" = 16;
         "editor.scrollbar.vertical" = "hidden";
         "editor.scrollbar.verticalScrollbarSize" = 0;
-        "editor.wordWrap"= "on";
+        "editor.wordWrap" = "on";
 
         "security.workspace.trust.untrustedFiles" = "newWindow";
         "security.workspace.trust.startupPrompt" = "never";
@@ -50,7 +48,7 @@
 
         "scm.compactFolders" = false;
 
-        "workbench.settings.applyToAllProfiles" = [ ];
+        "workbench.settings.applyToAllProfiles" = [];
 
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";

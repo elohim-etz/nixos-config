@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.tmux = {
     enable = true;
     clock24 = true;
@@ -9,7 +7,7 @@
     escapeTime = 0;
     historyLimit = 10000;
     terminal = "screen-256color";
-    
+
     plugins = with pkgs.tmuxPlugins; [
       sensible
       yank

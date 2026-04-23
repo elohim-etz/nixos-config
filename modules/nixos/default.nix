@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./hardware/audio.nix
     ./hardware/power.nix

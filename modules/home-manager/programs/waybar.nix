@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+_: {
   programs.waybar = {
     enable = true;
     settings = {
@@ -258,7 +256,7 @@
             phone = "";
             portable = "";
             car = "";
-            default = [ "" "" "" ];
+            default = ["" "" ""];
           };
         };
 

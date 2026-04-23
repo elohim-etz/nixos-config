@@ -1,8 +1,6 @@
-{ config, pkgs, ... }:
+{pkgs, ...}: {
+  home.packages = with pkgs; [wlogout];
 
-{
-  home.packages = with pkgs; [ wlogout ];
-  
   xdg.configFile."wlogout/layout".text = ''
     {
         "label" : "lock",
@@ -41,7 +39,7 @@
         "keybind" : "r"
     }
   '';
-  
+
   # Wlogout styling
   xdg.configFile."wlogout/style.css".text = ''
     * {
@@ -49,11 +47,11 @@
       font-family: "JetBrainsMono Nerd Font";
       font-size: 14px;
     }
-    
+
     window {
       background-color: rgba(30, 30, 46, 0.9);
     }
-    
+
     button {
       color: #cdd6f4;
       background-color: rgba(49, 50, 68, 0.8);
@@ -65,63 +63,63 @@
       margin: 20px;
       transition: all 0.3s ease;
     }
-    
+
     button:hover {
       background-color: rgba(137, 180, 250, 0.2);
       border: 2px solid #89b4fa;
       color: #89b4fa;
     }
-    
+
     button:focus {
       background-color: rgba(137, 180, 250, 0.3);
       border: 2px solid #89b4fa;
       color: #cdd6f4;
     }
-    
+
     #lock {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/lock.png"));
     }
-    
+
     #lock:hover {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/lock.png"));
     }
-    
+
     #logout {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/logout.png"));
     }
-    
+
     #logout:hover {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/logout.png"));
     }
-    
+
     #suspend {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/suspend.png"));
     }
-    
+
     #suspend:hover {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/suspend.png"));
     }
-    
+
     #hibernate {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/hibernate.png"));
     }
-    
+
     #hibernate:hover {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/hibernate.png"));
     }
-    
+
     #shutdown {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png"));
     }
-    
+
     #shutdown:hover {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png"));
     }
-    
+
     #reboot {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/reboot.png"));
     }
-    
+
     #reboot:hover {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/reboot.png"));
     }

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   wallpaper-picker = pkgs.writeShellScriptBin "wallpaper-picker" ''
     WALLPAPER_DIR="$HOME/nixos-config/assets/walls"
     CACHE_DIR="$HOME/.cache/wallpaper-picker"
@@ -61,8 +59,7 @@ let
       -i "$original" \
       -t 2000
   '';
-in
-{
+in {
   home.packages = with pkgs; [
     scrcpy
     kitty
