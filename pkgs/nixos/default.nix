@@ -8,5 +8,6 @@
     unzip
     cacert
     nextdns
+    zoxide
   ];
 }
