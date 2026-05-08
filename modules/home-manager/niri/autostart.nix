@@ -1,7 +1,9 @@
 _: {
   programs.niri.settings.spawn-at-startup = [
     {command = ["awww-daemon"];}
+
     {command = ["waybar"];}
+
     {
       command = [
         "sh"
