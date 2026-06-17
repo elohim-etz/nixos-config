@@ -62,7 +62,6 @@ _: {
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
       XDG_SESSION_TYPE = "wayland";
       XDG_CURRENT_DESKTOP = "niri";
-      DISPLAY = ":0";
     };
   };
 }
