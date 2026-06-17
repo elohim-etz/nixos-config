@@ -40,7 +40,7 @@ _: {
         modified = "!\${count}";
         renamed = "»\${count}";
         staged = "+\${count}";
-        stashed = "$\${count}";
+        stashed = "\\$\${count}";
         untracked = "?\${count}";
         format = "([( $all_status$ahead_behind )](bold blue))";
         style = "bold text";
