@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [inputs.zen-browser.homeModules.beta];
-
   programs.zen-browser = {
     enable = true;
     policies = import ./policies.nix {inherit lib;};
@@ -23,7 +22,11 @@
         userChrome = builtins.readFile ./userChrome.css;
         userContent = builtins.readFile ./userContent.css;
         pinsForce = true;
-
+        pinsForceAction = "remove";
+        pins = import ./pins.nix;
+        mods = [
+          "ad97bb70-0066-4e42-9b5f-173a5e42c6fc" # SuperPins
+        ];
         extraConfig = ''
           lockPref("extensions.formautofill.addresses.enabled", false);
           lockPref("extensions.formautofill.creditCards.enabled", false);

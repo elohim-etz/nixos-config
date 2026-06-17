@@ -11,7 +11,7 @@
   BlockAboutSupport = false;
   #Containers = { };
   DisableAppUpdate = true;
-  DisableFirefoxScreenshots = true;
+  DisableFirefoxScreenshots = false;
   DisableFirefoxStudies = true;
   DisableFormHistory = false;
   DisableMasterPasswordCreation = true;
@@ -56,7 +56,7 @@
   };
   Preferences = {
     "browser.tabs.warnOnClose" = {
-      Value = false;
+      Value = true;
     };
   };
   PromptForDownloadLocation = true;

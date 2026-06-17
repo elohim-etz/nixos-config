@@ -170,7 +170,6 @@ in {
   "datareporting.policy.dataSubmissionEnable" = false;
   "datareporting.policy.dataSubmissionPolicyAcceptedVersion" = 2;
 
-  "extensions.screenshots.disabled" = lock-true;
   "extensions.getAddons.showPane" = lock-false;
   "extensions.htmlaboutaddons.recommendations.enabled" = lock-false;
   "extensions.extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
