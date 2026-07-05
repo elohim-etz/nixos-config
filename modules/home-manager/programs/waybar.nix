@@ -125,7 +125,7 @@ _: {
           format-icons = {
             default = "null";
             performance = "";
-            balanced = " ";
+            balanced = "";
             power-saver = "";
           };
         };

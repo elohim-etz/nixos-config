@@ -2,6 +2,10 @@
   # Nix configuration
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
+
+    # CachyOS kernel binary cache
+    substituters = ["https://attic.xuyh0120.win/lantian"];
+    trusted-public-keys = ["lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="];
   };
 
   # Allow unfree packages

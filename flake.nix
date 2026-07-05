@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,6 +42,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/wasabi/configuration.nix
+          { nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ]; }
         ];
       };
     };

@@ -7,7 +7,7 @@
     };
 
     # Use latest kernel
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
 
     # Intel graphics kernel modules
     kernelModules = ["i915"];
