@@ -43,6 +43,12 @@
         modules = [
           ./hosts/wasabi/configuration.nix
           { nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ]; }
+          {
+            nix.settings = {
+              substituters = ["https://naveen-nixos.cachix.org?priority=1"];
+              trusted-public-keys = ["naveen-nixos.cachix.org-1:T8g4TIX4n9FEEFlR3BjOS+QOKN2mLFUhQ0uMBFG87Jk="];
+            };
+          }
         ];
       };
     };
@@ -53,6 +59,17 @@
         modules = [./home/home.nix];
         extraSpecialArgs = {inherit inputs;};
       };
+    };
+    packages.x86_64-linux = let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfreePredicate = pkg:
+          builtins.elem (nixpkgs.lib.getName pkg) ["stremio-linux-shell"];
+      };
+    in {
+      stremio-linux-shell = pkgs.stremio-linux-shell;
+      linux-cachyos = inputs.nix-cachyos-kernel.legacyPackages.${system}.linuxPackages-cachyos-latest-lto-x86_64-v3.kernel;
     };
   };
 }

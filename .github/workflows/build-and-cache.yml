@@ -1,0 +1,76 @@
+name: Build and cache packages
+
+on:
+  push:
+    paths:
+      - "flake.nix"
+      - "flake.lock"
+      - "pkgs/**"
+  workflow_dispatch: {}
+
+concurrency:
+  group: nix-cache-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    name: Discover cache targets
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.list.outputs.packages }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: List packages.x86_64-linux attribute names
+        id: list
+        run: |
+          pkgs=$(nix eval --json --apply builtins.attrNames .#packages.x86_64-linux)
+          echo "packages=$pkgs" >> "$GITHUB_OUTPUT"
+          echo "Cache targets: $pkgs"
+
+  build-and-cache:
+    name: ${{ matrix.package }}
+    needs: discover
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJson(needs.discover.outputs.packages) }}
+    concurrency:
+      group: nix-cache-${{ matrix.package }}-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Free up runner disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+          sudo docker image prune --all --force || true
+          df -h /
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            max-jobs = auto
+            cores = 0
+
+      - uses: cachix/cachix-action@v17
+        with:
+          name: ${{ vars.CACHIX_CACHE_NAME }}
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          pushFilter: "(-source$|\\.tar\\.gz$|\\.tar\\.xz$)"
+
+      - name: Build ${{ matrix.package }}
+        run: nix build ".#packages.x86_64-linux.${{ matrix.package }}" --print-build-logs
+
+      - name: Show resulting store path
+        run: nix path-info ".#packages.x86_64-linux.${{ matrix.package }}"
