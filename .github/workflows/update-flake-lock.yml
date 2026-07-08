@@ -17,6 +17,8 @@ jobs:
   update-and-test:
     runs-on: ubuntu-latest
     timeout-minutes: 180
+    outputs:
+      pr-number: ${{ steps.cpr.outputs.pull-request-number }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -43,15 +45,8 @@ jobs:
           nix build .#nixosConfigurations.nixos.config.system.build.toplevel --print-build-logs
           nix build .#homeConfigurations.naveen.activationPackage --print-build-logs
 
-      - name: Pre-warm cache targets against updated inputs
-        run: |
-          for pkg in $(nix eval --json --apply builtins.attrNames .#packages.x86_64-linux | jq -r '.[]'); do
-            echo "::group::$pkg"
-            nix build ".#packages.x86_64-linux.$pkg" --print-build-logs
-            echo "::endgroup::"
-          done
-
       - name: Open or update the PR
+        id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "flake.lock: update inputs"
@@ -68,3 +63,11 @@ jobs:
           labels: |
             automated
             flake-update
+
+  cache-updated-packages:
+    needs: update-and-test
+    if: needs.update-and-test.outputs.pr-number != ''
+    uses: ./.github/workflows/build-and-cache.yml
+    with:
+      ref: automated/flake-update
+    secrets: inherit
