@@ -1,4 +1,4 @@
-name: Update flake.lock and test rebuild
+name: Update flake.lock (auto-push on success)
 
 on:
   schedule:
@@ -7,22 +7,22 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 concurrency:
   group: flake-update
   cancel-in-progress: false
 
 jobs:
-  update-and-test:
+  update-test-and-push:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
-    outputs:
-      pr-number: ${{ steps.cpr.outputs.pull-request-number }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+
+      - name: Free up runner disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+          sudo docker image prune --all --force || true
+          df -h /
 
       - uses: cachix/install-nix-action@v31
         with:
@@ -40,34 +40,35 @@ jobs:
       - name: Update flake.lock
         run: nix flake update
 
+      - name: Check whether anything actually changed
+        id: diff
+        run: |
+          if git diff --quiet -- flake.lock; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Test-build system + home-manager closures
+        if: steps.diff.outputs.changed == 'true'
         run: |
           nix build .#nixosConfigurations.nixos.config.system.build.toplevel --print-build-logs
           nix build .#homeConfigurations.naveen.activationPackage --print-build-logs
 
-      - name: Open or update the PR
-        id: cpr
-        uses: peter-evans/create-pull-request@v6
-        with:
-          commit-message: "flake.lock: update inputs"
-          title: "flake.lock: automated update"
-          body: |
-            Automated nightly `nix flake update`.
+      - name: Build every cache target
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          for pkg in $(nix eval --json --apply builtins.attrNames .#packages.x86_64-linux | jq -r '.[]'); do
+            echo "::group::$pkg"
+            nix build ".#packages.x86_64-linux.$pkg" --print-build-logs
+            echo "::endgroup::"
+          done
 
-            The full NixOS system closure and the `naveen` home-manager
-            closure were both successfully built against this updated
-            `flake.lock` before this PR was opened — merging should
-            rebuild cleanly.
-          branch: automated/flake-update
-          delete-branch: false
-          labels: |
-            automated
-            flake-update
-
-  cache-updated-packages:
-    needs: update-and-test
-    if: needs.update-and-test.outputs.pr-number != ''
-    uses: ./.github/workflows/build-and-cache.yml
-    with:
-      ref: automated/flake-update
-    secrets: inherit
+      - name: Commit and push flake.lock
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add flake.lock
+          git commit -m "flake.lock: update inputs"
+          git push origin HEAD:main
