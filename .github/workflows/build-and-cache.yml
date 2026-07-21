@@ -2,6 +2,7 @@ name: Build and cache packages
 
 on:
   push:
+    branches: [main]
     paths:
       - "flake.nix"
       - "flake.lock"
@@ -80,7 +81,7 @@ jobs:
           pushFilter: "(-source$|\\.tar\\.gz$|\\.tar\\.xz$)"
 
       - name: Build ${{ matrix.package }}
-        run: nix build ".#packages.x86_64-linux.${{ matrix.package }}" --print-build-logs
+        run: nix build ".#packages.x86_64-linux.${{ matrix.package }}" --print-build-logs --no-link
 
       - name: Show resulting store path
         run: nix path-info ".#packages.x86_64-linux.${{ matrix.package }}"
