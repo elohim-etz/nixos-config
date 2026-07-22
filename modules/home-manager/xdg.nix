@@ -35,6 +35,22 @@ _: {
       MimeType=image/png;image/jpeg;image/webp;image/gif;image/bmp;image/tiff;image/avif;image/svg+xml;
     '';
 
+    dataFile."applications/com.stremio.Stremio.desktop".text = ''
+      [Desktop Entry]
+      Hidden=true
+    '';
+
+    desktopEntries.stremio = {
+      name = "Stremio";
+      comment = "Freedom To Stream";
+      exec = "stremio -n %u";
+      icon = "com.stremio.Stremio";
+      terminal = false;
+      categories = [ "Utility" "AudioVideo" "Video" "Player" ];
+      mimeType = [ "x-scheme-handler/stremio" ];
+      startupNotify = true;
+    };
+
     mimeApps = {
       enable = true;
       defaultApplications = {
