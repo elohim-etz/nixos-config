@@ -1,24 +1,25 @@
 _: {
-  wayland.windowManager.niri.settings = {
-    prefer-no-csd = [];
+  programs.niri.settings = {
+    prefer-no-csd = true;
 
     overview.zoom = 0.25;
 
-    hotkey-overlay.skip-at-startup = [];
+    hotkey-overlay.skip-at-startup = true;
 
     layout = {
       background-color = "transparent";
       gaps = 2;
       center-focused-column = "never";
 
-      focus-ring.off = [];
+      focus-ring.enable = false;
 
       struts = {
         left = 0;
         right = 0;
         top = 0;
         bottom = 0;
-      };  
+      };
+
       default-column-width.proportion = 1.0;
     };
 
@@ -27,25 +28,27 @@ _: {
 
       touchpad = {
         click-method = "button-areas";
-        dwt = [];
-        dwtp = [];
-        natural-scroll = [];
+        dwt = true;
+        dwtp = true;
+        natural-scroll = true;
         scroll-method = "two-finger";
-        tap = [];
+        tap = true;
         tap-button-map = "left-right-middle";
-        middle-emulation = [];
+        middle-emulation = true;
         accel-profile = "adaptive";
       };
 
-      focus-follows-mouse = [];
+      focus-follows-mouse.enable = true;
+      warp-mouse-to-focus.enable = false;
     };
 
-    output = [
-      {
-        _args = [ "eDP-1" ];
-        mode = "1920x1080@59.997";
-      }
-    ];
+    outputs."eDP-1" = {
+      mode = {
+        width = 1920;
+        height = 1080;
+        refresh = 59.997;
+      };
+    };
 
     # Wayland environment variables
     environment = {

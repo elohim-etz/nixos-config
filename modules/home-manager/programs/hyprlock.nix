@@ -29,7 +29,7 @@ in {
       background = [
         {
           monitor = "";
-          path = "$HOME/nixos-config/assets/walls/nix.png";
+          path = "$HOME/nixos-config/assets/nixos-wallpaper-catppuccin-macchiato.png";
           color = base;
           blur_passes = 3;
           contrast = 0.8916;
