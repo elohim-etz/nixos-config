@@ -12,7 +12,7 @@
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "codeberg:BANanaD3V/niri-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
