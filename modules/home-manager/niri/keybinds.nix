@@ -1,225 +1,225 @@
 _: {
-   programs.niri.settings.binds = {
+   wayland.windowManager.niri.settings.binds = {
 
     # ── Launchers ──────────────────────────────────────────────────────────────
-    "Mod+A"         = {action.spawn = ["sh" "-c" "pkill wofi || wofi --show drun"];};
-    "Mod+T"         = {action.spawn = ["kitty"];};
-    "Mod+E"         = {action.spawn = ["nautilus"];};
-    "Ctrl+Alt+Delete" = {action.spawn = ["wlogout"];};
+    "Mod+A"         = {spawn = ["sh" "-c" "pkill wofi || wofi --show drun"];};
+    "Mod+T"         = {spawn = ["kitty"];};
+    "Mod+E"         = {spawn = ["nautilus"];};
+    "Ctrl+Alt+Delete" = {spawn = ["wlogout"];};
 
     # ── System ────────────────────────────────────────────────────────────────
-    "Mod+Shift+E" = {action.quit = {};};
-    "Mod+Shift+P" = {action.power-off-monitors = {};};
+    "Mod+Shift+E" = {quit = [];};
+    "Mod+Shift+P" = {power-off-monitors = [];};
     "Mod+Escape"  = {
-      allow-inhibiting = false;
-      action.toggle-keyboard-shortcuts-inhibit = {};
+      _props.allow-inhibiting = false;
+      toggle-keyboard-shortcuts-inhibit = [];
     };
 
     # ── Audio ─────────────────────────────────────────────────────────────────
     "XF86AudioRaiseVolume" = {
-      allow-when-locked = true;
-      action.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0";
+      _props.allow-when-locked = true;
+      spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0";
     };
     "XF86AudioLowerVolume" = {
-      allow-when-locked = true;
-      action.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
+      _props.allow-when-locked = true;
+      spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
     };
     "XF86AudioMute" = {
-      allow-when-locked = true;
-      action.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+      _props.allow-when-locked = true;
+      spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
     };
     "XF86AudioMicMute" = {
-      allow-when-locked = true;
-      action.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+      _props.allow-when-locked = true;
+      spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
     };
     # Laptop Fn-row audio fallbacks
     "F2" = {
-      allow-when-locked = true;
-      action.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
+      _props.allow-when-locked = true;
+      spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
     };
     "F3" = {
-      allow-when-locked = true;
-      action.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0";
+      _props.allow-when-locked = true;
+      spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0";
     };
     "F4" = {
-      allow-when-locked = true;
-      action.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+      _props.allow-when-locked = true;
+      spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
     };
     "Alt+F4" = {
-      allow-when-locked = true;
-      action.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+      _props.allow-when-locked = true;
+      spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
     };
 
     # ── Media ─────────────────────────────────────────────────────────────────
     "XF86AudioPlay" = {
-      allow-when-locked = true;
-      action.spawn-sh = "playerctl play-pause";
+      _props.allow-when-locked = true;
+      spawn-sh = "playerctl play-pause";
     };
     "XF86AudioStop" = {
-      allow-when-locked = true;
-      action.spawn-sh = "playerctl stop";
+      _props.allow-when-locked = true;
+      spawn-sh = "playerctl stop";
     };
     "XF86AudioPrev" = {
-      allow-when-locked = true;
-      action.spawn-sh = "playerctl previous";
+      _props.allow-when-locked = true;
+      spawn-sh = "playerctl previous";
     };
     "XF86AudioNext" = {
-      allow-when-locked = true;
-      action.spawn-sh = "playerctl next";
+      _props.allow-when-locked = true;
+      spawn-sh = "playerctl next";
     };
     # Laptop Fn-row media fallbacks
     "F1" = {
-      allow-when-locked = true;
-      action.spawn-sh = "playerctl play-pause";
+      _props.allow-when-locked = true;
+      spawn-sh = "playerctl play-pause";
     };
     "F5" = {
-      allow-when-locked = true;
-      action.spawn-sh = "playerctl previous";
+      _props.allow-when-locked = true;
+      spawn-sh = "playerctl previous";
     };
     "F6" = {
-      allow-when-locked = true;
-      action.spawn-sh = "playerctl next";
+      _props.allow-when-locked = true;
+      spawn-sh = "playerctl next";
     };
 
     # ── Brightness ────────────────────────────────────────────────────────────
     "XF86MonBrightnessUp" = {
-      allow-when-locked = true;
-      action.spawn = ["brightnessctl" "--class=backlight" "set" "+10%"];
+      _props.allow-when-locked = true;
+      spawn = ["brightnessctl" "--class=backlight" "set" "+10%"];
     };
     "XF86MonBrightnessDown" = {
-      allow-when-locked = true;
-      action.spawn = ["brightnessctl" "--class=backlight" "set" "10%-"];
+      _props.allow-when-locked = true;
+      spawn = ["brightnessctl" "--class=backlight" "set" "10%-"];
     };
     # Laptop Fn-row brightness fallbacks
     "F11" = {
-      allow-when-locked = true;
-      action.spawn = ["brightnessctl" "--class=backlight" "set" "10%-"];
+      _props.allow-when-locked = true;
+      spawn = ["brightnessctl" "--class=backlight" "set" "10%-"];
     };
     "F12" = {
-      allow-when-locked = true;
-      action.spawn = ["brightnessctl" "--class=backlight" "set" "+10%"];
+      _props.allow-when-locked = true;
+      spawn = ["brightnessctl" "--class=backlight" "set" "+10%"];
     };
 
     # ── Screenshots ───────────────────────────────────────────────────────────
-    "Mod+P"    = {action.spawn-sh = ''grim -g "$(slurp)" - | satty -f -'';};
-    "Print"    = {action.screenshot = {};};
-    "Ctrl+Print" = {action.screenshot-screen = {};};
-    "Alt+Print"  = {action.screenshot-window = {};};
+    "Mod+P"    = {spawn-sh = ''grim -g "$(slurp)" - | satty -f -'';};
+    "Print"    = {screenshot = [];};
+    "Ctrl+Print" = {screenshot-screen = [];};
+    "Alt+Print"  = {screenshot-window = [];};
 
     # ── Wallpaper ─────────────────────────────────────────────────────────────
-    "Mod+Shift+W" = {action.spawn = ["wallpaper-picker"];};
+    "Mod+Shift+W" = {spawn = ["wallpaper-picker"];};
 
     # ── Window management ─────────────────────────────────────────────────────
     "Mod+Return" = {
-      repeat = false;
-      action.toggle-overview = {};
+      _props.repeat = false;
+      toggle-overview = [];
     };
     "Mod+Q" = {
-      repeat = false;
-      action.close-window = {};
+      _props.repeat = false;
+      close-window = [];
     };
 
     # Focus – arrow keys
-    "Mod+Left"  = {action.focus-column-left = {};};
-    "Mod+Right" = {action.focus-column-right = {};};
-    "Mod+Up"    = {action.focus-workspace-up = {};};
-    "Mod+Down"  = {action.focus-workspace-down = {};};
+    "Mod+Left"  = {focus-column-left = [];};
+    "Mod+Right" = {focus-column-right = [];};
+    "Mod+Up"    = {focus-workspace-up = [];};
+    "Mod+Down"  = {focus-workspace-down = [];};
     # Focus – vim keys
-    "Mod+H" = {action.focus-column-left = {};};
-    "Mod+L" = {action.focus-column-right = {};};
-    "Mod+J" = { action.focus-window-or-workspace-down = {}; };
-    "Mod+K" = { action.focus-window-or-workspace-up = {}; };
+    "Mod+H" = {focus-column-left = [];};
+    "Mod+L" = {focus-column-right = [];};
+    "Mod+J" = { focus-window-or-workspace-down = []; };
+    "Mod+K" = { focus-window-or-workspace-up = []; };
     # Focus – extremes
-    "Mod+Home" = {action.focus-column-first = {};};
-    "Mod+End"  = {action.focus-column-last = {};};
+    "Mod+Home" = {focus-column-first = [];};
+    "Mod+End"  = {focus-column-last = [];};
 
     # Move – arrow keys
-    "Mod+Ctrl+Left"  = {action.move-column-left = {};};
-    "Mod+Ctrl+Right" = {action.move-column-right = {};};
-    "Mod+Ctrl+Up"    = {action.move-window-up = {};};
-    "Mod+Ctrl+Down"  = {action.move-window-down = {};};
+    "Mod+Ctrl+Left"  = {move-column-left = [];};
+    "Mod+Ctrl+Right" = {move-column-right = [];};
+    "Mod+Ctrl+Up"    = {move-window-up = [];};
+    "Mod+Ctrl+Down"  = {move-window-down = [];};
     # Move – vim keys
-    "Mod+Ctrl+H" = {action.move-column-left = {};};
-    "Mod+Ctrl+L" = {action.move-column-right = {};};
-    "Mod+Ctrl+K" = {action.move-window-up = {};};
-    "Mod+Ctrl+J" = {action.move-window-down = {};};
+    "Mod+Ctrl+H" = {move-column-left = [];};
+    "Mod+Ctrl+L" = {move-column-right = [];};
+    "Mod+Ctrl+K" = {move-window-up = [];};
+    "Mod+Ctrl+J" = {move-window-down = [];};
     # Move – extremes
-    "Mod+Ctrl+Home" = {action.move-column-to-first = {};};
-    "Mod+Ctrl+End"  = {action.move-column-to-last = {};};
+    "Mod+Ctrl+Home" = {move-column-to-first = [];};
+    "Mod+Ctrl+End"  = {move-column-to-last = [];};
 
     # ── Mouse-wheel navigation ────────────────────────────────────────────────
     "Mod+WheelScrollDown" = {
-      cooldown-ms = 150;
-      action.focus-workspace-down = {};
+      _props.cooldown-ms = 150;
+      focus-workspace-down = [];
     };
     "Mod+WheelScrollUp" = {
-      cooldown-ms = 150;
-      action.focus-workspace-up = {};
+      _props.cooldown-ms = 150;
+      focus-workspace-up = [];
     };
     "Mod+Ctrl+WheelScrollDown" = {
-      cooldown-ms = 150;
-      action.move-column-to-workspace-down = {};
+      _props.cooldown-ms = 150;
+      move-column-to-workspace-down = [];
     };
     "Mod+Ctrl+WheelScrollUp" = {
-      cooldown-ms = 150;
-      action.move-column-to-workspace-up = {};
+      _props.cooldown-ms = 150;
+      move-column-to-workspace-up = [];
     };
-    "Mod+WheelScrollRight"      = {action.focus-column-right = {};};
-    "Mod+WheelScrollLeft"       = {action.focus-column-left = {};};
-    "Mod+Ctrl+WheelScrollRight" = {action.move-column-right = {};};
-    "Mod+Ctrl+WheelScrollLeft"  = {action.move-column-left = {};};
-    "Mod+Shift+WheelScrollDown" = {action.focus-column-right = {};};
-    "Mod+Shift+WheelScrollUp"   = {action.focus-column-left = {};};
-    "Mod+Ctrl+Shift+WheelScrollDown" = {action.move-column-right = {};};
-    "Mod+Ctrl+Shift+WheelScrollUp"   = {action.move-column-left = {};};
+    "Mod+WheelScrollRight"      = {focus-column-right = [];};
+    "Mod+WheelScrollLeft"       = {focus-column-left = [];};
+    "Mod+Ctrl+WheelScrollRight" = {move-column-right = [];};
+    "Mod+Ctrl+WheelScrollLeft"  = {move-column-left = [];};
+    "Mod+Shift+WheelScrollDown" = {focus-column-right = [];};
+    "Mod+Shift+WheelScrollUp"   = {focus-column-left = [];};
+    "Mod+Ctrl+Shift+WheelScrollDown" = {move-column-right = [];};
+    "Mod+Ctrl+Shift+WheelScrollUp"   = {move-column-left = [];};
 
     # ── Workspaces ────────────────────────────────────────────────────────────
-    "Mod+1" = {action.focus-workspace = 1;};
-    "Mod+2" = {action.focus-workspace = 2;};
-    "Mod+3" = {action.focus-workspace = 3;};
-    "Mod+4" = {action.focus-workspace = 4;};
-    "Mod+5" = {action.focus-workspace = 5;};
-    "Mod+6" = {action.focus-workspace = 6;};
-    "Mod+7" = {action.focus-workspace = 7;};
-    "Mod+8" = {action.focus-workspace = 8;};
-    "Mod+9" = {action.focus-workspace = 9;};
+    "Mod+1" = {focus-workspace = 1;};
+    "Mod+2" = {focus-workspace = 2;};
+    "Mod+3" = {focus-workspace = 3;};
+    "Mod+4" = {focus-workspace = 4;};
+    "Mod+5" = {focus-workspace = 5;};
+    "Mod+6" = {focus-workspace = 6;};
+    "Mod+7" = {focus-workspace = 7;};
+    "Mod+8" = {focus-workspace = 8;};
+    "Mod+9" = {focus-workspace = 9;};
 
-    "Mod+Shift+1" = {action.move-column-to-workspace = 1;};
-    "Mod+Shift+2" = {action.move-column-to-workspace = 2;};
-    "Mod+Shift+3" = {action.move-column-to-workspace = 3;};
-    "Mod+Shift+4" = {action.move-column-to-workspace = 4;};
-    "Mod+Shift+5" = {action.move-column-to-workspace = 5;};
-    "Mod+Shift+6" = {action.move-column-to-workspace = 6;};
-    "Mod+Shift+7" = {action.move-column-to-workspace = 7;};
-    "Mod+Shift+8" = {action.move-column-to-workspace = 8;};
-    "Mod+Shift+9" = {action.move-column-to-workspace = 9;};
+    "Mod+Shift+1" = {move-column-to-workspace = 1;};
+    "Mod+Shift+2" = {move-column-to-workspace = 2;};
+    "Mod+Shift+3" = {move-column-to-workspace = 3;};
+    "Mod+Shift+4" = {move-column-to-workspace = 4;};
+    "Mod+Shift+5" = {move-column-to-workspace = 5;};
+    "Mod+Shift+6" = {move-column-to-workspace = 6;};
+    "Mod+Shift+7" = {move-column-to-workspace = 7;};
+    "Mod+Shift+8" = {move-column-to-workspace = 8;};
+    "Mod+Shift+9" = {move-column-to-workspace = 9;};
 
     # ── Column operations ─────────────────────────────────────────────────────
-    "Mod+BracketLeft"  = {action.consume-or-expel-window-left = {};};
-    "Mod+BracketRight" = {action.consume-or-expel-window-right = {};};
-    "Mod+Comma"  = {action.consume-window-into-column = {};};
-    "Mod+Period" = {action.expel-window-from-column = {};};
+    "Mod+BracketLeft"  = {consume-or-expel-window-left = [];};
+    "Mod+BracketRight" = {consume-or-expel-window-right = [];};
+    "Mod+Comma"  = {consume-window-into-column = [];};
+    "Mod+Period" = {expel-window-from-column = [];};
 
     # ── Sizing ────────────────────────────────────────────────────────────────
-    "Mod+R"       = {action.switch-preset-column-width = {};};
-    "Mod+Shift+R" = {action.switch-preset-window-height = {};};
-    "Mod+Ctrl+R"  = {action.reset-window-height = {};};
-    "Mod+Minus"       = {action.set-column-width = "-10%";};
-    "Mod+Equal"       = {action.set-column-width = "+10%";};
-    "Mod+Shift+Minus" = {action.set-window-height = "-10%";};
-    "Mod+Shift+Equal" = {action.set-window-height = "+10%";};
+    "Mod+R"       = {switch-preset-column-width = [];};
+    "Mod+Shift+R" = {switch-preset-window-height = [];};
+    "Mod+Ctrl+R"  = {reset-window-height = [];};
+    "Mod+Minus"       = {set-column-width = "-10%";};
+    "Mod+Equal"       = {set-column-width = "+10%";};
+    "Mod+Shift+Minus" = {set-window-height = "-10%";};
+    "Mod+Shift+Equal" = {set-window-height = "+10%";};
 
     # ── Window states ─────────────────────────────────────────────────────────
-    "Mod+F"       = {action.maximize-column = {};};
-    "Mod+Shift+F" = {action.fullscreen-window = {};};
-    "Mod+Ctrl+F"  = {action.expand-column-to-available-width = {};};
+    "Mod+F"       = {maximize-column = [];};
+    "Mod+Shift+F" = {fullscreen-window = [];};
+    "Mod+Ctrl+F"  = {expand-column-to-available-width = [];};
 
     # ── Centering ─────────────────────────────────────────────────────────────
-    "Mod+C"      = {action.center-column = {};};
-    "Mod+Ctrl+C" = {action.center-visible-columns = {};};
+    "Mod+C"      = {center-column = [];};
+    "Mod+Ctrl+C" = {center-visible-columns = [];};
 
     # ── Floating ──────────────────────────────────────────────────────────────
-    "Mod+V"       = {action.toggle-window-floating = {};};
-    "Mod+Shift+V" = {action.switch-focus-between-floating-and-tiling = {};};
+    "Mod+V"       = {toggle-window-floating = [];};
+    "Mod+Shift+V" = {switch-focus-between-floating-and-tiling = [];};
   };
 }
