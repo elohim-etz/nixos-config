@@ -16,7 +16,7 @@
     }
     {
         "label" : "logout",
-        "action" : "hyprctl dispatch exit",
+        "action" : "niri msg action quit",
         "text" : "Logout",
         "keybind" : "e"
     }
@@ -54,7 +54,7 @@
 
     button {
       color: #cdd6f4;
-      background-color: rgba(49, 50, 68, 0.8);
+      background-color: rgba(49, 50, 68, 1.0);
       border-radius: 12px;
       border: 2px solid rgba(137, 180, 250, 0.3);
       background-repeat: no-repeat;

@@ -1,15 +1,13 @@
 {
   inputs,
   ...
-}: {
-  imports = [
-    inputs.niri.homeModules.default
+}:{
+  imports = [ 
+    inputs.niri.homeModules.niri
     ./settings.nix
     ./theme.nix
     ./keybinds.nix
     ./rules.nix
     ./autostart.nix
-    ./blur.nix
   ];
-  wayland.windowManager.niri.enable = true;
 }

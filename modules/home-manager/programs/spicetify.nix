@@ -38,6 +38,7 @@ in {
       adblockify
       fullAppDisplay
       spicyLyrics
+      hidePodcasts
     ];
   };
 }
