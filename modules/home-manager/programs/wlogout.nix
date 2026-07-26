@@ -53,7 +53,7 @@
     }
 
     button {
-      color: #cdd6f4;
+      color: #494d64;
       background-color: rgba(49, 50, 68, 1.0);
       border-radius: 12px;
       border: 2px solid rgba(137, 180, 250, 0.3);
@@ -65,15 +65,15 @@
     }
 
     button:hover {
-      background-color: rgba(137, 180, 250, 0.2);
-      border: 2px solid #89b4fa;
-      color: #89b4fa;
+      background-color: rgba(137, 180, 250, 1.0);
+      border: 2px solid #8087a2;
+      color: #494d64;
     }
 
     button:focus {
-      background-color: rgba(137, 180, 250, 0.3);
-      border: 2px solid #89b4fa;
-      color: #cdd6f4;
+      background-color: rgba(137, 180, 250, 1.0);
+      border: 2px solid #8087a2;
+      color: #494d64;
     }
 
     #lock {
