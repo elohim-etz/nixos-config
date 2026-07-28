@@ -26,7 +26,7 @@
         "editor.minimap.maxColumn" = 60;
         "editor.fontFamily" = "'JetbrainsMono Nerd Font','Maple Mono', monospace";
 
-        "extensions.autoUpdate" = false;
+        "extensions.autoUpdate" = "off";
         "workbench.statusBar.visible" = false;
 
         "files.insertFinalNewline" = true;

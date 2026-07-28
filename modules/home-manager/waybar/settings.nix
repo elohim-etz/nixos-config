@@ -185,7 +185,7 @@ in
 
     tooltip = true;
 
-    format-wifi = "<span foreground='#f5c2e7'> {bandwidthDownBytes}</span> <span foreground='#94e2d5'> {bandwidthUpBytes}</span>";
+    format-wifi = "<span foreground='${macchiato.pink}'> {bandwidthDownBytes}</span> <span foreground='${macchiato.teal}'> {bandwidthUpBytes}</span>";
     format-ethernet = "󰈀 ";
     format-linked = "󰈀 {ifname} (No IP)";
     format-disconnected = "󰖪 ";

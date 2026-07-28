@@ -2,6 +2,9 @@
   # Nix configuration
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
+    substituters = ["https://naveen-nixos.cachix.org?priority=1"];
+    trusted-public-keys = ["naveen-nixos.cachix.org-1:T8g4TIX4n9FEEFlR3BjOS+QOKN2mLFUhQ0uMBFG87Jk="];
+    trusted-users = ["root" "naveen"];
   };
 
   # Allow unfree packages

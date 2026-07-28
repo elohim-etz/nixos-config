@@ -36,7 +36,6 @@ in {
 
     enabledExtensions = with spicePkgs.extensions; [
       adblockify
-      fullAppDisplay
       spicyLyrics
       hidePodcasts
     ];

@@ -35,48 +35,20 @@
     };
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
+  outputs = { nixpkgs, ... } @ inputs: let
+    lib = import ./lib { inherit inputs; };
     system = "x86_64-linux";
-    overlays = [
-      inputs.nix-cachyos-kernel.overlays.pinned
-      (import ./pkgs/overlays.nix)
-    ];
-    unfreePredicate = pkg:
-      builtins.elem (nixpkgs.lib.getName pkg) ["stremio-linux-shell"];
   in {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/wasabi/configuration.nix
-          { nixpkgs.overlays = overlays; }
-          {
-            nix.settings = {
-              substituters = ["https://naveen-nixos.cachix.org?priority=1"];
-              trusted-public-keys = ["naveen-nixos.cachix.org-1:T8g4TIX4n9FEEFlR3BjOS+QOKN2mLFUhQ0uMBFG87Jk="];
-              trusted-users = ["root" "naveen"];
-            };
-          }
-        ];
-      };
+    nixosConfigurations.nixos = lib.mkSystem {
+      hostPath = ./hosts/wasabi/configuration.nix;
     };
 
-    homeConfigurations = {
-      naveen = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system overlays;
-          config.allowUnfreePredicate = unfreePredicate;
-        };
-        modules = [./home/home.nix];
-        extraSpecialArgs = {inherit inputs;};
-      };
+    homeConfigurations.naveen = lib.mkHome {
+      homePath = ./home/home.nix;
     };
+
     packages.${system} = let
-      pkgs = import nixpkgs {
-        inherit system overlays;
-        config.allowUnfreePredicate = unfreePredicate;
-      };
+      pkgs = lib.pkgsFor { inherit system; };
     in {
       stremio-linux-shell = pkgs.stremio-linux-shell;
       linux-cachyos = inputs.nix-cachyos-kernel.legacyPackages.${system}.linuxPackages-cachyos-latest-lto-x86_64-v3.kernel;
