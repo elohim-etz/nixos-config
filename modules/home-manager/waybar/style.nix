@@ -1,25 +1,8 @@
 { colors }:
 let
-  inherit (colors) mocha macchiato;
+  inherit (colors) mocha tooltip;
 in
 ''
-  @define-color bg-crust     ${macchiato.crust};
-  @define-color bg-surface0  ${macchiato.surface0};
-  @define-color bg-surface1  ${macchiato.surface1};
-
-  @define-color fg-text      ${macchiato.text};
-  @define-color fg-subtext   ${macchiato.subtext0};
-
-  @define-color accent-mauve     ${macchiato.mauve};
-  @define-color accent-red       ${macchiato.red};
-  @define-color accent-green     ${macchiato.green};
-  @define-color accent-yellow    ${macchiato.yellow};
-  @define-color accent-sky       ${macchiato.sky};
-  @define-color accent-blue      ${macchiato.blue};
-  @define-color accent-teal      ${macchiato.teal};
-  @define-color accent-pink      ${macchiato.pink};
-  @define-color accent-rosewater ${macchiato.rosewater};
-
   * {
     border: none;
     border-radius: 0;
@@ -30,237 +13,211 @@ in
     border-radius: 8px;
   }
 
-  /* ----------------------------------------------------------------
-     Bar shell
-  ---------------------------------------------------------------- */
-
   window#waybar {
-    background-color: alpha(@bg-crust, 0.55);
-    padding: 0 8px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+    background: transparent;
   }
 
   tooltip {
-    background-color: alpha(@bg-crust, 0.92);
-    border: 1px solid alpha(@bg-surface1, 0.6);
+    background: ${tooltip.bg};
+    border-radius: 8px
   }
 
   tooltip label {
-    color: @fg-text;
-    padding: 2px 4px;
-  }
+    color: ${tooltip.fg};
+   }
 
-  #custom-launcher,
-  #memory,
-  #temperature,
-  #cpu,
-  #clock,
-  #workspaces,
-  #mpris,
-  #network,
-  #pulseaudio,
-  #backlight,
-  #tray,
-  #power-profiles-daemon,
-  #battery,
-  #group-power,
-  #custom-power {
-    color: @fg-text;
-    transition: background-color 0.15s ease, color 0.15s ease;
-  }
-
-  #memory:hover,
-  #temperature:hover,
-  #cpu:hover,
-  #clock:hover,
-  #mpris:hover,
-  #network:hover,
-  #pulseaudio:hover,
-  #backlight:hover,
-  #tray:hover,
-  #power-profiles-daemon:hover,
-  #battery:hover {
-    background-color: alpha(@bg-surface1, 0.65);
-  }
-
-  /* ============================================================ left == */
-
+  /* Left side modules */
   #custom-launcher {
-    background-color: alpha(@accent-mauve, 0.85);
-    color: @bg-crust;
-    font-size: 15px;
-    padding: 0 14px;
-    margin: 0 6px 0 6px;
-    border-radius: 10px;
-  }
-
-  #custom-launcher:hover {
-    background-color: @accent-mauve;
+    background-color: ${mocha.mantle};
+    color: ${mocha.text};
+    padding: 0 15px;
+    margin: 1px 0 1px 5px;
+    border-radius: 8px;
   }
 
   #memory,
   #temperature,
   #cpu {
-    background-color: alpha(@bg-surface0, 0.45);
-    padding: 0 10px;
+    background-color: ${mocha.mantle};
+    color: ${mocha.text};
+    margin: 1px 0;
   }
 
   #memory {
-    border-radius: 10px 0 0 10px;
-    border-right: 1px solid alpha(@bg-surface1, 0.5);
-    color: @accent-sky;
-  }
-
-  #temperature {
-    border-right: 1px solid alpha(@bg-surface1, 0.5);
-    color: @accent-yellow;
-  }
-
-  #temperature.critical {
-    color: @accent-red;
+    border-radius: 8px 0 0 8px;
+    margin-left: 8px;
+    padding: 0 6px 0 12px
   }
 
   #cpu {
-    border-radius: 0 10px 10px 0;
-    margin-right: 6px;
-    color: @accent-green;
+    border-radius: 0 8px 8px 0;
+    margin-right: 0;
+    padding: 0 12px 0 6px
+  }
+
+  #temperature {
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 6px 0 6px
   }
 
   #clock {
-    background-color: alpha(@bg-surface0, 0.45);
-    color: @accent-rosewater;
-    padding: 0 14px;
-    border-radius: 10px;
-  }
-
-  /* ========================================================== center == */
-
-  #workspaces {
-    background-color: alpha(@bg-surface0, 0.4);
-    border-radius: 10px;
-    padding: 0 8px;
-    margin: 0 6px;
-  }
-
-  #workspaces button {
-    padding: 0 7px;
-    margin: 0 2px;
-    min-width: 8px;
-    border-radius: 6px;
-    background-color: transparent;
-    color: @fg-subtext;
-    transition: background-color 0.15s ease, color 0.15s ease;
-  }
-
-  #workspaces button:hover {
-    background-color: alpha(@bg-surface1, 0.6);
-    color: @fg-text;
-  }
-
-  #workspaces button.focused {
-    background-color: @accent-mauve;
-    color: @bg-crust;
-  }
-
-  #workspaces button.urgent {
-    background-color: @accent-red;
-    color: @bg-crust;
+    background-color: ${mocha.mantle};
+    color: ${mocha.text};
+    padding: 0 15px;
+    margin: 1px 0 1px 8px;
+    border-radius: 8px;
   }
 
   #mpris {
-    background-color: alpha(@bg-surface0, 0.4);
-    color: @accent-teal;
-    padding: 0 14px;
-    margin: 0 6px 0 0;
-    border-radius: 10px;
+    background-color: ${mocha.mantle};
+    color: ${mocha.green};
+    padding: 0 15px;
+    margin: 1px 8px;
+    border-radius: 8px;
   }
 
-  /* =========================================================== right == */
+  /* Center - workspaces */
+  #workspaces {
+    background-color: ${mocha.mantle};
+    border-radius: 8px;
+    padding: 1px 6px;
+    margin: 1px 4px;
+  }
+  #workspaces button {
+    padding: 0 2px;
+    margin: 0;
+    min-width: 21px;
+    min-height: 21px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    color: ${mocha.overlay0};
+    transition: background-color 0.15s ease;
+  }
+  #workspaces button.active {
+    color: ${mocha.text};
+    border-radius: 8px;
+    background-color: rgba(${mocha.mauveRGB}, 0.25);
+  }
+  #workspaces button.urgent {
+    background-color: rgba(${mocha.redRGB}, 0.2);
+    color: ${mocha.red};
+  }
 
-  #network,
+  /* Right side modules */
+  #network {
+    background-color: ${mocha.mantle};
+    color: ${mocha.text};
+    padding: 0 12px;
+    margin: 1px 0 1px 8px;
+    border-radius: 8px;
+  }
+
   #pulseaudio,
   #backlight {
-    background-color: alpha(@bg-surface0, 0.45);
-    padding: 0 10px;
-  }
-
-  #network {
-    border-radius: 10px 0 0 10px;
-    border-right: 1px solid alpha(@bg-surface1, 0.5);
-    color: @accent-blue;
+    background-color: ${mocha.mantle};
+    color: ${mocha.text};
+    margin: 1px 0;
   }
 
   #pulseaudio {
-    border-right: 1px solid alpha(@bg-surface1, 0.5);
-    color: @accent-mauve;
+    border-radius: 8px 0 0 8px;
+    margin-left: 8px;
+    margin-right: 0;
+    padding: 0 6px 0 12px
   }
 
   #backlight {
-    border-radius: 0 10px 10px 0;
-    margin-right: 6px;
-    color: @accent-yellow;
+    border-radius: 0 8px 8px 0;
+    margin-left: 0;
+    padding: 0 12px 0 6px
   }
 
   #tray {
-    background-color: alpha(@bg-surface0, 0.45);
+    background-color: ${mocha.mantle};
     padding: 0 10px;
-    margin-right: 6px;
-    border-radius: 10px;
+    margin: 1px 0 1px 8px;
+    border-radius: 8px;
   }
 
   #power-profiles-daemon,
-  #battery {
-    background-color: alpha(@bg-surface0, 0.45);
-    padding: 0 10px;
+  #battery,
+  #custom-power {
+    background-color: ${mocha.mantle};
+    color: ${mocha.text};
+    margin: 1px 0;
   }
 
   #power-profiles-daemon {
-    border-radius: 10px 0 0 10px;
-    border-right: 1px solid alpha(@bg-surface1, 0.5);
-    color: @accent-pink;
+    border-radius: 8px 0 0 8px;
+    margin-left: 8px;
+    padding: 0 6px 0 12px
   }
 
   #battery {
-    border-radius: 0 10px 10px 0;
-    margin-right: 6px;
-    color: @fg-text;
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 6px 0 6px
+  }
+
+  #custom-power {
+    border-radius: 0 8px 8px 0;
+    margin-right: 5px;
+    padding: 0 12px 0 6px
   }
 
   #battery.charging {
-    color: @accent-green;
+    color: ${mocha.green};
   }
 
   #battery.warning:not(.charging) {
-    color: @accent-yellow;
+    color: ${mocha.yellow};
   }
 
   #battery.critical:not(.charging) {
-    color: @accent-red;
-    animation: blink 1s linear infinite alternate;
+    color: ${mocha.red};
+    animation: blink 0.5s linear infinite alternate;
   }
 
   @keyframes blink {
     to {
-      opacity: 0.4;
+      opacity: 0.5;
     }
   }
 
-  #custom-power,
-  #custom-reboot,
-  #custom-lock,
-  #custom-quit {
-    background-color: alpha(@accent-red, 0.85);
-    color: @bg-crust;
-    font-size: 15px;
-    padding: 0 14px;
-    border-radius: 10px;
-    margin: 0 6px 0 0;
+  #temperature.critical {
+    color: ${mocha.red};
   }
 
-  #custom-power:hover,
-  #custom-reboot:hover,
-  #custom-lock:hover,
-  #custom-quit:hover {
-    background-color: @accent-red;
+  /* Module-specific colors */
+  #memory {
+    color: ${mocha.sky};
+  }
+
+  #temperature {
+    color: ${mocha.yellow};
+  }
+
+  #cpu {
+    color: ${mocha.green};
+  }
+
+  #power-profiles-daemon {
+    color: ${mocha.pink};
+  }
+
+  #network {
+    color: ${mocha.blue};
+  }
+
+  #pulseaudio {
+    color: ${mocha.mauve};
+  }
+
+  #backlight {
+    color: ${mocha.yellow};
   }
 ''
