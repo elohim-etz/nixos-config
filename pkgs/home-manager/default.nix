@@ -38,5 +38,6 @@
     nil
     imagemagick
     wallpaper-picker
+    vesktop
   ];
 }
