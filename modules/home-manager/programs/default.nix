@@ -13,7 +13,6 @@
     ./git.nix
     ./vscodium.nix
     ./zed.nix
-  # ./waybar.nix
     ./mako.nix
     ./wofi.nix
     ./hyprlock.nix

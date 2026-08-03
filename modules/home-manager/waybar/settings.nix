@@ -1,7 +1,5 @@
 { colors }:
-let
-  inherit (colors) macchiato;
-in
+
 {
   layer = "top";
   position = "top";
@@ -31,15 +29,38 @@ in
     "tray"
     "power-profiles-daemon"
     "battery"
-    "group/group-power"
+    "custom/power"
   ];
 
-  # ---------------------------------------------------------------- left --
+  # Module configurations
+
+  "custom/power" = {
+    format = "{}";
+    rotate = 0;
+    exec = "echo ; echo  logout";
+    on-click = "wlogout";
+    interval = 86400;
+    tooltip = true;
+  };
 
   "custom/launcher" = {
     format = " ";
     on-click = "pkill wofi || wofi --show drun";
     tooltip = false;
+  };
+
+  "niri/workspaces" = {
+    disable-click = false;
+    all-outputs = false;
+    format = "{icon}";
+
+    format-icons = {
+      active = " ";
+      default = "";
+    };
+
+    on-scroll-up = "niri msg action focus-workspace-up";
+    on-scroll-down = "niri msg action focus-workspace-down";
   };
 
   memory = {
@@ -79,7 +100,33 @@ in
     rotate = 0;
 
     format-alt = "{icon0}{icon1}{icon2}{icon3}";
-    format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+    format-icons = [
+      "▁"
+      "▂"
+      "▃"
+      "▄"
+      "▅"
+      "▆"
+      "▇"
+      "█"
+    ];
+  };
+
+  power-profiles-daemon = {
+    format = "{icon}";
+    tooltip = true;
+
+    tooltip-format = ''
+      Power profile: {profile}
+      Driver: {driver}
+    '';
+
+    format-icons = {
+      default = "null";
+      performance = "";
+      balanced = "";
+      power-saver = "";
+    };
   };
 
   clock = {
@@ -97,9 +144,9 @@ in
       on-click-right = "mode";
 
       format = {
-        months = "<span color='${macchiato.rosewater}'><b>{}</b></span>";
-        weekdays = "<span color='${macchiato.yellow}'><b>{}</b></span>";
-        today = "<span color='${macchiato.pink}'><b>{}</b></span>";
+        months = "<span color='#ffead3'><b>{}</b></span>";
+        weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+        today = "<span color='#ff6699'><b>{}</b></span>";
       };
     };
 
@@ -112,21 +159,10 @@ in
     };
   };
 
-  # -------------------------------------------------------------- center --
-
-  "niri/workspaces" = {
-    disable-click = false;
-    all-outputs = false;
-    format = "{value}";
-
-    on-scroll-up = "niri msg action focus-workspace-up";
-    on-scroll-down = "niri msg action focus-workspace-down";
-  };
-
   mpris = {
     justify = "center";
     interval = 1;
-    max-length = 40;
+    max-length = 50;
 
     format = "{player_icon} {title} [{position}/{length}]";
     format-paused = "{status_icon} <i>{title}</i> [{position}/{length}]";
@@ -149,9 +185,8 @@ in
 
     on-click = "playerctl play-pause";
     on-click-middle = "playerctl previous";
-    on-click-right = "playerctl next";
-    on-scroll-up = "playerctl position 1+";
-    on-scroll-down = "playerctl position 1-";
+    on-scroll-up = "playerctl position 1-";
+    on-scroll-down = "playerctl position 1+";
 
     tooltip = true;
 
@@ -177,15 +212,13 @@ in
     '';
   };
 
-  # --------------------------------------------------------------- right --
-
   network = {
     interval = 2;
     rotate = 0;
 
     tooltip = true;
 
-    format-wifi = "<span foreground='${macchiato.pink}'> {bandwidthDownBytes}</span> <span foreground='${macchiato.teal}'> {bandwidthUpBytes}</span>";
+    format-wifi = "<span foreground='#f5c2e7'> {bandwidthDownBytes}</span> <span foreground='#94e2d5'> {bandwidthUpBytes}</span>";
     format-ethernet = "󰈀 ";
     format-linked = "󰈀 {ifname} (No IP)";
     format-disconnected = "󰖪 ";
@@ -216,15 +249,15 @@ in
     scroll-step = 5;
 
     format-icons = {
-        headphone = "";
-        hands-free = "";
-        headset = "";
-        phone = "";
-        portable = "";
-        car = "";
-        default = ["" "" ""];
-      };
+      headphone = "";
+      hands-free = "";
+      headset = "";
+      phone = "";
+      portable = "";
+      car = "";
+      default = ["" "" ""];
     };
+  };
 
   backlight = {
     device = "intel_backlight";
@@ -250,28 +283,6 @@ in
     min-length = 6;
   };
 
-  "tray" = {
-    icon-size = 15;
-    spacing = 8;
-  };
-
-  power-profiles-daemon = {
-    format = "{icon}";
-    tooltip = true;
-
-    tooltip-format = ''
-      Power profile: {profile}
-      Driver: {driver}
-    '';
-
-    format-icons = {
-      default = "null";
-      performance = "";
-      balanced = "";
-      power-saver = "";
-    };
-  };
-
   battery = {
     states = {
       good = 95;
@@ -287,50 +298,11 @@ in
     format-plugged = " {capacity}%";
     format-alt = "{time} {icon}";
 
-    format-icons = [ "󰥇" "󰤾" "󰤿" "󰥀" "󰥁" "󰥂" "󰥃" "󰥄" "󰥅" "󰥆" "󰥈" ];
+    format-icons = ["󰥇" "󰤾" "󰤿" "󰥀" "󰥁" "󰥂" "󰥃" "󰥄" "󰥅" "󰥆" "󰥈"];
   };
 
-  "group/group-power" = {
-    orientation = "horizontal";
-
-    drawer = {
-      "transition-duration" = 500;
-      "children-class" = "not-power";
-      "transition-left-to-right" = false;
-    };
-
-    modules = [
-      "custom/power"   # First element is the group leader and won't ever be hidden
-      "custom/quit"
-      "custom/lock"
-      "custom/reboot"
-    ];
-  };
-
-  "custom/quit" = {
-    format = "󰗼";
-    tooltip = false;
-    "on-click" = "niri msg action quit";
-  };
-
-  "custom/lock" = {
-    format = "󰍁";
-    tooltip = false;
-    "on-click" = "hyprlock & disown && systemctl suspend";
-  };
-
-  "custom/reboot" = {
-    format = "󰜉";
-    tooltip = false;
-    "on-click" = "reboot";
-  };
-
-  "custom/power" = {
-    format = "{}";
-    rotate = 0;
-    exec = "echo ; echo  logout";
-    on-click = "wlogout";
-    interval = 86400;
-    tooltip = true;
+  "tray" = {
+    icon-size = 15;
+    spacing = 5;
   };
 }
