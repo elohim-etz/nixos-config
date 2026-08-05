@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./zen-beta
-    ./brave.nix
+    ./chromium.nix
     ./fastfetch.nix
     ./git.nix
     ./kitty.nix
