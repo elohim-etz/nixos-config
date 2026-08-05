@@ -1,12 +1,6 @@
 name: Build and cache packages
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "flake.nix"
-      - "flake.lock"
-      - "pkgs/**"
   workflow_dispatch: {}
   workflow_call:
     inputs:

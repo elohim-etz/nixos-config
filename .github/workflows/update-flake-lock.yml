@@ -63,10 +63,3 @@ jobs:
             automated
             flake-update
 
-  cache-updated-packages:
-    needs: update-and-test
-    if: needs.update-and-test.outputs.pr-number != ''
-    uses: ./.github/workflows/build-and-cache.yml
-    with:
-      ref: automated/flake-update
-    secrets: inherit
