@@ -1,24 +1,16 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     scrcpy
-    kitty
     android-tools
-    vscodium
     nautilus
-    zsh
-    spicetify-cli
-    starship
-    fastfetch
     bat
     satty
     tela-circle-icon-theme
     bibata-cursors
     ayugram-desktop
-    tmux
     grim
     slurp
     wl-clipboard
-    fzf
     less
     jq
     aria2
@@ -27,7 +19,6 @@
     yazi
     tree
     zip
-    zed-editor
     ripgrep
     fd
     lazygit

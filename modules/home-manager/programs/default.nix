@@ -1,21 +1,5 @@
-{...}: {
-  imports = [
-    ./zen-beta
-    ./chromium.nix
-    ./fastfetch.nix
-    ./git.nix
-    ./kitty.nix
-    ./mpv.nix
-    ./spicetify.nix
-    ./starship.nix
-    ./tmux.nix
-    ./zsh.nix
-    ./git.nix
-    ./vscodium.nix
-    ./zed.nix
-    ./mako.nix
-    ./wofi.nix
-    ./hyprlock.nix
-    ./wlogout.nix
-  ];
+{ ... }:
+
+{
+  imports = (import ../../../lib/importAll.nix) ./.;
 }

@@ -41,7 +41,7 @@ jobs:
 
       - name: Test-build system + home-manager closures
         run: |
-          nix build .#nixosConfigurations.nixos.config.system.build.toplevel --print-build-logs --no-link
+          nix build .#nixosConfigurations.wasabi.config.system.build.toplevel --print-build-logs --no-link
           nix build .#homeConfigurations.naveen.activationPackage --print-build-logs --no-link
 
       - name: Open or update the PR

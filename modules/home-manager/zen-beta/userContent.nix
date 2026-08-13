@@ -1,3 +1,4 @@
+''
 /* Catppuccin Mocha Rosewater userContent.css*/
 
 @media (prefers-color-scheme: dark) {
@@ -156,3 +157,4 @@
     }
   }
 }
+''

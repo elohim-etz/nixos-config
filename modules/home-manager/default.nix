@@ -4,7 +4,8 @@
     ./programs
     ./niri
     ./waybar
-    ./shell.nix
+    ./zen-beta
+
     ./ui.nix
     ./xdg.nix
   ];

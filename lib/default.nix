@@ -1,7 +1,10 @@
 { inputs, ... }:
+
 let
   inherit (inputs) nixpkgs home-manager;
+
   overlays = import ../overlays inputs;
+  importAll = import ./importAll.nix;
 
   unfreePredicate = pkg:
     builtins.elem (nixpkgs.lib.getName pkg) [
@@ -14,9 +17,13 @@ let
       config.allowUnfreePredicate = unfreePredicate;
     };
 in {
-  inherit overlays unfreePredicate pkgsFor;
+  inherit overlays unfreePredicate pkgsFor importAll;
 
-  mkSystem = { system ? "x86_64-linux", hostPath, extraModules ? [] }:
+  mkSystem = {
+    system ? "x86_64-linux",
+    hostPath,
+    extraModules ? []
+  }:
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; };
@@ -26,7 +33,10 @@ in {
       ] ++ extraModules;
     };
 
-  mkHome = { system ? "x86_64-linux", homePath }:
+  mkHome = {
+    system ? "x86_64-linux",
+    homePath
+  }:
     home-manager.lib.homeManagerConfiguration {
       pkgs = pkgsFor { inherit system; };
       modules = [ homePath ];

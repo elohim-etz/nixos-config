@@ -42,6 +42,7 @@
         "workbench.sideBar.location" = "right";
         "workbench.iconTheme" = "catppuccin-mocha";
         "workbench.secondarySideBar.defaultVisibility" = "hidden";
+        "workbench.startupEditor" = "none";
 
         "notebook.defaultFormatter" = "esbenp.prettier-vscode";
 

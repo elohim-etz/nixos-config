@@ -1,6 +1,8 @@
 _: let
   base = "rgba(1e1e2eFF)";
   surface0 = "rgba(313244FF)";
+  panel = "rgba(313244B3)";
+  panelBorder = "rgba(cba6f74D)";
   subtext = "rgba(a6adc8FF)";
   text = "rgba(cdd6f4FF)";
   mauve = "rgba(cba6f7FF)";
@@ -13,11 +15,9 @@ in {
     settings = {
       general = {
         ignore_empty_input = true;
-        hide_cursor = false;
       };
 
       animations = {
-        enabled = true;
         bezier = "linear, 1, 1, 0, 0";
         animation = [
           "fadeIn, 1, 5, linear"
@@ -29,13 +29,9 @@ in {
       background = [
         {
           monitor = "";
-          path = "$HOME/nixos-config/assets/nixos-wallpaper-catppuccin-macchiato.png";
+          path = "/home/naveen/nixos-assets-tmp/walls/wall-026.png";
           color = base;
           blur_passes = 3;
-          contrast = 0.8916;
-          brightness = 0.8172;
-          vibrancy = 0.1696;
-          vibrancy_darkness = 0.0;
         }
       ];
 
@@ -43,13 +39,26 @@ in {
         {
           monitor = "";
           size = "4000, 4000";
-          color = "rgba(00000066)";
-          rounding = 0;
-          border_size = 0;
+          color = "rgba(00000077)";
           position = "0, 0";
           halign = "center";
           valign = "center";
-          zindex = 0;
+          zindex = -1;
+        }
+        {
+          monitor = "";
+          size = "320, 320";
+          color = panel;
+          rounding = 32;
+          border_size = 2;
+          border_color = panelBorder;
+          position = "0, -145";
+          halign = "center";
+          valign = "center";
+          shadow_passes = 3;
+          shadow_size = 20;
+          shadow_color = "rgba(00000066)";
+          shadow_boost = 1.0;
         }
       ];
 
@@ -70,17 +79,17 @@ in {
           font_family = "JetBrainsMono Nerd Font Mono Italic";
           placeholder_text = "<i>enter password</i>";
           hide_input = false;
-          position = "0, -153";
+          position = "0, -203";
           halign = "center";
           valign = "center";
-          zindex = 1;
+          zindex = 2;
         }
       ];
 
       image = [
         {
           monitor = "";
-          path = "$HOME/nixos-config/assets/nixos.png";
+          path = "/home/naveen/nixos-assets-tmp/nix-chan.png";
           border_color = mauve;
           border_size = 3;
           size = 160;
@@ -91,21 +100,10 @@ in {
           halign = "center";
           valign = "center";
           zindex = 1;
-        }
-        {
-          monitor = "";
-          path = "$HOME/.cache/hyprlock-art/current.jpg";
-          size = 100;
-          rounding = 5;
-          border_size = 2;
-          border_color = mauve;
-          rotate = 0;
-          reload_time = 2;
-          reload_cmd = "$HOME/nixos-config/scripts/hyprlock-music.sh --art";
-          position = "-175, 30";
-          halign = "center";
-          valign = "bottom";
-          zindex = 2;
+          shadow_passes = 3;
+          shadow_size = 8;
+          shadow_color = "rgba(00000080)";
+          shadow_boost = 1.0;
         }
       ];
 
@@ -120,6 +118,10 @@ in {
           halign = "center";
           valign = "center";
           zindex = 1;
+          shadow_passes = 3;
+          shadow_size = 6;
+          shadow_color = "rgba(00000099)";
+          shadow_boost = 1.2;
         }
         {
           monitor = "";
@@ -131,17 +133,10 @@ in {
           halign = "center";
           valign = "center";
           zindex = 1;
-        }
-        {
-          monitor = "";
-          text = "<span> </span>";
-          color = mauve;
-          font_size = 24;
-          font_family = "JetBrainsMono Nerd Font Mono Bold";
-          position = "2, -110";
-          halign = "center";
-          valign = "top";
-          zindex = 1;
+          shadow_passes = 2;
+          shadow_size = 4;
+          shadow_color = "rgba(00000099)";
+          shadow_boost = 1.1;
         }
         {
           monitor = "";
@@ -149,7 +144,7 @@ in {
           color = text;
           font_size = 14;
           font_family = "JetBrainsMono Nerd Font Mono Bold Italic";
-          position = "0, -100";
+          position = "0, -120";
           halign = "center";
           valign = "center";
           zindex = 1;

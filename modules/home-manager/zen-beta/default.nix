@@ -19,8 +19,8 @@
         isDefault = true;
         settings = import ./settings.nix;
         search = import ./search.nix {inherit pkgs;};
-        userChrome = builtins.readFile ./userChrome.css;
-        userContent = builtins.readFile ./userContent.css;
+        userChrome = import ./userChrome.nix;
+        userContent = import ./userContent.nix;
         pinsForce = true;
         pinsForceAction = "remove";
         pins = import ./pins.nix;

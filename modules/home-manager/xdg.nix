@@ -55,14 +55,14 @@ _: {
       enable = true;
       defaultApplications = {
         # Images
-        "image/png" = ["satty.desktop" "brave-browser.desktop"];
-        "image/jpeg" = ["satty.desktop" "brave-browser.desktop"];
-        "image/webp" = ["satty.desktop" "brave-browser.desktop"];
-        "image/gif" = ["satty.desktop" "brave-browser.desktop"];
-        "image/bmp" = ["satty.desktop" "brave-browser.desktop"];
-        "image/tiff" = ["satty.desktop" "brave-browser.desktop"];
-        "image/avif" = ["satty.desktop" "brave-browser.desktop"];
-        "image/svg+xml" = ["brave-browser.desktop"];
+        "image/png" = ["satty.desktop" "brave-origin.desktop"];
+        "image/jpeg" = ["satty.desktop" "brave-origin.desktop"];
+        "image/webp" = ["satty.desktop" "brave-origin.desktop"];
+        "image/gif" = ["satty.desktop" "brave-origin.desktop"];
+        "image/bmp" = ["satty.desktop" "brave-origin.desktop"];
+        "image/tiff" = ["satty.desktop" "brave-origin.desktop"];
+        "image/avif" = ["satty.desktop" "brave-origin.desktop"];
+        "image/svg+xml" = ["brave-origin.desktop"];
 
         # Video
         "video/mp4" = ["mpv.desktop"];
@@ -86,12 +86,12 @@ _: {
         "audio/mp4" = ["mpv.desktop"];
 
         # PDF
-        "application/pdf" = ["brave-browser.desktop"];
+        "application/pdf" = ["brave-origin.desktop"];
 
         # Text / Code
         "text/plain" = ["dev.zed.Zed.desktop"];
         "text/markdown" = ["dev.zed.Zed.desktop"];
-        "text/html" = ["zen-beta.desktop" "brave-browser.desktop"];
+        "text/html" = ["zen-beta.desktop" "brave-origin.desktop"];
         "text/css" = ["dev.zed.Zed.desktop"];
         "text/javascript" = ["dev.zed.Zed.desktop"];
         "application/json" = ["dev.zed.Zed.desktop"];
@@ -106,9 +106,17 @@ _: {
         "application/x-rar" = ["org.gnome.Nautilus.desktop"];
 
         # Web
-        "x-scheme-handler/http" = ["zen-beta.desktop" "brave-browser.desktop"];
-        "x-scheme-handler/https" = ["zen-beta.desktop" "brave-browser.desktop"];
-        "x-scheme-handler/ftp" = ["zen-beta.desktop" "brave-browser.desktop"];
+        "x-scheme-handler/http" = ["zen-beta.desktop" "brave-origin.desktop"];
+        "x-scheme-handler/https" = ["zen-beta.desktop" "brave-origin.desktop"];
+        "x-scheme-handler/ftp" = ["zen-beta.desktop" "brave-origin.desktop"];
+
+        "x-scheme-handler/tg" = [ "com.ayugram.desktop.desktop" ];
+        "x-scheme-handler/tonsite" = [ "com.ayugram.desktop.desktop" ];
+      };
+
+      associations.added = {
+        "x-scheme-handler/tg" = [ "com.ayugram.desktop.desktop" ];
+        "x-scheme-handler/tonsite" = [ "com.ayugram.desktop.desktop" ];
       };
     };
 

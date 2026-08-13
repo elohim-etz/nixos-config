@@ -30,12 +30,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    bash
     home-manager
   ];
-
-  # Fix /bin/sh
-  environment.binsh = "${pkgs.bash}/bin/bash";
 
   # System services
   services = {
