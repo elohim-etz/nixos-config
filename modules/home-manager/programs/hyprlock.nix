@@ -29,7 +29,7 @@ in {
       background = [
         {
           monitor = "";
-          path = "/home/naveen/nixos-assets-tmp/walls/wall-026.png";
+          path = "$HOME/.local/share/assets/walls/wall-026.png";
           color = base;
           blur_passes = 3;
         }
@@ -89,7 +89,7 @@ in {
       image = [
         {
           monitor = "";
-          path = "/home/naveen/nixos-assets-tmp/nix-chan.png";
+          path = "$HOME/.local/share/assets/nix-chan.png";
           border_color = mauve;
           border_size = 3;
           size = 160;

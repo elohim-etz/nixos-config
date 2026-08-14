@@ -6,7 +6,7 @@
   libnotify,
 }:
 writeShellScriptBin "wallpaper-picker" ''
-  WALLPAPER_DIR="''${WALLPAPER_DIR:-$HOME/nixos-config/assets/walls}"
+  WALLPAPER_DIR="''${WALLPAPER_DIR:-$HOME/.local/share/assets/walls}"
   CACHE_DIR="$HOME/.cache/wallpaper-picker"
   THUMB_W="320"
   THUMB_H="180"
