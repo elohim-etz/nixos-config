@@ -1,11 +1,12 @@
 host := "wasabi"
 user := "naveen"
 
-# List all available recipes
+# General
+
 default:
     @just --list
 
-# --- Iteration / testing ---
+# Testing
 
 test-home:
     home-manager build --flake .#{{user}}
@@ -30,7 +31,10 @@ preview-home:
     home-manager switch --flake .#{{user}}
     @echo "Previewing live. Run 'just switch' to make it permanent, or 'just switch' anyway later to reconcile."
 
-# --- Deployment ---
+diff:
+    nixos-rebuild dry-activate --flake .#{{host}}
+
+# Deployment
 
 switch:
     sudo nixos-rebuild switch --flake .#{{host}}
@@ -44,7 +48,13 @@ set-boot:
 rollback:
     sudo nixos-rebuild switch --rollback
 
-# --- Standalone Home Manager generation cleanup ---
+# Generations
+
+nixos-generations:
+    sudo nix-env --profile /nix/var/nix/profiles/system --list-generations
+
+nixos-remove-generations:
+    sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old
 
 hm-generations:
     home-manager generations
@@ -55,14 +65,21 @@ hm-gc days="30":
 hm-remove id:
     home-manager remove-generations {{id}}
 
-assets-pull:
-    git -C ~/.local/share/assets pull --ff-only
+hm-remove-all:
+    home-manager expire-generations "-1 seconds"
 
-assets-status:
-    git -C ~/.local/share/assets status
-    git -C ~/.local/share/assets log -1 --oneline
+hm-clean:
+    rm -f ~/.local/state/home-manager/gcroots/current-home
+    rm -f ~/.local/state/nix/profiles/home-manager-*-link
+    nix-collect-garbage
 
-# --- Maintenance ---
+profile-wipe-history:
+    nix profile wipe-history --profile ~/.local/state/nix/profiles/profile
+
+history:
+    nix profile history --profile /nix/var/nix/profiles/system
+
+# Maintenance
 
 update:
     nix flake update
@@ -71,18 +88,22 @@ update:
 update-input input:
     nix flake lock --update-input {{input}}
 
-history:
-    nix profile history --profile /nix/var/nix/profiles/system
-
 gc:
     sudo nix-collect-garbage --delete-older-than 30d
     sudo nix-store --optimise
 
 gc-all:
     sudo nix-collect-garbage -d
+    sudo nix-store --optimise
 
 fmt:
     alejandra .
 
-diff:
-    nixos-rebuild dry-activate --flake .#{{host}}
+# Assets
+
+assets-pull:
+    git -C ~/.local/share/assets pull --ff-only
+
+assets-status:
+    git -C ~/.local/share/assets status
+    git -C ~/.local/share/assets log -1 --oneline

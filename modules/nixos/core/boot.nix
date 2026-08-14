@@ -21,4 +21,8 @@
       "vm.page-cluster" = 3;
     };
   };
+  systemd.services.home-manager-naveen = {
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+   };
 }

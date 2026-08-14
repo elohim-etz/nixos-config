@@ -24,7 +24,8 @@ writeShellScriptBin "wallpaper-picker" ''
   }
 
   generate_menu() {
-    for img in "$WALLPAPER_DIR"/*.{jpg,jpeg,png,webp}; do
+      setopt local_options nullglob
+      for img in "$WALLPAPER_DIR"/*.{jpg,jpeg,png,webp}; do
       [[ -f "$img" ]] || continue
       local base
       base=$(basename "''${img%.*}")
