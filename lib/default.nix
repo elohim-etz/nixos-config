@@ -6,18 +6,13 @@ let
   overlays = import ../overlays inputs;
   importAll = import ./importAll.nix;
 
-  unfreePredicate = pkg:
-    builtins.elem (nixpkgs.lib.getName pkg) [
-      "stremio-linux-shell"
-    ];
-
   pkgsFor = { system ? "x86_64-linux" }:
     import nixpkgs {
       inherit system overlays;
-      config.allowUnfreePredicate = unfreePredicate;
+      config.allowUnfree = true;
     };
 in {
-  inherit overlays unfreePredicate pkgsFor importAll;
+  inherit overlays pkgsFor importAll;
 
   mkSystem = {
     system ? "x86_64-linux",
@@ -29,7 +24,9 @@ in {
       specialArgs = { inherit inputs; };
       modules = [
         hostPath
-        { nixpkgs.overlays = overlays; }
+        {
+          nixpkgs.overlays = overlays;
+        }
       ] ++ extraModules;
     };
 
