@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    just
     scrcpy
     android-tools
     nautilus
