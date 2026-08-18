@@ -39,4 +39,11 @@ in {
       modules = [ homePath ];
       extraSpecialArgs = { inherit inputs; };
     };
+
+  # helper for devshells
+  mkDevShell = {
+    system ? "x86_64-linux",
+    shellPath
+  }:
+    import shellPath { pkgs = pkgsFor { inherit system; }; };
 }

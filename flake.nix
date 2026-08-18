@@ -53,5 +53,9 @@
       stremio-linux-shell = pkgs.stremio-linux-shell;
       linux-cachyos = inputs.nix-cachyos-kernel.legacyPackages.${system}.linuxPackages-cachyos-latest-lto-x86_64-v3.kernel;
     };
+
+    devShells.${system} = {
+      kompile = lib.mkDevShell { shellPath = ./devshells/kompile.nix; };
+    };
   };
 }
