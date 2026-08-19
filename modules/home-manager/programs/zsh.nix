@@ -35,6 +35,24 @@
       '';
 
       initContent = ''
+        export FZF_DEFAULT_OPTS="\
+          --style=full \
+          --border=rounded \
+          --layout=reverse \
+          --height=75% \
+          --margin=1 \
+          --padding=1 \
+          --prompt='❯ ' \
+          --pointer='▶' \
+          --marker='✓' \
+          --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+          --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+          --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+          --color=selected-bg:#45475a \
+          --color=label:#cdd6f4 \
+          --color=input-border:#b4befe \
+          --color=list-border:#89b4fa"
+
         setopt AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_SILENT
         setopt CORRECT
         setopt NO_BEEP
@@ -47,7 +65,7 @@
           'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-zA-Z}={A-Za-z}' \
           'r:|=* m:{a-zA-Z}={A-Za-z}'
 
-        export GPG_TTY=$(tty)
+        export GPG_TTY="$(tty)"
 
         extract() {
           if [ -f "$1" ]; then
@@ -69,6 +87,38 @@
             echo "'$1' is not a valid file"
           fi
         }
+
+        scr() {
+          if [[ -z "$1" ]]; then
+            echo "Usage: scr <package-id>"
+            return 1
+          fi
+          scrcpy \
+            --video-codec=h264 \
+            --video-encoder=OMX.MTK.VIDEO.ENCODER.AVC \
+            --keyboard=sdk \
+            --no-audio \
+            --new-display=/200 \
+            --flex-display \
+            --start-app="$1"
+        }
+
+        zstyle ':fzf-tab:*' fzf-flags \
+          --style=full \
+          --border=rounded \
+          --layout=reverse \
+          --height=75% \
+          --margin=1 \
+          --padding=1 \
+          --pointer='▶' \
+          --marker='✓' \
+          --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+          --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+          --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+          --color=selected-bg:#45475a \
+          --color=label:#cdd6f4 \
+          --color=input-border:#b4befe \
+          --color=list-border:#89b4fa
       '';
 
       shellAliases = {
@@ -87,6 +137,16 @@
         svim = "sudo nvim";
 
         code = "codium";
+        zed = "zeditor";
+
+        restart-nextdns = "sudo systemctl restart nextdns.service";
+
+        # scrcpy shortcuts
+        "scr-ytm" = "scr com.google.android.apps.youtube.music";
+        "scr-tg"  = "scr nu.gpu.nagram";
+        "scr-ig"  = "scr com.instagram";
+        "scr-yt"  = "scr com.google.android.youtube";
+        "scr-wa"  = "scr com.whatsapp";
       };
 
       plugins = [
@@ -117,11 +177,6 @@
         LESS = "-R";
         TERM = "xterm-256color";
       };
-    };
-
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
     };
   };
 }

@@ -1,35 +1,52 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    # CLI utilities
     just
-    scrcpy
-    android-tools
-    nautilus
     bat
-    satty
-    tela-circle-icon-theme
-    bibata-cursors
-    ayugram-desktop
-    grim
-    slurp
-    wl-clipboard
     less
     jq
-    aria2
-    yt-dlp
-    ffmpeg
-    yazi
     tree
     zip
     ripgrep
     fd
-    lazygit
+    yazi
+    claude-code
+
+    # Media / downloads
+    aria2
+    yt-dlp
+    ffmpeg
+
+    # Screenshots / clipboard
+    grim
+    slurp
+    satty
+    wl-clipboard
+
+    # Android
+    scrcpy
+    android-tools
+
+    # Desktop / theming
+    nautilus
+    tela-circle-icon-theme
+    bibata-cursors
     awww
+    wallpaper-picker
     libnotify
     networkmanagerapplet
+
+    # Apps
+    ayugram-desktop
     stremio-linux-shell
+    vesktop
+
+    # Dev tools
+    lazygit
     nil
     imagemagick
-    wallpaper-picker
-    vesktop
+
+    # Networking
+    cloudflared
   ];
 }

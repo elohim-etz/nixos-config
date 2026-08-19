@@ -42,9 +42,9 @@
       position = 800;
       isEssential = true;
     };
-    "Google Keep" = {
+    "DeepSeek" = {
       id = "cc5c102d-3f17-48bf-a1a3-832fa6eafea3";
-      url = "https://keep.google.com/u/1/";
+      url = "https://chat.deepseek.com/";
       position = 900;
       isEssential = true;
     };
@@ -54,9 +54,9 @@
       position = 1000;
       isEssential = true;
     };
-    "Discord" = {
+    "Google Keep" = {
       id = "37f90bf7-9dc6-4ca1-bf63-488f7d283774";
-      url = "https://discord.com/app";
+      url = "https://keep.google.com/u/1/";
       position = 1100;
       isEssential = true;
     };

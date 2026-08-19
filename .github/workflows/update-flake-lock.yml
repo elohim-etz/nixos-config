@@ -1,8 +1,8 @@
-name: Update flake.lock and test rebuild
+name: Update flake.lock, test rebuild and cache packages
 
 on:
   schedule:
-    - cron: "30 18 * * *"
+    - cron: "30 4 * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -50,16 +50,9 @@ jobs:
         with:
           commit-message: "flake.lock: update inputs"
           title: "flake.lock: automated update"
-          body: |
-            Automated nightly `nix flake update`.
-
-            The full NixOS system closure and the `naveen` home-manager
-            closure were both successfully built against this updated
-            `flake.lock` before this PR was opened — merging should
-            rebuild cleanly.
+          body: "Automated nix flake update, builds passed."
           branch: automated/flake-update
           delete-branch: false
           labels: |
             automated
             flake-update
-

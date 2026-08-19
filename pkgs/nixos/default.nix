@@ -1,13 +1,20 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    # Core CLI
     wget
     git
-    gnupg
     htop
-    brightnessctl
     unzip
-    cacert
-    nextdns
     zoxide
+
+    # Hardware / display
+    brightnessctl
+
+    # Security / certs
+    gnupg
+    cacert
+
+    # Networking / DNS
+    nextdns
   ];
 }

@@ -10,7 +10,7 @@ _: {
       background_opacity = "0.90";
       dynamic_background_opacity = true;
 
-      confirm_os_window_close = 0;
+      confirm_os_window_close = -1;
       tab_bar_edge = "bottom";
       tab_bar_style = "powerline";
       tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";

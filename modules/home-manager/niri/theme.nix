@@ -24,7 +24,6 @@ _: {
       };
     };
 
-    # shadow is also OFF by default; presence here enables it.
     shadow = {
       softness = 20;
       spread = 2;

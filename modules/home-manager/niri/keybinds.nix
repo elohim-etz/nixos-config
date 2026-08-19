@@ -81,6 +81,28 @@ _: {
       spawn-sh = "playerctl next";
     };
 
+    # ── Android media (via adb) ──────────────────────────────────────────────
+    "Alt+F1" = {
+      _props.allow-when-locked = true;
+      spawn-sh = "adb shell input keyevent 85"; # play/pause
+    };
+    "Alt+F2" = {
+      _props.allow-when-locked = true;
+      spawn-sh = "adb shell input keyevent 25"; # volume down
+    };
+    "Alt+F3" = {
+      _props.allow-when-locked = true;
+      spawn-sh = "adb shell input keyevent 24"; # volume up
+    };
+    "Alt+F5" = {
+      _props.allow-when-locked = true;
+      spawn-sh = "adb shell input keyevent 88"; # previous track
+    };
+    "Alt+F6" = {
+      _props.allow-when-locked = true;
+      spawn-sh = "adb shell input keyevent 87"; # next track
+    };
+
     # ── Brightness ────────────────────────────────────────────────────────────
     "XF86MonBrightnessUp" = {
       _props.allow-when-locked = true;

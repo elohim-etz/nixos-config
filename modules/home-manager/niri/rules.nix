@@ -11,12 +11,8 @@ _: {
   ];
 
   wayland.windowManager.niri.settings.window-rule = [
-    # No `match` here at all -> applies to every window, same as in niri's
-    # own KDL when a window-rule has no match block.
     {
       clip-to-geometry = true;
-      # All four corners are equal, so the single-argument form is enough
-      # instead of spelling out top-left/top-right/bottom-left/bottom-right.
       geometry-corner-radius = 6.0;
     }
 
@@ -31,8 +27,6 @@ _: {
     }
 
     {
-      # Multiple `match` entries under one rule = OR, same as sodiboo's
-      # single `matches` list did.
       match = [
         {_props.app-id = "brave-browser";}
         {_props.app-id = "zen";}
