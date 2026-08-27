@@ -3,7 +3,6 @@
     ./nixvim
     ./programs
     ./niri
-    ./waybar
     ./zen-beta
 
     ./assets.nix

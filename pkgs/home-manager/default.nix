@@ -18,8 +18,6 @@
     ffmpeg
 
     # Screenshots / clipboard
-    grim
-    slurp
     satty
     wl-clipboard
 
@@ -31,10 +29,7 @@
     nautilus
     tela-circle-icon-theme
     bibata-cursors
-    awww
-    wallpaper-picker
     libnotify
-    networkmanagerapplet
 
     # Apps
     ayugram-desktop

@@ -53,30 +53,6 @@ _: {
     }
 
     {
-      match = [
-        {_props.app-id = "^blueman-manager$";}
-        {_props.app-id._raw = ''r#"^\.blueman-manager-wrapped$"#'';}
-      ];
-      open-floating = true;
-      default-column-width.fixed = 600;
-      default-window-height.fixed = 400;
-      max-width = 800;
-      max-height = 700;
-    }
-
-    {
-      match = [
-        {_props.app-id = "^pavucontrol$";}
-        {_props.app-id._raw = ''r#"^org\.pulseaudio\.pavucontrol$"#'';}
-      ];
-      open-floating = true;
-      default-column-width.fixed = 600;
-      default-window-height.fixed = 400;
-      max-width = 900;
-      max-height = 800;
-    }
-
-    {
       match._props.app-id._raw = ''r#"^com\.gabm\.satty$"#'';
       open-floating = true;
       default-column-width.fixed = 1200;

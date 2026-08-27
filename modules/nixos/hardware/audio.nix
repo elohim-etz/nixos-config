@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   # PipeWire audio configuration
   services.pipewire = {
     enable = true;
@@ -8,10 +8,4 @@
       support32Bit = true;
     };
   };
-
-  # Audio control tools
-  environment.systemPackages = with pkgs; [
-    playerctl
-    pavucontrol
-  ];
 }

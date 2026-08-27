@@ -2,10 +2,8 @@ _: {
    wayland.windowManager.niri.settings.binds = {
 
     # ── Launchers ──────────────────────────────────────────────────────────────
-    "Mod+A"         = {spawn = ["sh" "-c" "pkill wofi || wofi --show drun"];};
     "Mod+T"         = {spawn = ["kitty"];};
     "Mod+E"         = {spawn = ["nautilus"];};
-    "Ctrl+Alt+Delete" = {spawn = ["wlogout"];};
 
     # ── System ────────────────────────────────────────────────────────────────
     "Mod+Shift+E" = {quit = [];};
@@ -50,37 +48,6 @@ _: {
       spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
     };
 
-    # ── Media ─────────────────────────────────────────────────────────────────
-    "XF86AudioPlay" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl play-pause";
-    };
-    "XF86AudioStop" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl stop";
-    };
-    "XF86AudioPrev" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl previous";
-    };
-    "XF86AudioNext" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl next";
-    };
-    # Laptop Fn-row media fallbacks
-    "F1" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl play-pause";
-    };
-    "F5" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl previous";
-    };
-    "F6" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl next";
-    };
-
     # ── Android media (via adb) ──────────────────────────────────────────────
     "Alt+F1" = {
       _props.allow-when-locked = true;
@@ -103,33 +70,12 @@ _: {
       spawn-sh = "adb shell input keyevent 87"; # next track
     };
 
-    # ── Brightness ────────────────────────────────────────────────────────────
-    "XF86MonBrightnessUp" = {
-      _props.allow-when-locked = true;
-      spawn = ["brightnessctl" "--class=backlight" "set" "+10%"];
-    };
-    "XF86MonBrightnessDown" = {
-      _props.allow-when-locked = true;
-      spawn = ["brightnessctl" "--class=backlight" "set" "10%-"];
-    };
-    # Laptop Fn-row brightness fallbacks
-    "F11" = {
-      _props.allow-when-locked = true;
-      spawn = ["brightnessctl" "--class=backlight" "set" "10%-"];
-    };
-    "F12" = {
-      _props.allow-when-locked = true;
-      spawn = ["brightnessctl" "--class=backlight" "set" "+10%"];
-    };
-
     # ── Screenshots ───────────────────────────────────────────────────────────
-    "Mod+P"    = {spawn-sh = ''grim -g "$(slurp)" - | satty -f -'';};
     "Print"    = {screenshot = [];};
     "Ctrl+Print" = {screenshot-screen = [];};
     "Alt+Print"  = {screenshot-window = [];};
 
     # ── Wallpaper ─────────────────────────────────────────────────────────────
-    "Mod+Shift+W" = {spawn = ["wallpaper-picker"];};
 
     # ── Window management ─────────────────────────────────────────────────────
     "Mod+Return" = {

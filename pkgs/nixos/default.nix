@@ -7,9 +7,6 @@
     unzip
     zoxide
 
-    # Hardware / display
-    brightnessctl
-
     # Security / certs
     gnupg
     cacert
