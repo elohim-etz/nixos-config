@@ -5,7 +5,7 @@ _: {
       place-within-backdrop = true;
     }
     {
-      match._props.namespace = "^awww-daemon$";
+      match._props.namespace = "^noctalia-wallpaper";
       place-within-backdrop = true;
     }
   ];
@@ -84,6 +84,15 @@ _: {
         {_props.app-id = "^htop$";}
       ];
       default-column-width.proportion = 0.75;
+    }
+
+    {
+      match = [
+        { _props.app-id = "dev.noctalia.Noctalia"; }
+      ];
+      open-floating = true;
+      default-column-width.fixed = 1080;
+      default-window-height.fixed = 920;
     }
   ];
 }

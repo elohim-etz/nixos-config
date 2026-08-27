@@ -13,41 +13,6 @@ _: {
       toggle-keyboard-shortcuts-inhibit = [];
     };
 
-    # ── Audio ─────────────────────────────────────────────────────────────────
-    "XF86AudioRaiseVolume" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0";
-    };
-    "XF86AudioLowerVolume" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
-    };
-    "XF86AudioMute" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-    };
-    "XF86AudioMicMute" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-    };
-    # Laptop Fn-row audio fallbacks
-    "F2" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
-    };
-    "F3" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0";
-    };
-    "F4" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-    };
-    "Alt+F4" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-    };
-
     # ── Android media (via adb) ──────────────────────────────────────────────
     "Alt+F1" = {
       _props.allow-when-locked = true;
@@ -74,8 +39,6 @@ _: {
     "Print"    = {screenshot = [];};
     "Ctrl+Print" = {screenshot-screen = [];};
     "Alt+Print"  = {screenshot-window = [];};
-
-    # ── Wallpaper ─────────────────────────────────────────────────────────────
 
     # ── Window management ─────────────────────────────────────────────────────
     "Mod+Return" = {

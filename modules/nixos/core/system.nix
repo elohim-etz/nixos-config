@@ -3,7 +3,9 @@
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
     substituters = ["https://naveen-nixos.cachix.org?priority=1"];
+    extra-substituters = [ "https://noctalia.cachix.org" ];
     trusted-public-keys = ["naveen-nixos.cachix.org-1:T8g4TIX4n9FEEFlR3BjOS+QOKN2mLFUhQ0uMBFG87Jk="];
+    extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
     trusted-users = ["root" "naveen"];
   };
 
