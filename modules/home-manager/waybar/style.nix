@@ -98,7 +98,7 @@ in
   }
   #workspaces button.active {
     padding: 0 0 0 2px;
-    color: ${mocha.text};
+    color: ${mocha.mauve};
     border-radius: 8px;
   }
   #workspaces button.urgent {

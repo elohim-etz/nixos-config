@@ -55,8 +55,7 @@
     format = "{icon}";
 
     format-icons = {
-      active = " ";
-      default = "";
+      default = " ";
     };
 
     on-scroll-up = "niri msg action focus-workspace-up";

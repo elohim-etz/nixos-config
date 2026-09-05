@@ -51,6 +51,7 @@
       pkgs = lib.pkgsFor { inherit system; };
     in {
       stremio-linux-shell = pkgs.stremio-linux-shell;
+      stremio-service = pkgs.stremio-service;
       linux-cachyos = inputs.nix-cachyos-kernel.legacyPackages.${system}.linuxPackages-cachyos-latest-lto-x86_64-v3.kernel;
     };
 

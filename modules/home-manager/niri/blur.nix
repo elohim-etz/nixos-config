@@ -9,10 +9,6 @@ _: {
   # Layer-shell surfaces: wofi, waybar, wlogout
   wayland.windowManager.niri.settings.layer-rule = [
     {
-      match._props.namespace = "^wofi$";
-      background-effect.blur = true;
-    }
-    {
       match._props.namespace = "^waybar$";
       background-effect.blur = true;
     }

@@ -32,11 +32,11 @@ _: {
       @define-color red       #f38ba8;
       @define-color overlay0  #6c7086;
 
-      @define-color bg-opacity rgba(30, 30, 46, 0.9);
-      @define-color input-bg rgba(49, 50, 68, 0.9);
-      @define-color input-focus-bg rgba(69, 71, 90, 0.9);
-      @define-color entry-selected rgba(203, 166, 247, 0.9);
-      @define-color entry-hover rgba(49, 50, 68, 0.7);
+      @define-color bg-opacity rgba(30, 30, 46, 1.0);
+      @define-color input-bg rgba(49, 50, 68, 1.0);
+      @define-color input-focus-bg rgba(69, 71, 90, 1.0);
+      @define-color entry-selected rgba(203, 166, 247, 1.0);
+      @define-color entry-hover rgba(49, 50, 68, 1.0);
 
       * {
         font-family: "JetBrainsMono Nerd Font", monospace;

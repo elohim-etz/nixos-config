@@ -38,7 +38,8 @@
 
     # Apps
     ayugram-desktop
-    stremio-linux-shell
+  # stremio-linux-shell
+    stremio-service
     vesktop
 
     # Dev tools
