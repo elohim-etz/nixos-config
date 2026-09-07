@@ -44,7 +44,7 @@
         "workbench.secondarySideBar.defaultVisibility" = "hidden";
         "workbench.startupEditor" = "none";
 
-        "explorer.compactFolders"= false;
+        "explorer.compactFolders" = false;
 
         "notebook.defaultFormatter" = "esbenp.prettier-vscode";
 

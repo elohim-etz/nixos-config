@@ -21,7 +21,7 @@
 
       autocd = true;
 
-      defaultKeymap = "emacs";
+      defaultKeymap = "viins";
 
       syntaxHighlighting.enable = true;
 
@@ -88,21 +88,6 @@
           fi
         }
 
-        scr() {
-          if [[ -z "$1" ]]; then
-            echo "Usage: scr <package-id>"
-            return 1
-          fi
-          scrcpy \
-            --video-codec=h264 \
-            --video-encoder=OMX.MTK.VIDEO.ENCODER.AVC \
-            --keyboard=sdk \
-            --no-audio \
-            --new-display=/200 \
-            --flex-display \
-            --start-app="$1"
-        }
-
         zstyle ':fzf-tab:*' fzf-flags \
           --style=full \
           --border=rounded \
@@ -138,15 +123,6 @@
 
         code = "codium";
         zed = "zeditor";
-
-        restart-nextdns = "sudo systemctl restart nextdns.service";
-
-        # scrcpy shortcuts
-        "scr-ytm" = "scr com.google.android.apps.youtube.music";
-        "scr-tg"  = "scr nu.gpu.nagram";
-        "scr-ig"  = "scr com.instagram";
-        "scr-yt"  = "scr com.google.android.youtube";
-        "scr-wa"  = "scr com.whatsapp";
       };
 
       plugins = [

@@ -21,9 +21,11 @@
     mauveRGB = "203, 166, 247";
 
     pink = "#f5c2e7";
+
+    lavender = "#b4befe";
   };
 
-  # Custom, non-palette tooltip colors used as-is in the original config
+  # Custom
   tooltip = {
     bg = "rgb(48, 45, 65)";
     fg = "rgb(217, 224, 238)";

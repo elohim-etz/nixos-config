@@ -1,6 +1,4 @@
-{ colors }:
-
-{
+{colors}: {
   layer = "top";
   position = "top";
   height = 20;
@@ -52,10 +50,12 @@
   "niri/workspaces" = {
     disable-click = false;
     all-outputs = false;
+
     format = "{icon}";
 
     format-icons = {
-      default = " ";
+      default = "";
+      active = "";
     };
 
     on-scroll-up = "niri msg action focus-workspace-up";
@@ -132,12 +132,12 @@
     rotate = 0;
 
     format = "󰥔 {:%R 󰃭 %d·%m·%y}";
-    format-alt = "{:%I:%M %p}";
+    format-alt = "󰥔 {:%I:%M %p}";
 
     tooltip-format = "<span>{calendar}</span>";
 
     calendar = {
-      mode = "month";
+      mode = "year";
       mode-mon-col = 3;
       on-scroll = 1;
       on-click-right = "mode";

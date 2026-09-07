@@ -1,92 +1,45 @@
 host := "wasabi"
-user := "naveen"
 
-# General
+# Default
 
 default:
     @just --list
 
-# Testing
+# Checks
 
-test-home:
-    home-manager build --flake .#{{user}}
-    @echo "Build OK -> ./result. Run 'just clean' when done inspecting it."
-
-test-system:
-    sudo nixos-rebuild dry-build --flake .#{{host}}
-
-check: test-home test-system
+check:
     nix flake check
 
-clean:
-    rm -f result result-*
+dry:
+    sudo nixos-rebuild dry-build --flake .#{{host}}
 
-inspect-home path:
-    cat result/home-files/{{path}}
+# Build / Deploy
 
-diff-home:
-    diff -r result/home-files ~ 2>/dev/null || true
-
-preview-home:
-    home-manager switch --flake .#{{user}}
-    @echo "Previewing live. Run 'just switch' to make it permanent, or 'just switch' anyway later to reconcile."
-
-diff:
-    nixos-rebuild dry-activate --flake .#{{host}}
-
-# Deployment
+build:
+    nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel --print-build-logs
 
 switch:
     sudo nixos-rebuild switch --flake .#{{host}}
 
-test-boot:
+test:
     sudo nixos-rebuild test --flake .#{{host}}
 
-set-boot:
+boot:
     sudo nixos-rebuild boot --flake .#{{host}}
 
 rollback:
     sudo nixos-rebuild switch --rollback
 
-# Generations
-
-nixos-generations:
-    sudo nix-env --profile /nix/var/nix/profiles/system --list-generations
-
-nixos-remove-generations:
-    sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old
-
-hm-generations:
-    home-manager generations
-
-hm-gc days="30":
-    home-manager expire-generations "-{{days}} days"
-
-hm-remove id:
-    home-manager remove-generations {{id}}
-
-hm-remove-all:
-    home-manager expire-generations "-1 seconds"
-
-hm-clean:
-    rm -f ~/.local/state/home-manager/gcroots/current-home
-    rm -f ~/.local/state/nix/profiles/home-manager-*-link
-    nix-collect-garbage
-
-profile-wipe-history:
-    nix profile wipe-history --profile ~/.local/state/nix/profiles/profile
-
-history:
-    nix profile history --profile /nix/var/nix/profiles/system
-
-# Maintenance
+# Updates
 
 update:
     nix flake update
-    @echo "Review flake.lock diff with 'git diff flake.lock' before switching."
+    @echo "Review with: git diff flake.lock"
 
 update-input input:
     nix flake lock --update-input {{input}}
+
+# Cleanup
 
 gc:
     sudo nix-collect-garbage --delete-older-than 30d
@@ -95,6 +48,19 @@ gc:
 gc-all:
     sudo nix-collect-garbage -d
     sudo nix-store --optimise
+
+clean:
+    rm -f result result-*
+
+# Generations
+
+generations:
+    sudo nix-env --profile /nix/var/nix/profiles/system --list-generations
+
+delete-old-generations:
+    sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old
+
+# Formatting
 
 fmt:
     alejandra .
@@ -107,3 +73,9 @@ assets-pull:
 assets-status:
     git -C ~/.local/share/assets status
     git -C ~/.local/share/assets log -1 --oneline
+
+clean-all:
+    sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old
+    sudo nix-collect-garbage -d
+    sudo nix-store --optimise
+    rm -f result result-*

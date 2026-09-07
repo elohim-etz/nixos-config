@@ -1,8 +1,6 @@
-{ colors }:
-let
+{colors}: let
   inherit (colors) mocha tooltip;
-in
-''
+in ''
   * {
     border: none;
     border-radius: 0;
@@ -88,13 +86,16 @@ in
   #workspaces button {
     padding: 0 2px 0 1px;
     margin: 0;
-    min-width: 21px;
-    min-height: 21px;
+    min-width: 20px;
+    min-height: 20px;
     border: none;
     border-radius: 8px;
     background-color: transparent;
     color: ${mocha.overlay0};
     transition: background-color 0.15s ease;
+  }
+  #workspaces button:hover {
+      color: ${mocha.pink};
   }
   #workspaces button.active {
     padding: 0 0 0 2px;

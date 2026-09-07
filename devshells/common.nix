@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   packages = with pkgs; [
     # core cli utilities
     git

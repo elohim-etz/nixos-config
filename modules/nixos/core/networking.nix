@@ -1,25 +1,23 @@
 _: {
-  networking = {
-    networkmanager.enable = true;
-    networkmanager.dns = "default";
+  networking.networkmanager = {
+    enable = true;
+    dns = "systemd-resolved";
   };
 
-  services.resolved.enable = false;
-
-  services.nextdns = {
+  services.resolved = {
     enable = true;
-    arguments = [
-      "-config"
-      "8d4376"
-      "-cache-size"
-      "10MB"
-      "-max-ttl"
-      "5m"
-      "-report-client-info"
-      "-bogus-priv"
-      "-timeout"
-      "5s"
-      "-auto-activate"
-    ];
+
+    settings.Resolve = {
+      DNS = [
+        "45.90.28.0#8d4376.dns.nextdns.io"
+        "2a07:a8c0::#8d4376.dns.nextdns.io"
+        "45.90.30.0#8d4376.dns.nextdns.io"
+        "2a07:a8c1::#8d4376.dns.nextdns.io"
+      ];
+
+      DNSOverTLS = "yes";
+      DNSSEC = "allow-downgrade";
+      Domains = ["~."];
+    };
   };
 }

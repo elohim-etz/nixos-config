@@ -35,28 +35,26 @@
     };
   };
 
-  outputs = { nixpkgs, ... } @ inputs: let
-    lib = import ./lib { inherit inputs; };
+  outputs = {nixpkgs, ...} @ inputs: let
+    lib = import ./lib {inherit inputs;};
     system = "x86_64-linux";
   in {
     nixosConfigurations.wasabi = lib.mkSystem {
       hostPath = ./hosts/wasabi/configuration.nix;
     };
 
-    homeConfigurations.naveen = lib.mkHome {
-      homePath = ./home/home.nix;
-    };
-
     packages.${system} = let
-      pkgs = lib.pkgsFor { inherit system; };
+      pkgs = lib.pkgsFor {inherit system;};
     in {
-      stremio-linux-shell = pkgs.stremio-linux-shell;
-      stremio-service = pkgs.stremio-service;
-      linux-cachyos = inputs.nix-cachyos-kernel.legacyPackages.${system}.linuxPackages-cachyos-latest-lto-x86_64-v3.kernel;
+      inherit (pkgs) stremio-linux-shell stremio-service;
+
+      linux-cachyos =
+        inputs.nix-cachyos-kernel.legacyPackages.${system}
+          .linuxPackages-cachyos-latest-lto-x86_64-v3.kernel;
     };
 
     devShells.${system} = {
-      kompile = lib.mkDevShell { shellPath = ./devshells/kompile.nix; };
+      kompile = lib.mkDevShell {shellPath = ./devshells/kompile.nix;};
     };
   };
 }
