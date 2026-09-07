@@ -1,12 +1,10 @@
-{ inputs, ... }:
-
-let
-  inherit (inputs) nixpkgs home-manager;
+{inputs, ...}: let
+  inherit (inputs) nixpkgs;
 
   overlays = import ../overlays inputs;
   importAll = import ./importAll.nix;
 
-  pkgsFor = { system ? "x86_64-linux" }:
+  pkgsFor = {system ? "x86_64-linux"}:
     import nixpkgs {
       inherit system overlays;
       config.allowUnfree = true;
@@ -17,33 +15,26 @@ in {
   mkSystem = {
     system ? "x86_64-linux",
     hostPath,
-    extraModules ? []
+    extraModules ? [],
   }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
-      modules = [
-        hostPath
-        {
-          nixpkgs.overlays = overlays;
-        }
-      ] ++ extraModules;
-    };
-
-  mkHome = {
-    system ? "x86_64-linux",
-    homePath
-  }:
-    home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgsFor { inherit system; };
-      modules = [ homePath ];
-      extraSpecialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
+      modules =
+        [
+          hostPath
+          {
+            nixpkgs.overlays = overlays;
+            nixpkgs.config.allowUnfree = true;
+          }
+        ]
+        ++ extraModules;
     };
 
   # helper for devshells
   mkDevShell = {
     system ? "x86_64-linux",
-    shellPath
+    shellPath,
   }:
-    import shellPath { pkgs = pkgsFor { inherit system; }; };
+    import shellPath {pkgs = pkgsFor {inherit system;};};
 }

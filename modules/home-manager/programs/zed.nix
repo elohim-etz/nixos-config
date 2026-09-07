@@ -45,6 +45,7 @@
         show = true;
       };
       title_bar = {
+        button_layout = "platform_default";
         show_onboarding_banner = false;
         show_user_picture = false;
         show_sign_in = false;

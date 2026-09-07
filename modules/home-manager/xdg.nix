@@ -23,8 +23,8 @@ _: {
       exec = "stremio -n %u";
       icon = "com.stremio.Stremio";
       terminal = false;
-      categories = [ "Utility" "AudioVideo" "Video" "Player" ];
-      mimeType = [ "x-scheme-handler/stremio" ];
+      categories = ["Utility" "AudioVideo" "Video" "Player"];
+      mimeType = ["x-scheme-handler/stremio"];
       startupNotify = true;
     };
 
@@ -87,13 +87,13 @@ _: {
         "x-scheme-handler/https" = ["zen-beta.desktop" "brave-origin.desktop"];
         "x-scheme-handler/ftp" = ["zen-beta.desktop" "brave-origin.desktop"];
 
-        "x-scheme-handler/tg" = [ "com.ayugram.desktop.desktop" ];
-        "x-scheme-handler/tonsite" = [ "com.ayugram.desktop.desktop" ];
+        "x-scheme-handler/tg" = ["com.ayugram.desktop.desktop"];
+        "x-scheme-handler/tonsite" = ["com.ayugram.desktop.desktop"];
       };
 
       associations.added = {
-        "x-scheme-handler/tg" = [ "com.ayugram.desktop.desktop" ];
-        "x-scheme-handler/tonsite" = [ "com.ayugram.desktop.desktop" ];
+        "x-scheme-handler/tg" = ["com.ayugram.desktop.desktop"];
+        "x-scheme-handler/tonsite" = ["com.ayugram.desktop.desktop"];
       };
     };
 

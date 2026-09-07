@@ -12,9 +12,5 @@
 
     # Security / certs
     gnupg
-    cacert
-
-    # Networking / DNS
-    nextdns
   ];
 }

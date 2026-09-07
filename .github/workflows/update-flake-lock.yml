@@ -1,8 +1,11 @@
 name: Update flake.lock, test rebuild and cache packages
 
 on:
+  push:
+    paths:
+      - "flake.lock"
   schedule:
-    - cron: "30 4 * * *"
+    - cron: "30 3 * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -16,8 +19,10 @@ concurrency:
 jobs:
   update-and-test:
     runs-on: ubuntu-latest
+
     outputs:
       pr-number: ${{ steps.cpr.outputs.pull-request-number }}
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,10 +44,14 @@ jobs:
       - name: Update flake.lock
         run: nix flake update
 
-      - name: Test-build system + home-manager closures
+      - name: Check flake
+        run: nix flake check
+
+      - name: Test-build NixOS system
         run: |
-          nix build .#nixosConfigurations.wasabi.config.system.build.toplevel --print-build-logs --no-link
-          nix build .#homeConfigurations.naveen.activationPackage --print-build-logs --no-link
+          nix build .#nixosConfigurations.wasabi.config.system.build.toplevel \
+            --print-build-logs \
+            --no-link
 
       - name: Open or update the PR
         id: cpr

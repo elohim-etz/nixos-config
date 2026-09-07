@@ -11,7 +11,6 @@ _: {
       user = {
         name = "Naveen";
         email = "133593113+elohim-etz@users.noreply.github.com";
-        signingkey = "ABB6A31D16C85F49";
       };
 
       core = {
@@ -25,6 +24,13 @@ _: {
       tag = {
         gpgSign = true;
       };
+
+      init.defaultBranch = "main";
+      push.autoSetupRemote = true;
+      fetch.prune = true;
+      # rebase.autoStash = true;
+      rerere.enabled = true;
+      merge.conflictStyle = "zdiff3";
 
       alias = {
         rb = "rebase";

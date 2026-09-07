@@ -1,16 +1,15 @@
 _: {
-   wayland.windowManager.niri.settings.binds = {
-
+  wayland.windowManager.niri.settings.binds = {
     # ── Launchers ──────────────────────────────────────────────────────────────
-    "Mod+A"         = {spawn = ["sh" "-c" "pkill wofi || wofi --show drun"];};
-    "Mod+T"         = {spawn = ["kitty"];};
-    "Mod+E"         = {spawn = ["nautilus"];};
+    "Mod+A" = {spawn = ["sh" "-c" "pkill wofi || wofi --show drun"];};
+    "Mod+T" = {spawn = ["kitty"];};
+    "Mod+E" = {spawn = ["nautilus"];};
     "Ctrl+Alt+Delete" = {spawn = ["wlogout"];};
 
     # ── System ────────────────────────────────────────────────────────────────
     "Mod+Shift+E" = {quit = [];};
     "Mod+Shift+P" = {power-off-monitors = [];};
-    "Mod+Escape"  = {
+    "Mod+Escape" = {
       _props.allow-inhibiting = false;
       toggle-keyboard-shortcuts-inhibit = [];
     };
@@ -123,10 +122,10 @@ _: {
     };
 
     # ── Screenshots ───────────────────────────────────────────────────────────
-    "Mod+P"    = {spawn-sh = ''grim -g "$(slurp)" - | satty -f -'';};
-    "Print"    = {screenshot = [];};
+    "Mod+P" = {spawn-sh = ''grim -g "$(slurp)" - | satty -f -'';};
+    "Print" = {screenshot = [];};
     "Ctrl+Print" = {screenshot-screen = [];};
-    "Alt+Print"  = {screenshot-window = [];};
+    "Alt+Print" = {screenshot-window = [];};
 
     # ── Wallpaper ─────────────────────────────────────────────────────────────
     "Mod+Shift+W" = {spawn = ["wallpaper-picker"];};
@@ -142,24 +141,24 @@ _: {
     };
 
     # Focus – arrow keys
-    "Mod+Left"  = {focus-column-left = [];};
+    "Mod+Left" = {focus-column-left = [];};
     "Mod+Right" = {focus-column-right = [];};
-    "Mod+Up"    = {focus-workspace-up = [];};
-    "Mod+Down"  = {focus-workspace-down = [];};
+    "Mod+Up" = {focus-workspace-up = [];};
+    "Mod+Down" = {focus-workspace-down = [];};
     # Focus – vim keys
     "Mod+H" = {focus-column-left = [];};
     "Mod+L" = {focus-column-right = [];};
-    "Mod+J" = { focus-window-or-workspace-down = []; };
-    "Mod+K" = { focus-window-or-workspace-up = []; };
+    "Mod+J" = {focus-window-or-workspace-down = [];};
+    "Mod+K" = {focus-window-or-workspace-up = [];};
     # Focus – extremes
     "Mod+Home" = {focus-column-first = [];};
-    "Mod+End"  = {focus-column-last = [];};
+    "Mod+End" = {focus-column-last = [];};
 
     # Move – arrow keys
-    "Mod+Ctrl+Left"  = {move-column-left = [];};
+    "Mod+Ctrl+Left" = {move-column-left = [];};
     "Mod+Ctrl+Right" = {move-column-right = [];};
-    "Mod+Ctrl+Up"    = {move-window-up = [];};
-    "Mod+Ctrl+Down"  = {move-window-down = [];};
+    "Mod+Ctrl+Up" = {move-window-up = [];};
+    "Mod+Ctrl+Down" = {move-window-down = [];};
     # Move – vim keys
     "Mod+Ctrl+H" = {move-column-left = [];};
     "Mod+Ctrl+L" = {move-column-right = [];};
@@ -167,7 +166,7 @@ _: {
     "Mod+Ctrl+J" = {move-window-down = [];};
     # Move – extremes
     "Mod+Ctrl+Home" = {move-column-to-first = [];};
-    "Mod+Ctrl+End"  = {move-column-to-last = [];};
+    "Mod+Ctrl+End" = {move-column-to-last = [];};
 
     # ── Mouse-wheel navigation ────────────────────────────────────────────────
     "Mod+WheelScrollDown" = {
@@ -186,14 +185,14 @@ _: {
       _props.cooldown-ms = 150;
       move-column-to-workspace-up = [];
     };
-    "Mod+WheelScrollRight"      = {focus-column-right = [];};
-    "Mod+WheelScrollLeft"       = {focus-column-left = [];};
+    "Mod+WheelScrollRight" = {focus-column-right = [];};
+    "Mod+WheelScrollLeft" = {focus-column-left = [];};
     "Mod+Ctrl+WheelScrollRight" = {move-column-right = [];};
-    "Mod+Ctrl+WheelScrollLeft"  = {move-column-left = [];};
+    "Mod+Ctrl+WheelScrollLeft" = {move-column-left = [];};
     "Mod+Shift+WheelScrollDown" = {focus-column-right = [];};
-    "Mod+Shift+WheelScrollUp"   = {focus-column-left = [];};
+    "Mod+Shift+WheelScrollUp" = {focus-column-left = [];};
     "Mod+Ctrl+Shift+WheelScrollDown" = {move-column-right = [];};
-    "Mod+Ctrl+Shift+WheelScrollUp"   = {move-column-left = [];};
+    "Mod+Ctrl+Shift+WheelScrollUp" = {move-column-left = [];};
 
     # ── Workspaces ────────────────────────────────────────────────────────────
     "Mod+1" = {focus-workspace = 1;};
@@ -217,31 +216,31 @@ _: {
     "Mod+Shift+9" = {move-column-to-workspace = 9;};
 
     # ── Column operations ─────────────────────────────────────────────────────
-    "Mod+BracketLeft"  = {consume-or-expel-window-left = [];};
+    "Mod+BracketLeft" = {consume-or-expel-window-left = [];};
     "Mod+BracketRight" = {consume-or-expel-window-right = [];};
-    "Mod+Comma"  = {consume-window-into-column = [];};
+    "Mod+Comma" = {consume-window-into-column = [];};
     "Mod+Period" = {expel-window-from-column = [];};
 
     # ── Sizing ────────────────────────────────────────────────────────────────
-    "Mod+R"       = {switch-preset-column-width = [];};
+    "Mod+R" = {switch-preset-column-width = [];};
     "Mod+Shift+R" = {switch-preset-window-height = [];};
-    "Mod+Ctrl+R"  = {reset-window-height = [];};
-    "Mod+Minus"       = {set-column-width = "-10%";};
-    "Mod+Equal"       = {set-column-width = "+10%";};
+    "Mod+Ctrl+R" = {reset-window-height = [];};
+    "Mod+Minus" = {set-column-width = "-10%";};
+    "Mod+Equal" = {set-column-width = "+10%";};
     "Mod+Shift+Minus" = {set-window-height = "-10%";};
     "Mod+Shift+Equal" = {set-window-height = "+10%";};
 
     # ── Window states ─────────────────────────────────────────────────────────
-    "Mod+F"       = {maximize-column = [];};
+    "Mod+F" = {maximize-column = [];};
     "Mod+Shift+F" = {fullscreen-window = [];};
-    "Mod+Ctrl+F"  = {expand-column-to-available-width = [];};
+    "Mod+Ctrl+F" = {expand-column-to-available-width = [];};
 
     # ── Centering ─────────────────────────────────────────────────────────────
-    "Mod+C"      = {center-column = [];};
+    "Mod+C" = {center-column = [];};
     "Mod+Ctrl+C" = {center-visible-columns = [];};
 
     # ── Floating ──────────────────────────────────────────────────────────────
-    "Mod+V"       = {toggle-window-floating = [];};
+    "Mod+V" = {toggle-window-floating = [];};
     "Mod+Shift+V" = {switch-focus-between-floating-and-tiling = [];};
   };
 }
