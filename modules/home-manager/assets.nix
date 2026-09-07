@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   assetsDir = "${config.xdg.dataHome}/assets";
   assetsRepo = "https://github.com/elohim-etz/nixos-assets.git";
 
@@ -22,15 +25,14 @@ let
       --transition-type fade \
       --transition-duration 0.5
   '';
-in
-{
+in {
   home.packages = [
     setWallpaper
   ];
 
   home.activation.pullAssets = lib.hm.dag.entryAfter ["writeBoundary"] ''
     export GIT_TERMINAL_PROMPT=0
-  
+
     if [ -d "${assetsDir}/.git" ]; then
       $DRY_RUN_CMD ${pkgs.git}/bin/git -C "${assetsDir}" pull --ff-only --quiet $VERBOSE_ARG \
         || echo "pullAssets: pull failed, skipping this run"

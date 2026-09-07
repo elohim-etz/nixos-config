@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   # Nix configuration
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
@@ -7,8 +7,7 @@
     trusted-users = ["root" "naveen"];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nix.optimise.automatic = true;
 
   # Localization
   time.timeZone = "Asia/Kolkata";
@@ -28,10 +27,6 @@
     # Enable dconf for GTK applications
     dconf.enable = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    home-manager
-  ];
 
   # System services
   services = {

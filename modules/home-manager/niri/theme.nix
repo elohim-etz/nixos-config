@@ -35,12 +35,4 @@ _: {
       inactive-color = "#11111b60";
     };
   };
-
-  wayland.windowManager.niri.settings.window-rule = [
-    {
-      match._props.is-active = false;
-      opacity = 0.95;
-      background-effect.blur = true;
-    }
-  ];
 }

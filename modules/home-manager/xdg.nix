@@ -23,9 +23,20 @@ _: {
       exec = "stremio -n %u";
       icon = "com.stremio.Stremio";
       terminal = false;
-      categories = [ "Utility" "AudioVideo" "Video" "Player" ];
-      mimeType = [ "x-scheme-handler/stremio" ];
+      categories = ["Utility" "AudioVideo" "Video" "Player"];
+      mimeType = ["x-scheme-handler/stremio"];
       startupNotify = true;
+    };
+
+    desktopEntries.scrcpy = {
+      name = "scrcpy";
+      genericName = "Android Remote Control";
+      comment = "Display and control your Android device";
+      exec = "scrcpy --no-audio --video-codec=h264 --video-encoder=OMX.MTK.VIDEO.ENCODER.AVC --render-driver=opengl --no-vd-system-decorations --select-usb";
+      icon = "scrcpy";
+      terminal = false;
+      categories = ["Utility" "RemoteAccess"];
+      startupNotify = false;
     };
 
     mimeApps = {
@@ -34,7 +45,7 @@ _: {
         # Images
         "image/png" = ["satty.desktop" "brave-origin.desktop"];
         "image/jpeg" = ["satty.desktop" "brave-origin.desktop"];
-        "image/webp" = ["satty.desktop" "brave-origin.desktop"];
+        "image/webp" = ["brave-origin.desktop" "satty.desktop"];
         "image/gif" = ["satty.desktop" "brave-origin.desktop"];
         "image/bmp" = ["satty.desktop" "brave-origin.desktop"];
         "image/tiff" = ["satty.desktop" "brave-origin.desktop"];
@@ -87,13 +98,13 @@ _: {
         "x-scheme-handler/https" = ["zen-beta.desktop" "brave-origin.desktop"];
         "x-scheme-handler/ftp" = ["zen-beta.desktop" "brave-origin.desktop"];
 
-        "x-scheme-handler/tg" = [ "com.ayugram.desktop.desktop" ];
-        "x-scheme-handler/tonsite" = [ "com.ayugram.desktop.desktop" ];
+        "x-scheme-handler/tg" = ["com.ayugram.desktop.desktop"];
+        "x-scheme-handler/tonsite" = ["com.ayugram.desktop.desktop"];
       };
 
       associations.added = {
-        "x-scheme-handler/tg" = [ "com.ayugram.desktop.desktop" ];
-        "x-scheme-handler/tonsite" = [ "com.ayugram.desktop.desktop" ];
+        "x-scheme-handler/tg" = ["com.ayugram.desktop.desktop"];
+        "x-scheme-handler/tonsite" = ["com.ayugram.desktop.desktop"];
       };
     };
 

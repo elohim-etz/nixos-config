@@ -5,11 +5,9 @@
   fetchFromGitHub,
   versionCheckHook,
   nix-update-script,
-
   # nativeBuildInputs
   pkg-config,
   wrapGAppsHook4,
-
   # buildInputs
   bashNonInteractive,
   glib-networking,
@@ -19,12 +17,10 @@
   libsoup_3,
   mpv,
   webkitgtk_6_0,
-
   # Wrapper
   addDriverRunpath,
   nodejs,
 }:
-
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "stremio-linux-shell";
   version = "1.2.0";
@@ -85,20 +81,20 @@ rustPlatform.buildRustPackage (finalAttrs: {
   # Add to `wrapGApp` arguments to avoid two layers of wrapping.
   preFixup = ''
     wrapGApp $out/bin/stremio \
-      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ addDriverRunpath.driverLink ]}" \
-      --prefix PATH : "${lib.makeBinPath [ nodejs ]}" \
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [addDriverRunpath.driverLink]}" \
+      --prefix PATH : "${lib.makeBinPath [nodejs]}" \
       --prefix ANV_DEBUG : "video-decode,video-encode" \
       --prefix LC_NUMERIC : "C" \
       --prefix SERVER_PATH : "$out/libexec/stremio/server.js"
   '';
 
-  nativeInstallCheckInputs = [ versionCheckHook ];
+  nativeInstallCheckInputs = [versionCheckHook];
   versionCheckProgramArg = "--version";
   doInstallCheck = true;
 
   passthru = {
     updateScript = nix-update-script {
-      extraArgs = [ "--version-regex=^v([0-9.]+)$" ];
+      extraArgs = ["--version-regex=^v([0-9.]+)$"];
     };
   };
 
@@ -107,8 +103,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     homepage = "https://www.stremio.com/";
     downloadPage = "https://github.com/Stremio/stremio-linux-shell";
     changelog = "https://github.com/Stremio/stremio-linux-shell/releases/tag/${finalAttrs.src.tag}";
-    license =
-      with lib.licenses;
+    license = with lib.licenses;
       AND [
         gpl3Only
         unfree # server.js

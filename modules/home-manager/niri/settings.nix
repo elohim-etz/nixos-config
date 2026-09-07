@@ -8,7 +8,7 @@ _: {
 
     layout = {
       background-color = "transparent";
-      gaps = 2;
+      gaps = 1;
       center-focused-column = "never";
 
       focus-ring.off = [];
@@ -18,12 +18,16 @@ _: {
         right = 0;
         top = 0;
         bottom = 0;
-      };  
+      };
       default-column-width.proportion = 1.0;
     };
 
     input = {
-      keyboard.xkb.layout = "us";
+      keyboard = {
+        xkb.layout = "us";
+        repeat-delay = 250;
+        repeat-rate = 50;
+      };
 
       touchpad = {
         click-method = "button-areas";
@@ -42,7 +46,7 @@ _: {
 
     output = [
       {
-        _args = [ "eDP-1" ];
+        _args = ["eDP-1"];
         mode = "1920x1080@59.997";
       }
     ];
@@ -54,7 +58,6 @@ _: {
       MOZ_ENABLE_WAYLAND = "1";
       NIXOS_OZONE_WL = "1";
       QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt6ct";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
       XDG_SESSION_TYPE = "wayland";

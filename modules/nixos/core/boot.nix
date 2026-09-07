@@ -18,11 +18,7 @@
     # Kernel parameters for better performance
     kernel.sysctl = {
       "vm.swappiness" = 20;
-      "vm.page-cluster" = 3;
+      "vm.page-cluster" = 0;
     };
   };
-  systemd.services.home-manager-naveen = {
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-   };
 }

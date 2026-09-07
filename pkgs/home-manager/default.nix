@@ -11,6 +11,9 @@
     fd
     yazi
     claude-code
+    proton-vpn-cli
+    alejandra
+    statix
 
     # Media / downloads
     aria2
@@ -38,8 +41,8 @@
 
     # Apps
     ayugram-desktop
-  # stremio-linux-shell
-    stremio-service
+    stremio-linux-shell
+    # stremio-service
     vesktop
 
     # Dev tools

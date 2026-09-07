@@ -1,3 +1,3 @@
 final: prev: {
-  stremio-service = prev.callPackage ../pkgs/stremio-service/package.nix { };
+  stremio-service = prev.callPackage ../pkgs/stremio-service/package.nix {};
 }

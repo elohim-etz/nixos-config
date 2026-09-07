@@ -1,11 +1,9 @@
-_:
-let
+_: let
   colors = import ./colors.nix;
-in
-{
+in {
   programs.waybar = {
     enable = true;
-    settings.mainBar = import ./settings.nix { inherit colors; };
-    style = import ./style.nix { inherit colors; };
+    settings.mainBar = import ./settings.nix {inherit colors;};
+    style = import ./style.nix {inherit colors;};
   };
 }

@@ -1,6 +1,4 @@
-{ colors }:
-
-{
+{colors}: {
   layer = "top";
   position = "top";
   height = 20;
@@ -9,30 +7,41 @@
   margin-left = 0;
   margin-right = 0;
 
-  modules-left = [
-    "custom/launcher"
-    "memory"
-    "temperature"
-    "cpu"
-    "clock"
-  ];
+  modules-left = ["group/left"];
+  modules-center = ["group/middle"];
+  modules-right = ["group/right"];
 
-  modules-center = [
-    "niri/workspaces"
-    "mpris"
-  ];
+  "group/left" = {
+    orientation = "horizontal";
+    modules = [
+      "custom/launcher"
+      "memory"
+      "temperature"
+      "cpu"
+      "clock"
+    ];
+  };
 
-  modules-right = [
-    "network"
-    "pulseaudio"
-    "backlight"
-    "tray"
-    "power-profiles-daemon"
-    "battery"
-    "custom/power"
-  ];
+  "group/middle" = {
+    orientation = "horizontal";
+    modules = [
+      "niri/workspaces"
+      "mpris"
+    ];
+  };
 
-  # Module configurations
+  "group/right" = {
+    orientation = "horizontal";
+    modules = [
+      "network"
+      "pulseaudio"
+      "backlight"
+      "tray"
+      "power-profiles-daemon"
+      "battery"
+      "custom/power"
+    ];
+  };
 
   "custom/power" = {
     format = "{}";
@@ -52,10 +61,12 @@
   "niri/workspaces" = {
     disable-click = false;
     all-outputs = false;
+
     format = "{icon}";
 
     format-icons = {
-      default = " ";
+      default = "󰄯";
+      active = "󰄯";
     };
 
     on-scroll-up = "niri msg action focus-workspace-up";
@@ -132,12 +143,12 @@
     rotate = 0;
 
     format = "󰥔 {:%R 󰃭 %d·%m·%y}";
-    format-alt = "{:%I:%M %p}";
+    format-alt = "󰥔 {:%I:%M %p}";
 
     tooltip-format = "<span>{calendar}</span>";
 
     calendar = {
-      mode = "month";
+      mode = "year";
       mode-mon-col = 3;
       on-scroll = 1;
       on-click-right = "mode";
@@ -170,8 +181,8 @@
     dynamic-separator = "  ";
 
     player-icons = {
-      default = "󱅫";
-      mpv = " ";
+      default = " ";
+      mpv = " ";
       spotify = " ";
       vlc = "";
     };
@@ -217,7 +228,7 @@
 
     tooltip = true;
 
-    format-wifi = "<span foreground='#f5c2e7'> {bandwidthDownBytes}</span> <span foreground='#94e2d5'> {bandwidthUpBytes}</span>";
+    format-wifi = "<span foreground='#cdd6f4'> {bandwidthDownBytes}</span> <span foreground='#cdd6f4'> {bandwidthUpBytes}</span>";
     format-ethernet = "󰈀 ";
     format-linked = "󰈀 {ifname} (No IP)";
     format-disconnected = "󰖪 ";
@@ -301,7 +312,7 @@
   };
 
   "tray" = {
-    icon-size = 15;
-    spacing = 5;
+    icon-size = 18;
+    spacing = 6;
   };
 }

@@ -28,9 +28,9 @@
       icon_theme = "Catppuccin Mocha";
       ui_font_size = 16;
       buffer_font_size = 15;
+      soft_wrap = "editor_width";
       theme = {
         mode = "dark";
-        light = "Catppuccin Latte ";
         dark = "Catppuccin Mocha";
       };
       status_bar = {
@@ -45,6 +45,8 @@
         show = true;
       };
       title_bar = {
+        show_branch_status_icon = true;
+        button_layout = "";
         show_onboarding_banner = false;
         show_user_picture = false;
         show_sign_in = false;
