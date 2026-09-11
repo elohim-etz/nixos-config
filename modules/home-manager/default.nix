@@ -5,9 +5,9 @@
     ./niri
     ./waybar
     ./zen-beta
+    ./theme
 
     ./assets.nix
-    ./ui.nix
     ./xdg.nix
   ];
 }

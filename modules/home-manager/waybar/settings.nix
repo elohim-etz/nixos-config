@@ -154,9 +154,9 @@
       on-click-right = "mode";
 
       format = {
-        months = "<span color='#ffead3'><b>{}</b></span>";
-        weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-        today = "<span color='#ff6699'><b>{}</b></span>";
+        months = "<span color='${colors.mauve}'><b>{}</b></span>";
+        weekdays = "<span color='${colors.blue}'><b>{}</b></span>";
+        today = "<span color='${colors.red}'><b>{}</b></span>";
       };
     };
 
@@ -228,7 +228,7 @@
 
     tooltip = true;
 
-    format-wifi = "<span foreground='#cdd6f4'> {bandwidthDownBytes}</span> <span foreground='#cdd6f4'> {bandwidthUpBytes}</span>";
+    format-wifi = "<span foreground='${colors.text}'> {bandwidthDownBytes}</span> <span foreground='${colors.text}'> {bandwidthUpBytes}</span>";
     format-ethernet = "󰈀 ";
     format-linked = "󰈀 {ifname} (No IP)";
     format-disconnected = "󰖪 ";

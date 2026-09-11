@@ -1,4 +1,4 @@
-_: {
+{themeColors, ...}: {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -12,7 +12,7 @@ _: {
 
       right_format = "$singularity$kubernetes$vcsh$hg_branch$pijul_channel$c$cmake$cobol$daml$dart$deno$dotnet$elixir$elm$erlang$fennel$golang$guix_shell$haskell$haxe$helm$java$julia$kotlin$gradle$lua$nim$nodejs$ocaml$opa$perl$pulumi$purescript$python$raku$rlang$red$ruby$rust$scala$solidity$swift$terraform$vlang$vagrant$zig$buf$conda$meson$spack$nix_shell$memory_usage$aws$gcloud$openstack$azure$custom$cmd_duration$time";
 
-      palette = "catppuccin_mocha";
+      palette = "theme";
 
       character = {
         success_symbol = "[[󰄛 ](green) ❯](peach)";
@@ -399,36 +399,35 @@ _: {
         symbol = " ";
       };
 
-      # Catppuccin Mocha palette
-      palettes = {
-        catppuccin_mocha = {
-          rosewater = "#f5e0dc";
-          flamingo = "#f2cdcd";
-          pink = "#f5c2e7";
-          mauve = "#cba6f7";
-          red = "#f38ba8";
-          maroon = "#eba0ac";
-          peach = "#fab387";
-          yellow = "#f9e2af";
-          green = "#a6e3a1";
-          teal = "#94e2d5";
-          sky = "#89dceb";
-          sapphire = "#74c7ec";
-          blue = "#89b4fa";
-          lavender = "#b4befe";
-          text = "#cdd6f4";
-          subtext1 = "#bac2de";
-          subtext0 = "#a6adc8";
-          overlay2 = "#9399b2";
-          overlay1 = "#7f849c";
-          overlay0 = "#6c7086";
-          surface2 = "#585b70";
-          surface1 = "#45475a";
-          surface0 = "#313244";
-          base = "#1e1e2e";
-          mantle = "#181825";
-          crust = "#11111b";
-        };
+      # Color palette
+
+      palettes.theme = {
+        inherit (themeColors) rosewater;
+        inherit (themeColors) flamingo;
+        inherit (themeColors) pink;
+        inherit (themeColors) mauve;
+        inherit (themeColors) red;
+        inherit (themeColors) maroon;
+        inherit (themeColors) peach;
+        inherit (themeColors) yellow;
+        inherit (themeColors) green;
+        inherit (themeColors) teal;
+        inherit (themeColors) sky;
+        inherit (themeColors) sapphire;
+        inherit (themeColors) blue;
+        inherit (themeColors) lavender;
+        inherit (themeColors) text;
+        inherit (themeColors) subtext1;
+        inherit (themeColors) subtext0;
+        inherit (themeColors) overlay2;
+        inherit (themeColors) overlay1;
+        inherit (themeColors) overlay0;
+        inherit (themeColors) surface2;
+        inherit (themeColors) surface1;
+        inherit (themeColors) surface0;
+        inherit (themeColors) base;
+        inherit (themeColors) mantle;
+        inherit (themeColors) crust;
       };
     };
   };

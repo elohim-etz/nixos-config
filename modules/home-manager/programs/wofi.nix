@@ -1,4 +1,4 @@
-_: {
+{themeColors, ...}: {
   programs.wofi = {
     enable = true;
     settings = {
@@ -22,21 +22,21 @@ _: {
     };
 
     style = ''
-      @define-color base      #1e1e2e;
-      @define-color surface0  #313244;
-      @define-color surface1  #45475a;
-      @define-color surface2  #585b70;
-      @define-color text      #cdd6f4;
-      @define-color lavender  #b4befe;
-      @define-color mauve     #cba6f7;
-      @define-color red       #f38ba8;
-      @define-color overlay0  #6c7086;
+      @define-color base ${themeColors.base};
+      @define-color surface0 ${themeColors.surface0};
+      @define-color surface1 ${themeColors.surface1};
+      @define-color surface2 ${themeColors.surface2};
+      @define-color text ${themeColors.text};
+      @define-color lavender ${themeColors.lavender};
+      @define-color mauve ${themeColors.mauve};
+      @define-color red ${themeColors.red};
+      @define-color overlay0 ${themeColors.overlay0};
 
-      @define-color bg-opacity rgba(30, 30, 46, 1.0);
-      @define-color input-bg rgba(49, 50, 68, 1.0);
-      @define-color input-focus-bg rgba(69, 71, 90, 1.0);
-      @define-color entry-selected rgba(203, 166, 247, 1.0);
-      @define-color entry-hover rgba(49, 50, 68, 1.0);
+      @define-color bg-opacity ${themeColors.base};
+      @define-color input-bg ${themeColors.surface0};
+      @define-color input-focus-bg ${themeColors.surface1};
+      @define-color entry-selected ${themeColors.mauve};
+      @define-color entry-hover ${themeColors.surface0};
 
       * {
         font-family: "JetBrainsMono Nerd Font", monospace;
@@ -153,9 +153,9 @@ _: {
     #outer-box {
       margin: 0px;
       padding: 12px;
-      background-color: #1e1e2e;
+      background-color: ${themeColors.base};
       border-radius: 14px;
-      border: 2px solid #cba6f7;
+      border: 2px solid ${themeColors.mauve};
     }
 
     #inner-box {
@@ -167,17 +167,17 @@ _: {
       margin: 0px 0px 10px 0px;
       padding: 9px 14px;
       border-radius: 10px;
-      border: 1.5px solid #45475a;
+      border: 1.5px solid ${themeColors.surface1};
       background-color: #313244;
-      color: #cdd6f4;
+      color: ${themeColors.text};
       font-family: "JetBrainsMono Nerd Font";
       font-size: 14px;
-      caret-color: #cba6f7;
+      caret-color: ${themeColors.mauve};
     }
 
     #input:focus {
-      border-color: #cba6f7;
-      background-color: #45475a;
+      border-color: ${themeColors.mauve};
+      background-color: ${themeColors.surface1};
     }
 
     #scroll {
@@ -189,19 +189,19 @@ _: {
       margin: 4px;
       border-radius: 10px;
       border: 2px solid transparent;
-      background-color: #181825;
+      background-color: ${themeColors.mantle};
       min-width: 300px;
       max-width: 300px;
     }
 
     #entry:selected {
-      border-color: #cba6f7;
-      background-color: rgba(203, 166, 247, 0.12);
+      border-color: ${themeColors.mauve};
+      background-color: rgba(${themeColors.mauveRgb}, 0.12);
     }
 
     #entry:hover {
-      border-color: #89b4fa;
-      background-color: #1e1e2e;
+      border-color: ${themeColors.blue};
+      background-color: ${themeColors.base};
     }
 
     #img {
@@ -215,7 +215,7 @@ _: {
     }
 
     #text {
-      color: #bac2de;
+      color: ${themeColors.subtext1};
       font-family: "JetBrainsMono Nerd Font";
       font-size: 10px;
       margin: 4px 2px 0px 2px;
@@ -223,12 +223,12 @@ _: {
     }
 
     #text:selected {
-      color: #cba6f7;
+      color: ${themeColors.mauve};
       font-weight: bold;
     }
 
     scrollbar slider {
-      background-color: #cba6f7;
+      background-color: ${themeColors.mauve};
       border-radius: 6px;
       min-width: 5px;
     }

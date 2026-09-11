@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  themeColors,
+  ...
+}: {
   services.mako = {
     enable = true;
 
@@ -16,11 +20,11 @@
       border-size = 2;
       border-radius = 10;
 
-      # Colors - Catppuccin Mocha
-      background-color = "#1e1e2e";
-      text-color = "#cdd6f4";
-      border-color = "#89b4fa";
-      progress-color = "over #313244";
+      # Colors
+      background-color = themeColors.base;
+      text-color = themeColors.text;
+      border-color = themeColors.blue;
+      progress-color = "over ${themeColors.surface0}";
 
       # Font
       font = "JetBrainsMono Nerd Font 12";
@@ -52,39 +56,38 @@
     extraConfig = ''
       # Urgency-specific styling
       [urgency=low]
-      border-color=#89b4fa
-      background-color=#1e1e2e
-      text-color=#a6adc8
+      border-color=${themeColors.blue}
+      background-color=${themeColors.base}
+      text-color=${themeColors.subtext0}
       default-timeout=3000
 
       [urgency=normal]
-      border-color=#89b4fa
-      background-color=#1e1e2e
-      text-color=#cdd6f4
+      border-color=${themeColors.blue}
+      background-color=${themeColors.base}
+      text-color=${themeColors.text}
       default-timeout=5000
 
       [urgency=critical]
-      border-color=#f38ba8
-      background-color=#1e1e2e
-      text-color=#f38ba8
+      border-color=${themeColors.red}
+      background-color=${themeColors.base}
+      text-color=${themeColors.red}
       default-timeout=0
       ignore-timeout=1
 
-      # App-specific styling
       [app-name="Spotify"]
-      border-color=#a6e3a1
+      border-color=${themeColors.green}
 
       [app-name="volume"]
-      border-color=#cba6f7
+      border-color=${themeColors.mauve}
 
       [app-name="brightness"]
-      border-color=#f9e2af
+      border-color=${themeColors.yellow}
 
       [app-name="battery"]
-      border-color=#f38ba8
+      border-color=${themeColors.red}
 
       [app-name="network"]
-      border-color=#89dceb
+      border-color=${themeColors.sky}
 
       # Grouped notifications
       [grouped]

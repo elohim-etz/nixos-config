@@ -1,13 +1,13 @@
-_: let
-  base = "rgba(1e1e2eFF)";
-  surface0 = "rgba(313244FF)";
-  panel = "rgba(313244B3)";
-  panelBorder = "rgba(cba6f74D)";
-  subtext = "rgba(a6adc8FF)";
-  text = "rgba(cdd6f4FF)";
-  mauve = "rgba(cba6f7FF)";
-  lavender = "rgba(b4befeFF)";
-  red = "rgba(f38ba8FF)";
+{themeColors, ...}: let
+  base = "rgba(${builtins.substring 1 6 themeColors.base}FF)";
+  surface0 = "rgba(${builtins.substring 1 6 themeColors.surface0}FF)";
+  panel = "rgba(${builtins.substring 1 6 themeColors.surface0}B3)";
+  panelBorder = "rgba(${builtins.substring 1 6 themeColors.mauve}4D)";
+  subtext = "rgba(${builtins.substring 1 6 themeColors.subtext0}FF)";
+  text = "rgba(${builtins.substring 1 6 themeColors.text}FF)";
+  mauve = "rgba(${builtins.substring 1 6 themeColors.mauve}FF)";
+  lavender = "rgba(${builtins.substring 1 6 themeColors.lavender}FF)";
+  red = "rgba(${builtins.substring 1 6 themeColors.red}FF)";
 in {
   programs.hyprlock = {
     enable = true;

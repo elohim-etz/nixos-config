@@ -1,25 +1,28 @@
 {
   config,
   pkgs,
+  theme,
   ...
 }: {
   gtk = {
     enable = true;
 
     theme = {
-      name = "catppuccin-mocha-blue-standard";
+      name = "catppuccin-${theme.variant}-blue-standard";
+
       package = pkgs.catppuccin-gtk.override {
-        accents = ["blue"];
+        accents = [theme.accent];
         size = "standard";
         tweaks = [];
-        variant = "mocha";
+        inherit (theme) variant;
       };
     };
 
     iconTheme = {
       name = "Tela-circle-dracula";
+
       package = pkgs.tela-circle-icon-theme.override {
-        circularFolder = true;
+        circularFolder = false;
         colorVariants = ["dracula"];
       };
     };
@@ -73,7 +76,7 @@
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      gtk-theme = "catppuccin-mocha-blue-standard";
+      gtk-theme = config.gtk.theme.name;
       icon-theme = "Tela-circle-dracula";
       cursor-theme = "Bibata-Modern-Ice";
       font-name = "Cantarell 10";
@@ -82,7 +85,7 @@
   };
 
   home.sessionVariables = {
-    GTK_THEME = "catppuccin-mocha-blue-standard";
+    GTK_THEME = config.gtk.theme.name;
     XCURSOR_THEME = "Bibata-Modern-Ice";
     XCURSOR_SIZE = "24";
   };

@@ -1,6 +1,4 @@
-{colors}: let
-  inherit (colors) mocha tooltip;
-in ''
+{colors}: ''
   * {
     border: none;
     font-family: "JetBrainsMono Nerd Font";
@@ -14,12 +12,12 @@ in ''
   }
 
   tooltip {
-    background: ${tooltip.bg};
+    background: ${colors.surface0};
     border-radius: 8px;
   }
 
   tooltip label {
-    color: ${tooltip.fg};
+    color: ${colors.text};
    }
 
    #custom-launcher,
@@ -36,8 +34,8 @@ in ''
    #power-profiles-daemon,
    #battery,
    #custom-power {
-       background-color: ${mocha.mantle};
-       color: ${mocha.text};
+       background-color: ${colors.mantle};
+       color: ${colors.text};
    }
 
   /* Left side modules */
@@ -87,7 +85,7 @@ in ''
     margin: 1px 4px;
   }
   #workspaces button {
-    color: ${mocha.surface0};
+    color: ${colors.surface2};
     padding: 0 2px 0 1px;
     margin: 0;
     min-width: 20px;
@@ -97,15 +95,15 @@ in ''
     transition: background-color 0.15s ease;
   }
   #workspaces button:hover {
-      color: ${mocha.subtext0};
+      color: ${colors.subtext0};
   }
   #workspaces button.active {
     padding: 0 0 0 2px;
-    color: ${mocha.text};
+    color: ${colors.text};
   }
   #workspaces button.urgent {
-    background-color: rgba(${mocha.redRGB}, 0.2);
-    color: ${mocha.red};
+    background-color: rgba(${colors.redRGB}, 0.2);
+    color: ${colors.red};
   }
 
   /* Right side modules */
@@ -163,15 +161,15 @@ in ''
   }
 
   #battery.charging {
-    color: ${mocha.green};
+    color: ${colors.green};
   }
 
   #battery.warning:not(.charging) {
-    color: ${mocha.yellow};
+    color: ${colors.yellow};
   }
 
   #battery.critical:not(.charging) {
-    color: ${mocha.red};
+    color: ${colors.red};
     animation: blink 0.5s linear infinite alternate;
   }
 
@@ -182,6 +180,6 @@ in ''
   }
 
   #temperature.critical {
-    color: ${mocha.red};
+    color: ${colors.red};
   }
 ''

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  themeColors,
+  ...
+}: {
   home.packages = with pkgs; [wlogout];
 
   xdg.configFile."wlogout/layout".text = ''
@@ -42,17 +46,6 @@
 
   # Wlogout styling
   xdg.configFile."wlogout/style.css".text = ''
-    @define-color base     #1e1e2e;
-    @define-color text     #cdd6f4;
-    @define-color subtext0 #a6adc8;
-    @define-color surface0 #313244;
-    @define-color surface1 #45475a;
-    @define-color blue     #89b4fa;
-    @define-color yellow   #f9e2af;
-    @define-color teal     #94e2d5;
-    @define-color mauve    #cba6f7;
-    @define-color red      #f38ba8;
-    @define-color peach    #fab387;
 
     * {
       background-image: none;
@@ -61,14 +54,14 @@
     }
 
     window {
-      background-color: alpha(@base, 0.30);
+      background-color: alpha(${themeColors.base}, 0.30);
     }
 
     button {
-      color: @text;
-      background-color: alpha(@surface0, 1.0);
+      color: ${themeColors.text};
+      background-color: ${themeColors.surface0};
+      border: 2px solid ${themeColors.surface1};
       border-radius: 25px;
-      border: 2px solid alpha(@surface1, 1.0);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 25%;
@@ -77,26 +70,26 @@
     }
 
     button:focus {
-        background-color: alpha(@surface1, 1.0);
+      background-color: ${themeColors.surface1};
     }
 
     #lock:hover,
-    #lock:focus { border: 2px solid alpha(@blue, 0.9); }
+    #lock:focus { border: 2px solid alpha(${themeColors.blue}, 0.9); }
 
     #logout:hover,
-    #logout:focus { border: 2px solid alpha(@yellow, 0.9); }
+    #logout:focus { border: 2px solid alpha(${themeColors.yellow}, 0.9); }
 
     #suspend:hover,
-    #suspend:focus { border: 2px solid alpha(@teal, 0.9); }
+    #suspend:focus { border: 2px solid alpha(${themeColors.teal}, 0.9); }
 
     #hibernate:hover,
-    #hibernate:focus { border: 2px solid alpha(@mauve, 0.9); }
+    #hibernate:focus { border: 2px solid alpha(${themeColors.mauve}, 0.9); }
 
     #shutdown:hover,
-    #shutdown:focus { border: 2px solid alpha(@red, 0.9); }
+    #shutdown:focus { border: 2px solid alpha(${themeColors.red}, 0.9); }
 
     #reboot:hover,
-    #reboot:focus { border: 2px solid alpha(@peach, 0.9); }
+    #reboot:focus { border: 2px solid alpha(${themeColors.peach}, 0.9); }
 
     #lock {
       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/lock.png"));

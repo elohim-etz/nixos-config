@@ -1,4 +1,4 @@
-_: {
+{themeColors, ...}: {
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -16,13 +16,13 @@ _: {
       "--marker=✓"
 
       # Catppuccin Mocha
-      "--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8"
-      "--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc"
-      "--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
-      "--color=selected-bg:#45475a"
-      "--color=label:#cdd6f4"
-      "--color=input-border:#b4befe"
-      "--color=list-border:#89b4fa"
+      "--color=bg+:${themeColors.surface0},bg:${themeColors.base},spinner:${themeColors.rosewater},hl:${themeColors.red}"
+      "--color=fg:${themeColors.text},header:${themeColors.red},info:${themeColors.mauve},pointer:${themeColors.rosewater}"
+      "--color=marker:${themeColors.rosewater},fg+:${themeColors.text},prompt:${themeColors.mauve},hl+:${themeColors.red}"
+      "--color=selected-bg:${themeColors.surface1}"
+      "--color=label:${themeColors.text}"
+      "--color=input-border:${themeColors.lavender}"
+      "--color=list-border:${themeColors.blue}"
     ];
   };
 }

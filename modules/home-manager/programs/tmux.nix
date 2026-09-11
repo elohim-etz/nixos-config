@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  themeColors,
+  ...
+}: {
   programs.tmux = {
     enable = true;
     clock24 = true;
@@ -30,12 +34,12 @@
       {
         plugin = prefix-highlight;
         extraConfig = ''
-          set -g @prefix_highlight_fg "#1e1e2e"
-          set -g @prefix_highlight_bg "#a6e3a1"
+          set -g @prefix_highlight_fg "${themeColors.base}"
+          set -g @prefix_highlight_bg "${themeColors.green}"
           set -g @prefix_highlight_show_copy_mode 'on'
-          set -g @prefix_highlight_copy_mode_attr "fg=#1e1e2e,bg=#f9e2af"
+          set -g @prefix_highlight_copy_mode_attr "fg=${themeColors.base},bg=${themeColors.yellow}"
           set -g @prefix_highlight_show_sync_mode 'on'
-          set -g @prefix_highlight_sync_mode_attr "fg=#1e1e2e,bg=#f38ba8"
+          set -g @prefix_highlight_sync_mode_attr "fg=${themeColors.base},bg=${themeColors.red}"
           set -g @prefix_highlight_prefix_prompt ' WAIT '
           set -g @prefix_highlight_copy_prompt ' COPY '
           set -g @prefix_highlight_sync_prompt ' SYNC '
@@ -135,38 +139,32 @@
       set -g status-interval 2
       set -g status-position bottom
       set -g status-justify left
-      set -g status-style "bg=#1e1e2e,fg=#cdd6f4"
+      set -g status-style "bg=${themeColors.base},fg=${themeColors.text}"
 
       set -g status-left-length 100
-      set -g status-left "#[fg=#1e1e2e,bg=#89b4fa,bold]  #S #[fg=#89b4fa,bg=#313244]#[fg=#cdd6f4,bg=#313244] #(whoami) #[fg=#313244,bg=#1e1e2e]"
+      set -g status-left "#[fg=${themeColors.base},bg=${themeColors.blue},bold]  #S #[fg=${themeColors.blue},bg=${themeColors.surface0}]#[fg=${themeColors.text},bg=${themeColors.surface0}] #(whoami) #[fg=${themeColors.surface0},bg=${themeColors.base}]"
 
       set -g status-right-length 200
-      set -g status-right "#[fg=#313244,bg=#1e1e2e]#[fg=#cdd6f4,bg=#313244] #{session_windows} 󰖯 #[fg=#45475a,bg=#313244]#[fg=#cdd6f4,bg=#45475a] #{pane_current_path} #[fg=#313244,bg=#45475a]#[fg=#cdd6f4,bg=#313244]  %Y-%m-%d #[fg=#89b4fa,bg=#313244]#[fg=#1e1e2e,bg=#89b4fa,bold]  %H:%M #[fg=#cba6f7,bg=#89b4fa]#[fg=#1e1e2e,bg=#cba6f7,bold] 󰍹 #H "
+      set -g status-right "#[fg=${themeColors.surface0},bg=${themeColors.base}]#[fg=${themeColors.text},bg=${themeColors.surface0}] #{session_windows} 󰖯 #[fg=${themeColors.surface1},bg=${themeColors.surface0}]#[fg=${themeColors.text},bg=${themeColors.surface1}] #{pane_current_path} #[fg=${themeColors.surface0},bg=${themeColors.surface1}]#[fg=${themeColors.text},bg=${themeColors.surface0}]  %Y-%m-%d #[fg=${themeColors.blue},bg=${themeColors.surface0}]#[fg=${themeColors.base},bg=${themeColors.blue},bold]  %H:%M #[fg=${themeColors.mauve},bg=${themeColors.blue}]#[fg=${themeColors.base},bg=${themeColors.mauve},bold] 󰍹 #H "
 
-      set -g window-status-format "#[fg=#1e1e2e,bg=#313244]#[fg=#cdd6f4,bg=#313244] #I #W#{?window_zoomed_flag, 󰁌 ,}#[fg=#313244,bg=#1e1e2e]"
-      set -g window-status-current-format "#[fg=#1e1e2e,bg=#cba6f7]#[fg=#1e1e2e,bg=#cba6f7,bold] #I #W#{?window_zoomed_flag, 󰁌 ,}#[fg=#cba6f7,bg=#1e1e2e]"
+      set -g window-status-format "#[fg=${themeColors.base},bg=${themeColors.surface0}]#[fg=${themeColors.text},bg=${themeColors.surface0}] #I #W#{?window_zoomed_flag, 󰁌 ,}#[fg=${themeColors.surface0},bg=${themeColors.base}]"
+      set -g window-status-current-format "#[fg=${themeColors.base},bg=${themeColors.mauve}]#[fg=${themeColors.base},bg=${themeColors.mauve},bold] #I #W#{?window_zoomed_flag, 󰁌 ,}#[fg=${themeColors.mauve},bg=${themeColors.base}]"
       set -g window-status-separator ""
-      set -g window-status-activity-style "fg=#f9e2af,bg=#1e1e2e"
+      set -g window-status-activity-style "fg=${themeColors.yellow},bg=${themeColors.base}"
 
-      # Pane borders
-      set -g pane-border-style "fg=#313244"
-      set -g pane-active-border-style "fg=#89b4fa"
-      set -g pane-border-format "#[fg=#89b4fa,bg=#1e1e2e] #{?pane_active,#[bold],}#{pane_index} #{pane_current_command} "
-      set -g pane-border-status off
+      set -g pane-border-style "fg=${themeColors.surface0}"
+      set -g pane-active-border-style "fg=${themeColors.blue}"
+      set -g pane-border-format "#[fg=${themeColors.blue},bg=${themeColors.base}] #{?pane_active,#[bold],}#{pane_index} #{pane_current_command} "
 
-      # Pane numbers
-      set -g display-panes-active-colour "#f9e2af"
-      set -g display-panes-colour "#89b4fa"
+      set -g display-panes-active-colour "${themeColors.yellow}"
+      set -g display-panes-colour "${themeColors.blue}"
 
-      # Messages
-      set -g message-style "fg=#89dceb,bg=#313244,bold"
-      set -g message-command-style "fg=#89dceb,bg=#313244,bold"
+      set -g message-style "fg=${themeColors.sky},bg=${themeColors.surface0},bold"
+      set -g message-command-style "fg=${themeColors.sky},bg=${themeColors.surface0},bold"
 
-      # Copy mode
-      set -g mode-style "fg=#1e1e2e,bg=#f9e2af"
+      set -g mode-style "fg=${themeColors.base},bg=${themeColors.yellow}"
 
-      # Clock
-      setw -g clock-mode-colour "#89b4fa"
+      setw -g clock-mode-colour "${themeColors.blue}"
     '';
   };
 }
