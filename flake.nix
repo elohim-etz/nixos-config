@@ -39,8 +39,14 @@
     lib = import ./lib {inherit inputs;};
     system = "x86_64-linux";
   in {
-    nixosConfigurations.wasabi = lib.mkSystem {
-      hostPath = ./hosts/wasabi/configuration.nix;
+    nixosConfigurations = {
+      wasabi = lib.mkSystem {
+        hostPath = ./hosts/wasabi/configuration.nix;
+      };
+
+      server = lib.mkSystem {
+        hostPath = ./hosts/server/configuration.nix;
+      };
     };
 
     packages.${system} = let
