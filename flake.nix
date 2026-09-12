@@ -43,6 +43,13 @@
       hostPath = ./hosts/laptop/configuration.nix;
     };
 
+    homeConfigurations = {
+      home-server = lib.mkHome {
+        username = "elohim";
+        homePath = ./home-server/home.nix;
+      };
+    };
+
     devShells.${system} = {
       kompile = lib.mkDevShell {shellPath = ./devshells/kompile.nix;};
     };
