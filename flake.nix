@@ -49,6 +49,13 @@
       };
     };
 
+    homeConfigurations = {
+      home-server = lib.mkHome {
+        username = "elohim";
+        homePath = ./home-server/home.nix;
+      };
+    };
+
     packages.${system} = let
       pkgs = lib.pkgsFor {inherit system;};
     in {
