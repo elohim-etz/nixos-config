@@ -54,7 +54,7 @@
 
   "custom/launcher" = {
     format = " ";
-    on-click = "pkill wofi || wofi --show drun";
+    on-click = "rofi -show drun";
     tooltip = false;
   };
 

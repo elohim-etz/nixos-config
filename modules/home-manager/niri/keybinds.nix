@@ -1,7 +1,7 @@
 _: {
   wayland.windowManager.niri.settings.binds = {
     # ── Launchers ──────────────────────────────────────────────────────────────
-    "Mod+A" = {spawn = ["sh" "-c" "pkill wofi || wofi --show drun"];};
+    "Mod+A" = {spawn = ["sh" "-c" "pkill rofi || rofi -show drun"];};
     "Mod+T" = {spawn = ["kitty"];};
     "Mod+E" = {spawn = ["nautilus"];};
     "Ctrl+Alt+Delete" = {spawn = ["wlogout"];};
