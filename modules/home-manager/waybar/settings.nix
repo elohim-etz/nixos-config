@@ -44,7 +44,7 @@
   };
 
   "custom/power" = {
-    format = "{}";
+    format = "";
     rotate = 0;
     exec = "echo ; echo  logout";
     on-click = "wlogout";
@@ -308,7 +308,19 @@
     format-plugged = " {capacity}%";
     format-alt = "{time} {icon}";
 
-    format-icons = ["󰥇" "󰤾" "󰤿" "󰥀" "󰥁" "󰥂" "󰥃" "󰥄" "󰥅" "󰥆" "󰥈"];
+    format-icons = [
+      "󰥇"
+      "󰤾"
+      "󰤿"
+      "󰥀"
+      "󰥁"
+      "󰥂"
+      "󰥃"
+      "󰥄"
+      "󰥅"
+      "󰥆"
+      "󰥈"
+    ];
   };
 
   "tray" = {

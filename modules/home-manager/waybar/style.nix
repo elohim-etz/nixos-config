@@ -4,7 +4,6 @@
     font-family: "JetBrainsMono Nerd Font";
     font-weight: 600;
     font-size: 13px;
-    border-radius: 8px;
   }
 
   window#waybar {
@@ -12,12 +11,12 @@
   }
 
   tooltip {
-    background: ${colors.surface0};
+    background: rgb(48, 45, 65);
     border-radius: 8px;
   }
 
   tooltip label {
-    color: ${colors.text};
+    color: rgb(217, 224, 238);
    }
 
    #custom-launcher,
@@ -36,57 +35,43 @@
    #custom-power {
        background-color: ${colors.mantle};
        color: ${colors.text};
+       min-height: 20px;
+       margin: 2px 6px;
+       padding: 0px 12px 0px 12px;
+       border-radius: 16px;
    }
 
-  /* Left side modules */
-  #custom-launcher {
-    padding: 0 15px;
-    margin: 1px 0 1px 3px;
-  }
-
-  #memory,
-  #temperature,
-  #cpu {
-    margin: 1px 0;
-  }
+   #custom-launcher {
+       padding-left: 14px;
+   }
 
   #memory {
-    border-radius: 8px 0 0 8px;
-    margin-left: 8px;
-    padding: 0 6px 0 12px;
-  }
-
-  #cpu {
-    border-radius: 0 8px 8px 0;
-    margin-right: 0;
-    padding: 0 12px 0 6px;
+    border-radius: 16px 0 0 16px;
+    margin-right: 0px;
+    padding-right: 6px;
   }
 
   #temperature {
     border-radius: 0;
     margin-left: 0;
     margin-right: 0;
-    padding: 0 6px 0 6px;
+    padding-left: 6px;
+    padding-right: 6px;
   }
 
-  #clock {
-    padding: 0 15px;
-    margin: 1px 0 1px 8px;
-  }
-
-  #mpris {
-    padding: 0 15px;
-    margin: 1px 8px;
+  #cpu {
+    border-radius: 0 16px 16px 0;
+    margin-left: 0px;
+    padding-left: 6px;
   }
 
   /* Center - workspaces */
   #workspaces {
-    padding: 1px 6px;
-    margin: 1px 4px;
+    padding: 0 7px 0 4px;
   }
   #workspaces button {
     color: ${colors.surface2};
-    padding: 0 2px 0 1px;
+    padding: 0 1px 0 1px;
     margin: 0;
     min-width: 20px;
     min-height: 21px;
@@ -98,66 +83,46 @@
       color: ${colors.subtext0};
   }
   #workspaces button.active {
-    padding: 0 0 0 2px;
+    padding: 0 0;
     color: ${colors.text};
   }
   #workspaces button.urgent {
-    background-color: rgba(${colors.redRGB}, 0.2);
+    background-color: rgba(${colors.redRgb}, 0.2);
     color: ${colors.red};
   }
 
   /* Right side modules */
-  #network {
-    padding: 0 12px;
-    margin: 1px 0 1px 8px;
-  }
-
-  #pulseaudio,
-  #backlight {
-    margin: 1px 0;
-  }
-
   #pulseaudio {
-    border-radius: 8px 0 0 8px;
-    margin-left: 8px;
+    border-radius: 16px 0 0 16px;
     margin-right: 0;
-    padding: 0 6px 0 12px;
+    padding-right: 6px;
   }
 
   #backlight {
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 16px 16px 0;
     margin-left: 0;
-    padding: 0 12px 0 6px;
-  }
-
-  #tray {
-    padding: 0 10px;
-    margin: 1px 0 1px 8px;
-  }
-
-  #power-profiles-daemon,
-  #battery,
-  #custom-power {
-    margin: 1px 0;
+    padding-left: 6px;
   }
 
   #power-profiles-daemon {
-    border-radius: 8px 0 0 8px;
-    margin-left: 8px;
-    padding: 0 6px 0 12px;
+    border-radius: 16px 0 0 16px;
+    margin-right: 0px;
+    padding-right: 6px;
   }
 
   #battery {
     border-radius: 0;
     margin-left: 0;
     margin-right: 0;
-    padding: 0 6px 0 6px;
+    padding-left: 6px;
+    padding-right: 6px;
   }
 
   #custom-power {
-    border-radius: 0 8px 8px 0;
-    margin-right: 3px;
-    padding: 0 15px 0 6px;
+    border-radius: 0 16px 16px 0;
+    margin-left: 0px;
+    padding-left: 6px;
+    padding-right: 14px;
   }
 
   #battery.charging {
