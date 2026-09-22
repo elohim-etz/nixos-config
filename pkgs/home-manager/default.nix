@@ -9,7 +9,6 @@
     zip
     ripgrep
     fd
-    yazi
     claude-code
     proton-vpn-cli
     alejandra
