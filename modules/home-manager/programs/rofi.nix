@@ -28,6 +28,8 @@ in {
         window-format:               "{w}{t}";
         font:                        "JetBrainsMono Nerd Font, monospace Bold 10";
         icon-theme:                  "Tela-circle-dracula";
+        disable-history:             false;
+        sort:                        true;
     }
 
     // Color palette //
