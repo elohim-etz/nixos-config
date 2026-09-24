@@ -3,7 +3,7 @@
     # Core CLI
     wget
     git
-    htop
+    # htop
     unzip
     zoxide
 
