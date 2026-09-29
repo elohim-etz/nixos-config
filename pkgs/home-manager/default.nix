@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  themeColors,
+  ...
+}: {
   home.packages = with pkgs; [
     # CLI utilities
     just
@@ -34,7 +38,7 @@
     tela-circle-icon-theme
     bibata-cursors
     awww
-    wallpaper-picker
+    (wallpaper-picker.override {inherit themeColors;})
     libnotify
     networkmanagerapplet
 

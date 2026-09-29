@@ -1,7 +1,7 @@
 _: {
   wayland.windowManager.niri.settings = {
-    prefer-no-csd = { };
-    hotkey-overlay.skip-at-startup = { };
+    prefer-no-csd = {};
+    hotkey-overlay.skip-at-startup = {};
 
     environment = {
       CLUTTER_BACKEND = "wayland";
@@ -15,7 +15,7 @@ _: {
       XDG_SESSION_TYPE = "wayland";
     };
 
-    _children = map (command: { spawn-at-startup = command; }) [
+    _children = map (command: {spawn-at-startup = command;}) [
       "awww-daemon"
       "waybar"
       "set-wallpaper"

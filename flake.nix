@@ -39,9 +39,8 @@
     };
 
     homeConfigurations = {
-      home-server = lib.mkHome {
-        username = "elohim";
-        homePath = ./home-server/home.nix;
+      remote = lib.mkHome {
+        homePath = ./home/remote/home.nix;
       };
     };
 

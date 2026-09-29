@@ -1,6 +1,4 @@
-{ themeColors, ... }:
-
-{
+{themeColors, ...}: {
   wayland.windowManager.niri.settings = {
     layout = {
       background-color = "transparent";
@@ -15,7 +13,7 @@
         bottom = 0;
       };
 
-      focus-ring.off = { };
+      focus-ring.off = {};
 
       border = {
         width = 2;

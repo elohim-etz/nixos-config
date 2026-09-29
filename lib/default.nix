@@ -32,9 +32,14 @@ in {
     };
 
   mkHome = {
-    system ? "x86_64-linux",
+    system ? builtins.currentSystem or "x86_64-linux",
     homePath,
-    username,
+    username ? let
+      u = builtins.getEnv "USER";
+    in
+      if u != ""
+      then u
+      else "user",
     extraModules ? [],
   }:
     home-manager.lib.homeManagerConfiguration {

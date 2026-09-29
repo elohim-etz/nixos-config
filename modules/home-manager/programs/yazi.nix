@@ -40,12 +40,12 @@ in {
         package = git;
         setup = true;
       };
-      smart-enter = smart-enter;
-      smart-filter = smart-filter;
-      mount = mount;
-      chmod = chmod;
-      ouch = ouch;
-      toggle-pane = toggle-pane;
+      inherit smart-enter;
+      inherit smart-filter;
+      inherit mount;
+      inherit chmod;
+      inherit ouch;
+      inherit toggle-pane;
     };
 
     settings = {
@@ -115,16 +115,34 @@ in {
 
       open = {
         prepend_rules = [
-          {mime = "text/*"; use = "edit";}
-          {mime = "image/*"; use = "open";}
-          {mime = "video/*"; use = "play";}
-          {mime = "audio/*"; use = "play";}
-          {mime = "inode/directory"; use = "open";}
+          {
+            mime = "text/*";
+            use = "edit";
+          }
+          {
+            mime = "image/*";
+            use = "open";
+          }
+          {
+            mime = "video/*";
+            use = "play";
+          }
+          {
+            mime = "audio/*";
+            use = "play";
+          }
+          {
+            mime = "inode/directory";
+            use = "open";
+          }
           {
             url = "*.{zip,rar,7z,tar,gz,bz2,xz,zst}";
             use = "extract";
           }
-          {mime = "application/pdf"; use = "open";}
+          {
+            mime = "application/pdf";
+            use = "open";
+          }
         ];
       };
 
@@ -480,25 +498,79 @@ in {
             fg = c.green;
           }
 
-          {mime = "image/*"; fg = c.yellow;}
-          {mime = "video/*"; fg = c.peach;}
-          {mime = "audio/*"; fg = c.peach;}
-          {mime = "application/zip"; fg = c.green;}
-          {mime = "application/x-tar"; fg = c.green;}
-          {mime = "application/x-bzip*"; fg = c.green;}
-          {mime = "application/x-7z-compressed"; fg = c.green;}
-          {mime = "application/x-rar"; fg = c.green;}
-          {mime = "application/x-xz"; fg = c.green;}
-          {mime = "application/zstd"; fg = c.green;}
-          {mime = "application/pdf"; fg = c.red;}
-          {mime = "application/msword"; fg = c.sapphire;}
-          {mime = "application/vnd.openxmlformats-officedocument.*"; fg = c.sapphire;}
-          {mime = "text/*"; fg = c.text;}
-          {mime = "application/json"; fg = c.lavender;}
-          {mime = "application/x-yaml"; fg = c.lavender;}
+          {
+            mime = "image/*";
+            fg = c.yellow;
+          }
+          {
+            mime = "video/*";
+            fg = c.peach;
+          }
+          {
+            mime = "audio/*";
+            fg = c.peach;
+          }
+          {
+            mime = "application/zip";
+            fg = c.green;
+          }
+          {
+            mime = "application/x-tar";
+            fg = c.green;
+          }
+          {
+            mime = "application/x-bzip*";
+            fg = c.green;
+          }
+          {
+            mime = "application/x-7z-compressed";
+            fg = c.green;
+          }
+          {
+            mime = "application/x-rar";
+            fg = c.green;
+          }
+          {
+            mime = "application/x-xz";
+            fg = c.green;
+          }
+          {
+            mime = "application/zstd";
+            fg = c.green;
+          }
+          {
+            mime = "application/pdf";
+            fg = c.red;
+          }
+          {
+            mime = "application/msword";
+            fg = c.sapphire;
+          }
+          {
+            mime = "application/vnd.openxmlformats-officedocument.*";
+            fg = c.sapphire;
+          }
+          {
+            mime = "text/*";
+            fg = c.text;
+          }
+          {
+            mime = "application/json";
+            fg = c.lavender;
+          }
+          {
+            mime = "application/x-yaml";
+            fg = c.lavender;
+          }
 
-          {url = "*/"; fg = c.blue;}
-          {url = "*"; fg = c.text;}
+          {
+            url = "*/";
+            fg = c.blue;
+          }
+          {
+            url = "*";
+            fg = c.text;
+          }
         ];
       };
     };

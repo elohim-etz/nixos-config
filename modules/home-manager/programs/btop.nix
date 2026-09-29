@@ -1,6 +1,4 @@
-{ themeColors, ... }:
-
-{
+{themeColors, ...}: {
   programs.btop = {
     enable = true;
 
@@ -32,12 +30,11 @@
 
       update_ms = 1000;
 
-      presets =
-        "cpu:1:default,proc:0:default cpu:0:default,mem:0:default,net:0:default cpu:0:block,net:0:tty";
+      presets = "cpu:1:default,proc:0:default cpu:0:default,mem:0:default,net:0:default cpu:0:block,net:0:tty";
 
-      proc_sorting = "cpu direct";
+      proc_sorting = "memory";
 
-      proc_reversed = true;
+      proc_reversed = false;
 
       proc_tree = false;
 

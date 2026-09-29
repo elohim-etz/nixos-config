@@ -1,11 +1,10 @@
-{ lib, ... }:
-let
+{lib, ...}: let
   on = keys: action: lib.genAttrs keys (_: action);
 
-  withProps = props: action: { _props = props; } // action;
-  locked = withProps { allow-when-locked = true; };
-  noRepeat = withProps { repeat = false; };
-  throttled = withProps { cooldown-ms = 150; };
+  withProps = props: action: {_props = props;} // action;
+  locked = withProps {allow-when-locked = true;};
+  noRepeat = withProps {repeat = false;};
+  throttled = withProps {cooldown-ms = 150;};
 
   # ── commands ─────────────────────────────────────────────────────────
   cmd = {
@@ -24,79 +23,79 @@ let
 
   # ── groups ───────────────────────────────────────────────────────────
   apps = {
-    "Mod+T".spawn = [ "kitty" ];
-    "Mod+E".spawn = [ "nautilus" ];
+    "Mod+T".spawn = ["kitty"];
+    "Mod+E".spawn = ["nautilus"];
     "Mod+A".spawn = [
       "sh"
       "-c"
       "pkill rofi || rofi -show drun"
     ];
-    "Mod+Shift+W".spawn = [ "wallpaper-picker" ];
-    "Ctrl+Alt+Delete".spawn = [ "wlogout" ];
+    "Mod+Shift+W".spawn = ["wallpaper-picker"];
+    "Ctrl+Alt+Delete".spawn = ["wlogout"];
   };
 
   screenshots = {
-    "Print".screenshot = { };
-    "Ctrl+Print".screenshot-screen = { };
-    "Alt+Print".screenshot-window = { };
+    "Print".screenshot = {};
+    "Ctrl+Print".screenshot-screen = {};
+    "Alt+Print".screenshot-window = {};
     "Mod+P".spawn-sh = ''grim -g "$(slurp)" - | satty -f -'';
   };
 
   session = {
-    "Mod+Q" = noRepeat { close-window = { }; };
-    "Mod+Return" = noRepeat { toggle-overview = { }; };
+    "Mod+Q" = noRepeat {close-window = {};};
+    "Mod+Return" = noRepeat {toggle-overview = {};};
     # Escape hatch for apps that grab all keys (VMs, remote desktops).
-    "Mod+Escape" = withProps { allow-inhibiting = false; } {
-      toggle-keyboard-shortcuts-inhibit = { };
+    "Mod+Escape" = withProps {allow-inhibiting = false;} {
+      toggle-keyboard-shortcuts-inhibit = {};
     };
-    "Mod+Shift+E".quit = { };
-    "Mod+Shift+P".power-off-monitors = { };
+    "Mod+Shift+E".quit = {};
+    "Mod+Shift+P".power-off-monitors = {};
   };
 
   # Move focus (vim keys + arrows).
   focus = lib.mergeAttrsList [
-    (on [ "Mod+H" "Mod+Left" ] { focus-column-left = { }; })
-    (on [ "Mod+L" "Mod+Right" ] { focus-column-right = { }; })
+    (on ["Mod+H" "Mod+Left"] {focus-column-left = {};})
+    (on ["Mod+L" "Mod+Right"] {focus-column-right = {};})
     {
-      "Mod+J".focus-window-or-workspace-down = { };
-      "Mod+K".focus-window-or-workspace-up = { };
-      "Mod+Down".focus-workspace-down = { };
-      "Mod+Up".focus-workspace-up = { };
-      "Mod+Home".focus-column-first = { };
-      "Mod+End".focus-column-last = { };
+      "Mod+J".focus-window-or-workspace-down = {};
+      "Mod+K".focus-window-or-workspace-up = {};
+      "Mod+Down".focus-workspace-down = {};
+      "Mod+Up".focus-workspace-up = {};
+      "Mod+Home".focus-column-first = {};
+      "Mod+End".focus-column-last = {};
     }
   ];
 
   # Move columns / windows (Ctrl + the focus keys).
   move = lib.mergeAttrsList [
-    (on [ "Mod+Ctrl+H" "Mod+Ctrl+Left" ] { move-column-left = { }; })
-    (on [ "Mod+Ctrl+L" "Mod+Ctrl+Right" ] { move-column-right = { }; })
-    (on [ "Mod+Ctrl+J" "Mod+Ctrl+Down" ] { move-window-down = { }; })
-    (on [ "Mod+Ctrl+K" "Mod+Ctrl+Up" ] { move-window-up = { }; })
+    (on ["Mod+Ctrl+H" "Mod+Ctrl+Left"] {move-column-left = {};})
+    (on ["Mod+Ctrl+L" "Mod+Ctrl+Right"] {move-column-right = {};})
+    (on ["Mod+Ctrl+J" "Mod+Ctrl+Down"] {move-window-down = {};})
+    (on ["Mod+Ctrl+K" "Mod+Ctrl+Up"] {move-window-up = {};})
     {
-      "Mod+Ctrl+Home".move-column-to-first = { };
-      "Mod+Ctrl+End".move-column-to-last = { };
+      "Mod+Ctrl+Home".move-column-to-first = {};
+      "Mod+Ctrl+End".move-column-to-last = {};
     }
   ];
 
   # Column / window shape and mode.
   windows = {
-    "Mod+BracketLeft".consume-or-expel-window-left = { };
-    "Mod+BracketRight".consume-or-expel-window-right = { };
-    "Mod+Comma".consume-window-into-column = { };
-    "Mod+Period".expel-window-from-column = { };
+    "Mod+BracketLeft".consume-or-expel-window-left = {};
+    "Mod+BracketRight".consume-or-expel-window-right = {};
+    "Mod+Comma".consume-window-into-column = {};
+    "Mod+Period".expel-window-from-column = {};
 
-    "Mod+C".center-column = { };
-    "Mod+Ctrl+C".center-visible-columns = { };
-    "Mod+F".maximize-column = { };
-    "Mod+Ctrl+F".expand-column-to-available-width = { };
-    "Mod+Shift+F".fullscreen-window = { };
-    "Mod+V".toggle-window-floating = { };
-    "Mod+Shift+V".switch-focus-between-floating-and-tiling = { };
+    "Mod+C".center-column = {};
+    "Mod+Ctrl+C".center-visible-columns = {};
+    "Mod+F".maximize-column = {};
+    "Mod+Ctrl+F".expand-column-to-available-width = {};
+    "Mod+Shift+F".fullscreen-window = {};
+    "Mod+V".toggle-window-floating = {};
+    "Mod+Shift+V".switch-focus-between-floating-and-tiling = {};
 
-    "Mod+R".switch-preset-column-width = { };
-    "Mod+Shift+R".switch-preset-window-height = { };
-    "Mod+Ctrl+R".reset-window-height = { };
+    "Mod+R".switch-preset-column-width = {};
+    "Mod+Shift+R".switch-preset-window-height = {};
+    "Mod+Ctrl+R".reset-window-height = {};
     "Mod+Minus".set-column-width = "-10%";
     "Mod+Equal".set-column-width = "+10%";
     "Mod+Shift+Minus".set-window-height = "-10%";
@@ -113,70 +112,70 @@ let
 
   # Mouse wheel: workspaces / columns.
   wheel = {
-    "Mod+WheelScrollDown" = throttled { focus-workspace-down = { }; };
-    "Mod+WheelScrollUp" = throttled { focus-workspace-up = { }; };
-    "Mod+WheelScrollLeft".focus-column-left = { };
-    "Mod+WheelScrollRight".focus-column-right = { };
-    "Mod+Shift+WheelScrollDown".focus-column-right = { };
-    "Mod+Shift+WheelScrollUp".focus-column-left = { };
+    "Mod+WheelScrollDown" = throttled {focus-workspace-down = {};};
+    "Mod+WheelScrollUp" = throttled {focus-workspace-up = {};};
+    "Mod+WheelScrollLeft".focus-column-left = {};
+    "Mod+WheelScrollRight".focus-column-right = {};
+    "Mod+Shift+WheelScrollDown".focus-column-right = {};
+    "Mod+Shift+WheelScrollUp".focus-column-left = {};
 
-    "Mod+Ctrl+WheelScrollDown" = throttled { move-column-to-workspace-down = { }; };
-    "Mod+Ctrl+WheelScrollUp" = throttled { move-column-to-workspace-up = { }; };
-    "Mod+Ctrl+WheelScrollLeft".move-column-left = { };
-    "Mod+Ctrl+WheelScrollRight".move-column-right = { };
-    "Mod+Ctrl+Shift+WheelScrollDown".move-column-right = { };
-    "Mod+Ctrl+Shift+WheelScrollUp".move-column-left = { };
+    "Mod+Ctrl+WheelScrollDown" = throttled {move-column-to-workspace-down = {};};
+    "Mod+Ctrl+WheelScrollUp" = throttled {move-column-to-workspace-up = {};};
+    "Mod+Ctrl+WheelScrollLeft".move-column-left = {};
+    "Mod+Ctrl+WheelScrollRight".move-column-right = {};
+    "Mod+Ctrl+Shift+WheelScrollDown".move-column-right = {};
+    "Mod+Ctrl+Shift+WheelScrollUp".move-column-left = {};
   };
 
   media = lib.mergeAttrsList (
     map (b: on b.keys (locked b.action)) [
       {
-        keys = [ "XF86AudioPlay" "Shift+F1" ];
+        keys = ["XF86AudioPlay" "Shift+F1"];
         action.spawn-sh = "playerctl play-pause";
       }
       {
-        keys = [ "XF86AudioPrev" "Shift+F5" ];
+        keys = ["XF86AudioPrev" "Shift+F5"];
         action.spawn-sh = "playerctl previous";
       }
       {
-        keys = [ "XF86AudioNext" "Shift+F6" ];
+        keys = ["XF86AudioNext" "Shift+F6"];
         action.spawn-sh = "playerctl next";
       }
       {
-        keys = [ "XF86AudioStop" ];
+        keys = ["XF86AudioStop"];
         action.spawn-sh = "playerctl stop";
       }
       {
-        keys = [ "XF86AudioMute" "Shift+F4" ];
+        keys = ["XF86AudioMute" "Shift+F4"];
         action.spawn-sh = cmd.sinkMute;
       }
       {
-        keys = [ "XF86AudioMicMute" "Alt+F4" ];
+        keys = ["XF86AudioMicMute" "Alt+F4"];
         action.spawn-sh = cmd.micMute;
       }
       {
-        keys = [ "XF86AudioRaiseVolume" ];
+        keys = ["XF86AudioRaiseVolume"];
         action.spawn-sh = cmd.volumeUp "0.1";
       }
       {
-        keys = [ "XF86AudioLowerVolume" ];
+        keys = ["XF86AudioLowerVolume"];
         action.spawn-sh = cmd.volumeDown "0.1";
       }
       # Fine-grained steps on the F-row.
       {
-        keys = [ "Shift+F3" ];
+        keys = ["Shift+F3"];
         action.spawn-sh = cmd.volumeUp "0.05";
       }
       {
-        keys = [ "Shift+F2" ];
+        keys = ["Shift+F2"];
         action.spawn-sh = cmd.volumeDown "0.05";
       }
       {
-        keys = [ "XF86MonBrightnessUp" "Shift+F12" ];
+        keys = ["XF86MonBrightnessUp" "Shift+F12"];
         action.spawn = brightness "+10%";
       }
       {
-        keys = [ "XF86MonBrightnessDown" "Shift+F11" ];
+        keys = ["XF86MonBrightnessDown" "Shift+F11"];
         action.spawn = brightness "10%-";
       }
     ]
@@ -184,15 +183,14 @@ let
 
   # Alt+F1..F6: control the paired Android phone's media keys over adb.
   # (Alt+F4 is the mic-mute key in `media` above.)
-  phone = lib.mapAttrs (_: code: locked { spawn-sh = cmd.phoneKey code; }) {
+  phone = lib.mapAttrs (_: code: locked {spawn-sh = cmd.phoneKey code;}) {
     "Alt+F1" = 85; # play/pause
     "Alt+F2" = 25; # volume down
     "Alt+F3" = 24; # volume up
     "Alt+F5" = 88; # previous
     "Alt+F6" = 87; # next
   };
-in
-{
+in {
   wayland.windowManager.niri.settings.binds = lib.mergeAttrsList [
     apps
     screenshots

@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.file."Pictures/Screenshots/Mpv/.keep".text = "";
+  # home.file."Pictures/Screenshots/Mpv/.keep".text = "";
   programs.mpv = {
     enable = true;
     scripts = [pkgs.mpvScripts.mpris];
@@ -22,7 +22,7 @@
       sub-auto = "fuzzy";
       sub-font-size = 42;
       ytdl = "yes";
-      screenshot-directory = "${config.home.homeDirectory}/Pictures/Screenshot/Mpv";
+      screenshot-directory = "${config.home.homeDirectory}/Pictures/Screenshots/Mpv";
     };
   };
 }

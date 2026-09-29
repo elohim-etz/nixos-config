@@ -12,12 +12,12 @@ _: {
       touchpad = {
         accel-profile = "adaptive";
         click-method = "button-areas";
-        dwt = { };
-        dwtp = { };
-        middle-emulation = { };
-        natural-scroll = { };
+        dwt = {};
+        dwtp = {};
+        middle-emulation = {};
+        natural-scroll = {};
         scroll-method = "two-finger";
-        tap = { };
+        tap = {};
         tap-button-map = "left-right-middle";
       };
     };
@@ -25,7 +25,7 @@ _: {
     _children = [
       {
         output = {
-          _args = [ "eDP-1" ];
+          _args = ["eDP-1"];
           mode = "1920x1080@59.997";
         };
       }
