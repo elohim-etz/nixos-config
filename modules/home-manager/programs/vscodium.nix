@@ -13,6 +13,7 @@
       userSettings = {
         "workbench.colorTheme" = "Catppuccin Mocha";
         "window.menuBarVisibility" = "toggle";
+        "window.titleBarStyle" = "native";
         "editor.fontSize" = 16;
         "editor.scrollbar.vertical" = "hidden";
         "editor.scrollbar.verticalScrollbarSize" = 0;

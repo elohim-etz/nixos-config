@@ -49,6 +49,8 @@
       net_download = 100;
 
       net_upload = 100;
+
+      net_iface = "wlp0s20f3";
     };
 
     themes = {

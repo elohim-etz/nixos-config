@@ -5,7 +5,8 @@ on:
     paths:
       - "flake.lock"
   schedule:
-    - cron: "30 3 * * *"
+    - cron: "0 3 * * *"
+      timezone: "Asia/Kolkata"
   workflow_dispatch: {}
 
 permissions:

@@ -1,13 +1,4 @@
-let
-  lock-false = {
-    Value = false;
-    Status = "locked";
-  };
-  lock-true = {
-    Value = true;
-    Status = "locked";
-  };
-in {
+{
   "zen.view.use-single-toolbar" = true;
   "zen.view.sidebar-expanded" = true;
 
@@ -22,9 +13,9 @@ in {
   # enable custom userchrome
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   "svg.context-properties.content.enabled" = true;
-  "layout.css.color-mix.enabled" = true;
+  # "layout.css.color-mix.enabled" = true;
   "browser.tabs.delayHidingAudioPlayingIconMS" = 0;
-  "layout.css.backdrop-filter.enabled" = true;
+  "layout.css.backdrop-filter.enabled" = false;
   "browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar" = false;
   "privacy.userContext.enabled" = true;
   "privacy.userContext.ui.enabled" = true;
@@ -49,72 +40,69 @@ in {
   "toolkit.scrollbox.verticalScrollDistance" = 2;
 
   # Remove trackers
-  "privacy.purge_trackers.enabled" = lock-true;
-  "privacy.trackingprotection.enabled" = lock-true;
-  "privacy.trackingprotection.fingerprinting.enabled" = lock-true;
-  "privacy.resistFingerprinting" = lock-true;
-  "privacy.trackingprotection.socialtracking.enabled" = lock-true;
-  "privacy.trackingprotection.cryptomining.enabled" = lock-true;
-  "privacy.globalprivacycontrol.enabled" = lock-true;
-  "privacy.globalprivacycontrol.functionality.enabled" = lock-true;
-  "privacy.donottrackheader.enabled" = lock-true;
+  "privacy.purge_trackers.enabled" = true;
+  "privacy.trackingprotection.enabled" = true;
+  "privacy.trackingprotection.fingerprinting.enabled" = true;
+  "privacy.resistFingerprinting" = false;
+  "privacy.trackingprotection.socialtracking.enabled" = true;
+  "privacy.trackingprotection.cryptomining.enabled" = true;
+  "privacy.globalprivacycontrol.enabled" = true;
+  "privacy.globalprivacycontrol.functionality.enabled" = true;
+  "privacy.donottrackheader.enabled" = true;
   "privacy.donottrackheader.value" = 1;
-  "privacy.query_stripping.enabled" = lock-true;
-  "privacy.query_stripping.enabled.pbmode" = lock-true;
+  "privacy.query_stripping.enabled" = true;
+  "privacy.query_stripping.enabled.pbmode" = true;
 
   # Block telemetry
-  "toolkit.telemetry.enabled" = lock-false;
-  "toolkit.telemetry.unified" = lock-false;
+  "toolkit.telemetry.enabled" = false;
+  "toolkit.telemetry.unified" = false;
   "toolkit.telemetry.server" = "data:,";
-  "toolkit.telemetry.archive.enabled" = lock-false;
-  "toolkit.telemetry.newProfilePing.enabled" = lock-false;
-  "toolkit.telemetry.shutdownPingSender.enabled" = lock-false;
-  "toolkit.telemetry.updatePing.enabled" = lock-false;
-  "toolkit.telemetry.bhrPing.enabled" = lock-false;
-  "toolkit.telemetry.coverage.opt-out" = lock-true;
-  "toolkit.telemetry.firstShutdownPing.enabled" = lock-false;
-  "browser.newtabpage.activity-stream.telemetry" = lock-false;
-  "browser.ping-centre.telemetry" = lock-false;
+  "toolkit.telemetry.archive.enabled" = false;
+  "toolkit.telemetry.newProfilePing.enabled" = false;
+  "toolkit.telemetry.shutdownPingSender.enabled" = false;
+  "toolkit.telemetry.updatePing.enabled" = false;
+  "toolkit.telemetry.bhrPing.enabled" = false;
+  "toolkit.telemetry.coverage.opt-out" = true;
+  "toolkit.telemetry.firstShutdownPing.enabled" = false;
+  "browser.newtabpage.activity-stream.telemetry" = false;
+  "browser.ping-centre.telemetry" = false;
 
   # Block more unwanted stuff
-  "dom.block_multiple_popups" = lock-true;
-  "browser.privatebrowsing.forceMediaMemoryCache" = lock-true;
-  "browser.contentblocking.category" = {
-    Value = "strict";
-    Status = "locked";
-  };
+  "dom.block_multiple_popups" = true;
+  "browser.privatebrowsing.forceMediaMemoryCache" = true;
+  "browser.contentblocking.category" = "strict";
   "browser.search.suggest.enabled" = true;
   "browser.search.suggest.enabled.private" = false;
   "privacy.popups.disable_from_plugins" = 3;
-  "extensions.pocket.enabled" = lock-false;
-  "browser.newtabpage.activity-stream.section.highlights.includePocket" = lock-false;
-  "browser.newtabpage.activity-stream.feeds.section.topstories" = lock-false;
-  "browser.newtabpage.activity-stream.feeds.topsites" = lock-false;
-  "browser.newtabpage.activity-stream.showSponsored" = lock-false;
-  "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
-  "layout.word_select.eat_space_to_next_word" = lock-false;
-  "browser.shell.checkDefaultBrowser" = lock-false;
-  "toolkit.coverage.opt-out" = lock-true;
+  "extensions.pocket.enabled" = false;
+  "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+  "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+  "browser.newtabpage.activity-stream.feeds.topsites" = false;
+  "browser.newtabpage.activity-stream.showSponsored" = false;
+  "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+  "layout.word_select.eat_space_to_next_word" = false;
+  "browser.shell.checkDefaultBrowser" = false;
+  "toolkit.coverage.opt-out" = true;
   "toolkit.coverage.endpoint.base" = "";
-  "experiments.supported" = lock-false;
-  "experiments.enabled" = lock-false;
-  "experiments.manifest.uri" = "";
-  "datareporting.healthreport.uploadEnabled" = lock-false;
-  "datareporting.healthreport.service.enabled" = lock-false;
-  "datareporting.policy.dataSubmissionEnabled" = lock-false;
+  # "experiments.supported" = false;
+  # "experiments.enabled" = false;
+  # "experiments.manifest.uri" = "";
+  "datareporting.healthreport.uploadEnabled" = false;
+  "datareporting.healthreport.service.enabled" = false;
+  "datareporting.policy.dataSubmissionEnabled" = false;
   "breakpad.reportURL" = "";
-  "browser.tabs.crashReporting.sendReport" = lock-false;
-  "browser.crashReports.unsubmittedCheck.autoSubmit2" = lock-false;
-  "browser.formfill.enable" = lock-false;
-  "extensions.formautofill.addresses.enabled" = lock-false;
+  "browser.tabs.crashReporting.sendReport" = false;
+  "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
+  "browser.formfill.enable" = false;
+  "extensions.formautofill.addresses.enabled" = false;
   "extensions.formautofill.available" = "off";
-  "extensions.formautofill.creditCards.available" = lock-false;
-  "extensions.formautofill.creditCards.enabled" = lock-false;
-  "extensions.formautofill.heuristics.enabled" = lock-false;
-  "app.normandy.enabled" = lock-false;
+  "extensions.formautofill.creditCards.available" = false;
+  "extensions.formautofill.creditCards.enabled" = false;
+  "extensions.formautofill.heuristics.enabled" = false;
+  "app.normandy.enabled" = false;
   "app.normandy.api_url" = "";
-  "dom.webnotifications.enabled" = lock-false;
-  "dom.webnotifications.serviceworker.enabled" = lock-false;
+  # "dom.webnotifications.enabled" = false;
+  # "dom.webnotifications.serviceworker.enabled" = false;
 
   # Permissions
   # 0=always ask (default), 1=allow, 2=block
@@ -125,25 +113,27 @@ in {
   "permissions.default.xr" = 2; # Virtual Reality
 
   # General settings
+  "media.ffmpeg.vaapi.enabled" = true;
+  "media.av1.enabled" = false;
   "ui.key.accelKey" = 17; # Set CTRL as master key
   "intl.locale.requested" = "en-GB,en-US";
   "browser.tabs.inTitlebar" = 0;
-  "browser.aboutConfig.showWarning" = lock-false;
-  "browser.aboutwelcome.enabled" = lock-false;
-  "browser.tabs.firefox-view" = lock-false;
+  "browser.aboutConfig.showWarning" = false;
+  "browser.aboutwelcome.enabled" = false;
+  "browser.tabs.firefox-view" = false;
   "browser.startup.homepage_override.mstone" = "ignore";
-  "trailhead.firstrun.didSeeAboutWelcome" = lock-true; # Disable welcome splash
+  "trailhead.firstrun.didSeeAboutWelcome" = true; # Disable welcome splash
   "browser.newtab.url" = "about:blank";
-  "browser.newtabpage.activity-stream.enabled" = lock-false;
-  "browser.newtabpage.enhanced" = lock-false;
-  "browser.newtabpage.introShown" = lock-true;
+  "browser.newtabpage.activity-stream.enabled" = false;
+  # "browser.newtabpage.enhanced" = false;
+  "browser.newtabpage.introShown" = false;
   "browser.newtabpage.pinned" = false;
   "browser.bookmarks.defaultLocation" = "toolbar";
   "browser.startup.page" = 1;
-  "app.shield.optoutstudies.enabled" = lock-false;
-  "dom.security.https_only_mode" = lock-true;
-  "dom.security.https_only_mode_ever_enabled" = lock-true;
-  "identity.fxaccounts.enabled" = lock-false;
+  "app.shield.optoutstudies.enabled" = false;
+  "dom.security.https_only_mode" = true;
+  "dom.security.https_only_mode_ever_enabled" = true;
+  "identity.fxaccounts.enabled" = false;
   "app.update.auto" = false;
   "browser.startup.homepage" = "";
   "browser.sessionstore.resume_from_crash" = false;
@@ -156,8 +146,8 @@ in {
   "browser.newtabpage.activity-stream.feeds.snippets" = false;
   "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
   "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "";
-  "browser.protections_panel.infoMessage.seen" = lock-true;
-  "browser.ssb.enabled" = true;
+  "browser.protections_panel.infoMessage.seen" = true;
+  # "browser.ssb.enabled" = true;
   "browser.toolbars.bookmarks.visibility" = "never"; # always, never, newtab
   #"browser.urlbar.placeholderName" = "Google";
   "browser.urlbar.suggest.topsites" = true;
@@ -167,11 +157,15 @@ in {
   "browser.urlbar.suggest.engines" = true;
   "browser.urlbar.showSearchSuggestionsFirst" = false;
   "browser.urlbar.suggest.recentsearches" = true;
-  "datareporting.policy.dataSubmissionEnable" = false;
+  "browser.ml.enable" = false;
+  "browser.ml.chat.enabled" = false;
+  "browser.ml.linkPreview.enabled" = false;
+  "browser.tabs.groups.smart.enabled" = false;
+  "browser.ai.control.default" = "blocked";
   "datareporting.policy.dataSubmissionPolicyAcceptedVersion" = 2;
 
-  "extensions.getAddons.showPane" = lock-false;
-  "extensions.htmlaboutaddons.recommendations.enabled" = lock-false;
+  "extensions.getAddons.showPane" = false;
+  "extensions.htmlaboutaddons.recommendations.enabled" = false;
   "extensions.extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
   # "extensions.update.enabled" = false;
   "extensions.webcompat.enable_picture_in_picture_overrides" = true;
@@ -179,27 +173,32 @@ in {
   "extensions.webcompat.perform_injections" = true;
   "extensions.webcompat.perform_ua_overrides" = true;
 
-  "extensions.autoDisableScopes" = {
-    Value = 0;
-    Status = "locked";
-  };
-  "extensions.enabledScopes" = {
-    Value = 15;
-    Status = "locked";
-  };
-  "extensions.allowPrivateBrowsingByDefault" = lock-true;
-  "extensions.webextensions.restrictedDomains" = {
-    Value = "";
-    Status = "locked";
-  };
+  "extensions.enabledScopes" = 5;
+  "extensions.allowPrivateBrowsingByDefault" = true;
 
   # Do not tell what plugins we have enabled: https://mail.mozilla.org/pipermail/firefox-dev/2013-November/001186.html
   "plugins.enumerable_names" = "";
-  "plugin.state.flash" = 0;
+  # "plugin.state.flash" = 0;
   "browser.search.update" = false;
-  "extensions.getAddons.cache.enabled" = lock-false;
-  "extensions.ui.sitepermission.hidden" = lock-true;
-  "extensions.ui.locale.hidden" = lock-true;
+  "extensions.getAddons.cache.enabled" = false;
+  "extensions.ui.sitepermission.hidden" = true;
+  "extensions.ui.locale.hidden" = true;
+
+  # less background work
+  "browser.sessionstore.interval" = 60000;
+  "network.http.speculative-parallel-limit" = 0;
+  "network.dns.disablePrefetch" = true;
+  "network.dns.disablePrefetchFromHTTPS" = true;
+  "network.prefetch-next" = false;
+  "browser.urlbar.speculativeConnect.enabled" = false;
+  "browser.places.speculativeConnect.enabled" = false;
+
+  # cheap, low-breakage hardening
+  "browser.urlbar.quicksuggest.enabled" = false;
+  "pdfjs.enableScripting" = false;
+  "network.IDN_show_punycode" = true;
+  "network.http.referer.XOriginTrimmingPolicy" = 2;
+  "security.tls.enable_0rtt_data" = false;
 
   "browser.uiCustomization.state" = builtins.toJSON {
     currentVersion = 20;
