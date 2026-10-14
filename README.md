@@ -8,7 +8,7 @@
 
 Personal NixOS configuration using Flakes and Home Manager for declarative system management.
 
-[Structure](#-structure) • [Hosts](#-hosts) • [Features](#-features) • [Quick Start](#-quick-start)
+[Structure](#-structure) • [Hosts](#-hosts) • [Features](#-features) • [Custom Packages](#-custom-packages) • [Quick Start](#-quick-start)
 
 </div>
 
@@ -16,115 +16,108 @@ Personal NixOS configuration using Flakes and Home Manager for declarative syste
 
 ## 📖 Overview
 
-A modular NixOS configuration featuring Niri compositor, comprehensive Home Manager integration, and system-wide declarative package management. Built for reproducibility and maintainability.
+A modular NixOS configuration featuring the **Niri** scrollable-tiling Wayland compositor, full Home Manager integration, theming via Catppuccin, and self-built packages (Stremio Linux shell, wallpaper picker). Built for reproducibility and maintainability with automated flake-lock updates through GitHub Actions.
 
 ## 🗂️ Structure
 
 ```
-nixos-config/
-├── flake.nix                 # Flake entry point
-├── flake.lock               
-│
-├── hosts/                    # Host-specific configurations
-│   ├── miso/                 # Primary workstation
-│   ├── wasabi/               # Secondary host
-│   └── server/               # Server configuration
-│
-├── modules/                  # System-level modules
-│   ├── audio.nix
-│   ├── boot.nix
-│   ├── fonts.nix
-│   ├── graphics.nix
-│   ├── networking.nix
-│   ├── niri.nix
-│   ├── sddm.nix
-│   └── zram.nix
-│
-├── home/                     # Home Manager configuration
-│   ├── home.nix
-│   ├── modules/             # User-level modules
-│   ├── niri/                # Niri compositor config
-│   └── programs/            # Application configurations
-│       ├── brave/
-│       ├── kitty/
-│       ├── neovim/
-│       ├── spicetify/
-│       ├── starship/
-│       ├── vscodium/
-│       ├── zen/
-│       └── zsh/
-│
-└── assets/                   # Wallpapers and resources
+.
+├── flake.nix              # Flake entry point (nixosConfigurations, homeConfigurations, devShells)
+├── justfile               # Task runner for build / switch / update / GC
+├── hosts/                 # Host-specific configurations
+│   └── laptop/            # Main host: configuration, disko disk layout, hardware config
+├── modules/               # Reusable option modules
+│   ├── nixos/             # System modules: core, desktop, hardware, optimization
+│   └── home-manager/      # User modules: niri, waybar, programs, theme, nixvim, zen-beta
+├── home/                  # Standalone Home Manager entrypoints
+│   ├── home.nix           # HM config used by the nixosConfiguration
+│   └── remote/            # Standalone (non-NixOS) home config
+├── pkgs/                  # Custom packages & package lists
+│   ├── stremio-linux-shell/ , stremio-service/, wallpaper-picker/
+│   └── nixos/ , home-manager/   # environment.systemPackages / home.packages lists
+├── overlays/              # Nixpkgs overlays for the custom packages
+├── lib/                   # Helpers: mkSystem, mkHome, mkDevShell, importAll
+├── devshells/             # Development shells (e.g. kompile/K framework)
+└── .github/workflows/     # Scheduled flake.lock update + rebuild test
 ```
 
-## 🖥️ Hosts
+## 🖥️ Hosts & Outputs
 
-| Host | Description | Status |
-|------|-------------|--------|
-| **miso** | Primary system | 🚧 WIP |
-| **wasabi** | Secondary workstation | ✅ Active |
-| **server** | Server deployment | 🚧 WIP |
+| Output | Description |
+|--------|-------------|
+| `nixosConfigurations.laptop` | Primary laptop — Niri + Waybar on Wayland, systemd-boot, CachyOS kernel |
+| `homeConfigurations.remote` | Standalone Home Manager setup for non-NixOS machines |
+| `devShells.x86_64-linux.kompile` | K Framework / Kompile development shell |
 
 ## ✨ Features
 
-### System
-- **Compositor**: Niri (Scrollable-tiling Wayland)
-- **Display Manager**: SDDM
-- **Audio**: PipeWire
-- **Boot**: Systemd-boot
-- **Disk Management**: Disko for declarative partitioning
-- **Memory**: ZRAM compression
+### System (`modules/nixos`)
+- **Compositor**: Niri (scrollable-tiling Wayland) with SDDM greeter
+- **Bootloader**: systemd-boot with the **CachyOS** LTO kernel (`linuxPackages-cachyos-latest-lto-x86_64-v3`)
+- **Disk**: declarative partitioning with **Disko** (GPT → 512 M vfat ESP + ext4 root)
+- **Audio**: PipeWire ( PulseAudio + ALSA compat, 32-bit support)
+- **Graphics**: Intel (i915 early KMS, `intel-media-driver`, VA-API via `iHD`)
+- **Other**: Bluetooth, power profiles, ZRAM compression, automatic store optimisation, Cachix binary cache
 
-### Applications
-- **Terminal**: Kitty
-- **Shell**: Zsh + Starship
-- **Editor**: Neovim (LSP, Treesitter, plugins)
-- **Browser**: Brave, Zen
-- **Development**: VSCodium, Tmux, Git
-- **Media**: MPV, Spotify (Spicetify)
-- **System Info**: Fastfetch
+### Desktop & Programs (`modules/home-manager`)
+- **Bar / Launcher**: Waybar, Rofi, Hyprlock, Mako notifications, wlogout
+- **Terminal**: Kitty + Zsh + Starship + fzf + tmux
+- **Editor**: Neovim via **NixVim** (Catppuccin Mocha, LSP, Treesitter), plus Zed & VSCodium
+- **Browsers**: Zen Beta (fully declarative pins/policies/settings) and Brave (Chromium module)
+- **Media**: mpv, Spicetify (Spotify), Stremio (custom Linux shell package)
+- **Theming**: centralized theme/GTK module, icon & cursor themes, custom wallpaper picker, `awww` daemon fed by an external assets repo (`nixos-assets`, auto-cloned/pulled on activation)
+
+## 📦 Custom Packages
+
+| Package | Purpose |
+|---------|---------|
+| `stremio-linux-shell` | Stremio packaged to run natively on Linux shells (with out-path patch) |
+| `stremio-service` | Stremio as a user service |
+| `wallpaper-picker` | Themeable wallpaper picker (colors injected via overlay) |
+
+All exposed through `overlays/` so they are available from `pkgs` everywhere.
 
 ## 🚀 Quick Start
 
 ### Installation
 
 ```bash
-# Clone repository
 git clone https://github.com/elohim-etz/nixos-config
 cd nixos-config
 
-# Fresh install
-nixos-install --flake .#wasabi
+# Fresh install (declarative disk layout defined in hosts/laptop/disko.nix)
+nixos-install --flake .#laptop
 
 # Existing system
-sudo nixos-rebuild switch --flake .#wasabi
+sudo nixos-rebuild switch --flake .#laptop
 ```
 
-### Daily Usage
+### Daily Usage (just)
+
+The `justfile` wraps common operations (default host: `laptop`):
 
 ```bash
-# Rebuild system
-sudo nixos-rebuild switch --flake .#wasabi
-
-# Update flake inputs
-nix flake update
-
-# Garbage collection
-sudo nix-collect-garbage -d
+just check          # nix flake check
+just dry            # dry-build of the system derivation
+just switch         # sudo nixos-rebuild switch --flake .#laptop
+just rollback       # switch to previous generation
+just update         # nix flake update (review flake.lock diff)
+just gc             # garbage collect old generations (>30d) + optimise store
+just generations    # list system generations
+just fmt            # format Nix code with alejandra
 ```
 
-## 📦 Main Packages
+### Maintenance Automation
 
-**Desktop**: niri, sddm, kitty, waybar, rofi-wayland  
-**Development**: neovim, vscodium, git, tmux, rustup, nodejs  
-**Applications**: brave, zen-browser, mpv, spotify, discord  
-**Tools**: fastfetch, eza, fd, ripgrep, btop, zoxide
+`.github/workflows/update-flake-lock.yml` runs daily, updates `flake.lock`,
+tests the rebuild, and caches results (Cachix: `naveen-nixos`).
 
 ## 📚 References
 
 - [NixOS Manual](https://nixos.org/manual/nixos/stable/)
 - [NixOS & Flakes Book](https://nixos-and-flakes.thiscute.world/)
 - [Home Manager Docs](https://nix-community.github.io/home-manager/)
+- [Niri Wiki](https://niri-wiki.github.io/niri/)
 
 ### Inspiration
 - [ryan4yin/nix-config](https://github.com/ryan4yin/nix-config)
@@ -132,7 +125,7 @@ sudo nix-collect-garbage -d
 
 ## 📝 License
 
-MIT - See [LICENSE](./LICENSE) for details.
+MIT — See [LICENSE](./LICENSE) for details.
 
 ---
 
