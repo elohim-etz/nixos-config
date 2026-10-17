@@ -17,7 +17,7 @@
 
     # Kernel parameters for better performance
     kernel.sysctl = {
-      "vm.swappiness" = 20;
+      "vm.swappiness" = 100;
       "vm.page-cluster" = 0;
     };
   };
