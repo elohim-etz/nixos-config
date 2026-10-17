@@ -12,12 +12,7 @@ _: {
       MimeType=image/png;image/jpeg;image/webp;image/gif;image/bmp;image/tiff;image/avif;image/svg+xml;
     '';
 
-    dataFile."applications/com.stremio.Stremio.desktop".text = ''
-      [Desktop Entry]
-      Hidden=true
-    '';
-
-    desktopEntries.stremio = {
+    desktopEntries."com.stremio.Stremio" = {
       name = "Stremio";
       comment = "Freedom To Stream";
       exec = "stremio -n %u";
