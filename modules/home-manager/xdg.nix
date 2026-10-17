@@ -79,7 +79,7 @@ _: {
         # Text / Code
         "text/plain" = ["dev.zed.Zed.desktop"];
         "text/markdown" = ["dev.zed.Zed.desktop"];
-        "text/html" = ["zen-beta.desktop" "brave-origin.desktop"];
+        "text/html" = ["brave-origin.desktop"];
         "text/css" = ["dev.zed.Zed.desktop"];
         "text/javascript" = ["dev.zed.Zed.desktop"];
         "application/json" = ["dev.zed.Zed.desktop"];
@@ -94,9 +94,9 @@ _: {
         "application/x-rar" = ["org.gnome.Nautilus.desktop"];
 
         # Web
-        "x-scheme-handler/http" = ["zen-beta.desktop" "brave-origin.desktop"];
-        "x-scheme-handler/https" = ["zen-beta.desktop" "brave-origin.desktop"];
-        "x-scheme-handler/ftp" = ["zen-beta.desktop" "brave-origin.desktop"];
+        "x-scheme-handler/http" = ["brave-origin.desktop"];
+        "x-scheme-handler/https" = ["brave-origin.desktop"];
+        "x-scheme-handler/ftp" = ["brave-origin.desktop"];
 
         "x-scheme-handler/tg" = ["com.ayugram.desktop.desktop"];
         "x-scheme-handler/tonsite" = ["com.ayugram.desktop.desktop"];

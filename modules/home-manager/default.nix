@@ -4,7 +4,7 @@
     ./programs
     ./niri
     ./waybar
-    ./zen-beta
+    # ./zen-beta
     ./theme
 
     ./assets.nix

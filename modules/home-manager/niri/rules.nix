@@ -43,7 +43,7 @@ in {
       windowRule
       [
         {app-id = "brave-browser";}
-        {app-id = "zen";}
+        # {app-id = "zen";}
         {app-id = "spotify";}
         {app-id = "ayugram";}
         {app-id = "code-oss";}
