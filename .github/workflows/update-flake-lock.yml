@@ -1,11 +1,8 @@
 name: Update flake.lock, test rebuild and cache packages
 
 on:
-  push:
-    paths:
-      - "flake.lock"
   schedule:
-    - cron: "0 3 * * *"
+    - cron: "30 0 * * *"
       timezone: "Asia/Kolkata"
   workflow_dispatch: {}
 
