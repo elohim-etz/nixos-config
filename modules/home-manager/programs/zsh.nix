@@ -21,7 +21,7 @@
 
       autocd = true;
 
-      defaultKeymap = "viins";
+      defaultKeymap = "emacs";
 
       syntaxHighlighting.enable = true;
 
