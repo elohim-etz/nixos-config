@@ -12,13 +12,13 @@ in {
   programs.spicetify = {
     enable = true;
     wayland = true;
-    theme = spicePkgs.themes.sleek;
+    theme = spicePkgs.themes.dribbblish;
     experimentalFeatures = true;
-    colorScheme = "TokyoNight";
+    colorScheme = "catppuccin-mocha";
 
     enabledExtensions = with spicePkgs.extensions; [
       adblockify
-      spicyLyrics
+      # spicyLyrics
       hidePodcasts
     ];
   };

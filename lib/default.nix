@@ -63,20 +63,19 @@ in {
 
   # Standalone Home Manager (servers / non-NixOS)
   mkHome = {
-    username,
-    profile,
-    system ? "x86_64-linux",
-    homeDirectory ? "/home/${username}",
+    homePath,
+    system ? builtins.currentSystem or "x86_64-linux",
+    username ? let
+      u = builtins.getEnv "USER";
+    in
+      if u != ""
+      then u
+      else "user",
     extraModules ? [],
   }:
     home-manager.lib.homeManagerConfiguration {
       pkgs = pkgsFor system;
       extraSpecialArgs = {inherit inputs outputs username;};
-      modules =
-        [
-          ../home/${username}/${profile}.nix
-          {home = {inherit username homeDirectory;};}
-        ]
-        ++ extraModules;
+      modules = [homePath] ++ extraModules;
     };
 }

@@ -5,8 +5,8 @@ _: {
 
   my.kernel = {
     enable = true;
-    hz = 1000;
-    preempt = "full";
+    hz = 250;
+    preempt = "lazy";
     march = "x86-64-v3";
     # scx = { enable = true; scheduler = "scx_lavd"; };
   };
