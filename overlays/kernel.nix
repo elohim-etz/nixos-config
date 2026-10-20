@@ -25,9 +25,9 @@ in {
 
     preemptConfig =
       {
-        PREEMPT_NONE = no;
-        PREEMPT_VOLUNTARY = no;
-        PREEMPT = no;
+        PREEMPT_NONE = option no;
+        PREEMPT_VOLUNTARY = option no;
+        PREEMPT = option no;
         PREEMPT_LAZY = option no;
         PREEMPT_DYNAMIC = option yes;
       }
