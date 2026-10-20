@@ -1,8 +1,1 @@
-{...}: {
-  imports = [
-    ./core
-    ./desktop
-    ./hardware
-    ./optimization
-  ];
-}
+{lib, ...}: { imports = import ../../../lib/import-all.nix lib ./.; }

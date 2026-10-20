@@ -20,11 +20,7 @@
 
     iconTheme = {
       name = "Tela-circle-dracula";
-
-      package = pkgs.tela-circle-icon-theme.override {
-        circularFolder = false;
-        colorVariants = ["dracula"];
-      };
+      pkgs.tela-circle-icon-theme;
     };
 
     cursorTheme = {

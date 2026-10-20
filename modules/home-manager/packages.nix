@@ -50,7 +50,7 @@
 
     # Dev tools
     lazygit
-    nil
+    # nil
     imagemagick
 
     # Networking
