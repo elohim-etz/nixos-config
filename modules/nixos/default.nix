@@ -1,1 +1,1 @@
-{lib, ...}: { imports = import ../../lib/import-all.nix lib ./.; }
+{lib, ...}: {imports = import ../../lib/import-all.nix lib ./.;}

@@ -132,14 +132,27 @@ in {
         selectedFilterLists =
           [
             # core
-            "ublock-filters" "ublock-badware" "ublock-privacy" "ublock-quick-fixes" "ublock-unbreak"
-            "easylist" "easyprivacy" "plowe-0" "urlhaus-1" "curben-phishing"
+            "ublock-filters"
+            "ublock-badware"
+            "ublock-privacy"
+            "ublock-quick-fixes"
+            "ublock-unbreak"
+            "easylist"
+            "easyprivacy"
+            "plowe-0"
+            "urlhaus-1"
+            "curben-phishing"
             "adguard-spyware-url"
             "block-lan"
             # cookie notices and annoyances (EasyList family only)
-            "fanboy-cookiemonster" "ublock-cookies-easylist"
-            "easylist-annoyances" "easylist-chat" "easylist-newsletters" "easylist-notifications"
-            "ublock-annoyances" "fanboy-social"
+            "fanboy-cookiemonster"
+            "ublock-cookies-easylist"
+            "easylist-annoyances"
+            "easylist-chat"
+            "easylist-newsletters"
+            "easylist-notifications"
+            "ublock-annoyances"
+            "fanboy-social"
           ]
           ++ importedLists
           ++ ["user-filters"];

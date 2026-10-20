@@ -13,12 +13,15 @@ in {
     extraMakeFlags ? [],
     strict ? true,
   }: let
-    preemptSymbol = {
-      none = "PREEMPT_NONE";
-      voluntary = "PREEMPT_VOLUNTARY";
-      full = "PREEMPT";
-      lazy = "PREEMPT_LAZY";
-    }.${preempt};
+    preemptSymbol =
+      {
+        none = "PREEMPT_NONE";
+        voluntary = "PREEMPT_VOLUNTARY";
+        full = "PREEMPT";
+        lazy = "PREEMPT_LAZY";
+      }.${
+        preempt
+      };
 
     preemptConfig =
       {

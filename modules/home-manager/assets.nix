@@ -4,8 +4,8 @@
   inputs,
   ...
 }: let
-    assetsDir = "${config.xdg.dataHome}/assets";
-    setWallpaper = pkgs.writeShellScriptBin "set-wallpaper" ''
+  assetsDir = "${config.xdg.dataHome}/assets";
+  setWallpaper = pkgs.writeShellScriptBin "set-wallpaper" ''
     set -eu
 
     sleep 1
@@ -23,7 +23,7 @@
       --transition-type fade \
       --transition-duration 0.5
   '';
-  in {
-    home.packages = [setWallpaper];
-    xdg.dataFile."assets".source = inputs.assets;
-  }
+in {
+  home.packages = [setWallpaper];
+  xdg.dataFile."assets".source = inputs.assets;
+}
