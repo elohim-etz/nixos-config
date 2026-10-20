@@ -1,19 +1,17 @@
 {
   config,
-  lib,
   pkgs,
+  inputs,
   ...
 }: let
-  assetsDir = "${config.xdg.dataHome}/assets";
-  assetsRepo = "https://github.com/elohim-etz/nixos-assets.git";
-
-  setWallpaper = pkgs.writeShellScriptBin "set-wallpaper" ''
+    assetsDir = "${config.xdg.dataHome}/assets";
+    setWallpaper = pkgs.writeShellScriptBin "set-wallpaper" ''
     set -eu
 
     sleep 1
 
     wallpaper_file="$HOME/.cache/current-wallpaper"
-    fallback="${assetsDir}/walls/walls-014.png"
+    fallback="${assetsDir}/walls/original-anime-death-stranding.jpg"
 
     if [ -f "$wallpaper_file" ]; then
       wallpaper="$(<"$wallpaper_file")"
@@ -25,20 +23,7 @@
       --transition-type fade \
       --transition-duration 0.5
   '';
-in {
-  home.packages = [
-    setWallpaper
-  ];
-
-  home.activation.pullAssets = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    export GIT_TERMINAL_PROMPT=0
-
-    if [ -d "${assetsDir}/.git" ]; then
-      $DRY_RUN_CMD ${pkgs.git}/bin/git -C "${assetsDir}" pull --ff-only --quiet $VERBOSE_ARG \
-        || echo "pullAssets: pull failed, skipping this run"
-    else
-      $DRY_RUN_CMD ${pkgs.git}/bin/git clone --quiet --depth 1 "${assetsRepo}" "${assetsDir}" $VERBOSE_ARG \
-        || echo "pullAssets: clone failed, skipping this run"
-    fi
-  '';
-}
+  in {
+    home.packages = [setWallpaper];
+    xdg.dataFile."assets".source = inputs.assets;
+  }

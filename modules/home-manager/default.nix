@@ -8,7 +8,7 @@
     ./theme
 
     ./assets.nix
-    ./package.nix
+    ./packages.nix
     ./xdg.nix
   ];
 }

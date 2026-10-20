@@ -1,5 +1,41 @@
 {
   "nodes": {
+    "assets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786700703,
+        "narHash": "sha256-TY+AvO3famwYIAsVzsXYtGhAgj8QTRHrLHVNMM8DEd4=",
+        "owner": "elohim-etz",
+        "repo": "nixos-assets",
+        "rev": "6afca0bb6a6676e658cbec76d4fcdade47125965",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elohim-etz",
+        "repo": "nixos-assets",
+        "type": "github"
+      }
+    },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789770686,
+        "narHash": "sha256-uZkBR7yHdIKUFB5SZdfgh1qkGfI3XmYmI/lTiquxbck=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "725ea35e410ad83be4931d1bff7e090eacaf3563",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -57,6 +93,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-25.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -81,8 +133,11 @@
     },
     "root": {
       "inputs": {
+        "assets": "assets",
+        "disko": "disko",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-stable": "nixpkgs-stable",
         "nixvim": "nixvim",
         "spicetify-nix": "spicetify-nix"
       }

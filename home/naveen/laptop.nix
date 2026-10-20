@@ -6,7 +6,6 @@
   };
 
   imports = [
-    ../../pkgs/home-manager
     ../../modules/home-manager
   ];
 

@@ -54,7 +54,9 @@ jobs:
           nix build ".#nixosConfigurations.${HOST}.config.system.build.toplevel" \
             --no-link --print-build-logs
 
-      - uses: peter-evans/create-pull-request@v6
+      - name: Open PR
+        if: github.ref == 'refs/heads/main'
+        uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "flake.lock: update inputs"
           title: "flake.lock: automated update"

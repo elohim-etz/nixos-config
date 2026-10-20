@@ -52,9 +52,8 @@
     };
 
     # `home-manager switch --flake .#naveen@remote`
-    homeConfigurations."naveen@remote" = mylib.mkHome {
-      username = "naveen";
-      profile = "remote";
+    homeConfigurations.remote = mylib.mkHome {
+      homePath = ./home/naveen/remote.nix;
     };
 
     # My own derivations (pkgs/*) for CI to build/cache them individually

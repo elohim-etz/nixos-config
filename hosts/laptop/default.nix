@@ -7,9 +7,11 @@ _: {
     enable = true;
     hz = 1000;
     preempt = "full";
-    # march = "x86-64-v3"; # enable after confirming AVX2/BMI2/FMA in /proc/cpuinfo
+    march = "x86-64-v3";
     # scx = { enable = true; scheduler = "scx_lavd"; };
   };
+
+  networking.hostName = "nixos";
 
   system.stateVersion = "25.11"; # do not change
 }

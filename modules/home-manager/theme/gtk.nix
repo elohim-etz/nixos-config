@@ -20,7 +20,7 @@
 
     iconTheme = {
       name = "Tela-circle-dracula";
-      pkgs.tela-circle-icon-theme;
+      package = pkgs.tela-circle-icon-theme;
     };
 
     cursorTheme = {

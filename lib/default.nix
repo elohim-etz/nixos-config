@@ -44,7 +44,6 @@ in {
           {
             nixpkgs.overlays = [outputs.overlays.default];
             nixpkgs.config.allowUnfree = true;
-            networking.hostName = hostname;
           }
           ../hosts/${hostname}
           ../modules/nixos

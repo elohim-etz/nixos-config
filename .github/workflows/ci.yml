@@ -34,7 +34,6 @@ jobs:
   kernel:
     needs: check
     runs-on: ubuntu-latest
-    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-nix
