@@ -106,14 +106,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.mkCustomKernel {
-      inherit (cfg) base hz preempt march schedExt strict extraMakeFlags structuredExtraConfig extraPatches;
-    });
+    boot = {
+      kernelPackages = pkgs.linuxPackagesFor (pkgs.mkCustomKernel {
+        inherit (cfg) base hz preempt march schedExt strict extraMakeFlags structuredExtraConfig extraPatches;
+      });
 
-    boot.kernelModules = mkIf cfg.tcpBbr ["tcp_bbr"];
-    boot.kernel.sysctl = mkIf cfg.tcpBbr {
-      "net.core.default_qdisc" = "fq";
-      "net.ipv4.tcp_congestion_control" = "bbr";
+      kernelModules = mkIf cfg.tcpBbr ["tcp_bbr"];
+
+      kernel.sysctl = mkIf cfg.tcpBbr {
+        "net.core.default_qdisc" = "fq";
+        "net.ipv4.tcp_congestion_control" = "bbr";
+      };
     };
 
     services.scx = mkIf cfg.scx.enable {
