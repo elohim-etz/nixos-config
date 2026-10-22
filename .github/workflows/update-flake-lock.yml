@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: flake-update
+  group: nix-build
   cancel-in-progress: false
 
 env:

@@ -1,7 +1,7 @@
 _: {
   zramSwap = {
     enable = true;
-    memoryPercent = 100;
+    memoryPercent = 60;
     memoryMax = 8 * 1024 * 1024 * 1024; # 8GB max
     priority = 100;
     algorithm = "zstd";
