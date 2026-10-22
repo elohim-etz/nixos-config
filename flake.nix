@@ -1,8 +1,15 @@
 {
-  description = "NixOS configuration flake";
+  description = "My NixOS + Home Manager configuration";
+
+  nixConfig = {
+    extra-substituters = ["https://naveen-nixos.cachix.org"];
+    extra-trusted-public-keys = ["naveen-nixos.cachix.org-1:T8g4TIX4n9FEEFlR3BjOS+QOKN2mLFUhQ0uMBFG87Jk="];
+  };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Escape hatch for when unstable breaks something: pkgs.stable.<name>
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -19,31 +26,56 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # zen-browser = {
-    #   url = "github:0xc000022070/zen-browser-flake";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     home-manager.follows = "home-manager";
-    #   };
-    # };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    assets = {
+      url = "github:elohim-etz/nixos-assets";
+      flake = false;
+    };
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
-    lib = import ./lib {inherit inputs;};
-    system = "x86_64-linux";
+  outputs = {self, ...} @ inputs: let
+    mylib = import ./lib {
+      inherit inputs;
+      outputs = self;
+    };
+    inherit (mylib) forAllSystems;
   in {
-    nixosConfigurations.laptop = lib.mkSystem {
-      hostPath = ./hosts/laptop/configuration.nix;
+    overlays = import ./overlays {inherit inputs;};
+
+    nixosConfigurations.laptop = mylib.mkHost {
+      hostname = "laptop";
+      username = "naveen";
     };
 
-    homeConfigurations = {
-      remote = lib.mkHome {
-        homePath = ./home/remote/home.nix;
-      };
+    # `home-manager switch --flake .#naveen@remote`
+    homeConfigurations.remote = mylib.mkHome {
+      homePath = ./home/naveen/remote.nix;
     };
 
-    devShells.${system} = {
-      kompile = lib.mkDevShell {shellPath = ./devshells/kompile.nix;};
-    };
+    # My own derivations (pkgs/*) for CI to build/cache them individually
+    packages = forAllSystems (pkgs: mylib.ownPackages pkgs);
+
+    devShells = forAllSystems (pkgs: {
+      default = import ./devshells/default.nix {inherit pkgs;};
+      kompile = import ./devshells/kompile.nix {inherit pkgs;};
+    });
+
+    formatter = forAllSystems (pkgs: pkgs.alejandra);
+
+    checks = forAllSystems (pkgs: {
+      format = pkgs.runCommandLocal "check-format" {nativeBuildInputs = [pkgs.alejandra];} ''
+        alejandra --check ${self} && touch $out
+      '';
+      statix = pkgs.runCommandLocal "check-statix" {nativeBuildInputs = [pkgs.statix];} ''
+        statix check ${self} && touch $out
+      '';
+      deadnix = pkgs.runCommandLocal "check-deadnix" {nativeBuildInputs = [pkgs.deadnix];} ''
+        deadnix --fail ${self} && touch $out
+      '';
+    });
   };
 }

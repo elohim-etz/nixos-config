@@ -1,5 +1,1 @@
-{inputs, ...}: let
-  lib = import ../../../lib {inherit inputs;};
-in {
-  imports = lib.importAll ./.;
-}
+{lib, ...}: {imports = import ../../../lib/import-all.nix lib ./.;}

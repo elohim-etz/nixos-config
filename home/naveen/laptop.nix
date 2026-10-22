@@ -6,8 +6,7 @@
   };
 
   imports = [
-    ../pkgs/home-manager
-    ../modules/home-manager
+    ../../modules/home-manager
   ];
 
   programs.home-manager.enable = true;

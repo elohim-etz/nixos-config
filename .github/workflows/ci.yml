@@ -1,0 +1,62 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["**.md", "LICENSE"]
+  pull_request:
+  workflow_dispatch: {}
+
+concurrency:
+  group: nix-build
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  HOST: laptop
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-nix
+        with:
+          cachix-name: ${{ vars.CACHIX_CACHE_NAME }}
+          cachix-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      # formatter + statix + deadnix (flake `checks`) and evaluation of every output
+      - run: nix flake check --print-build-logs
+
+  # Own job = it is pushed to the
+  # cache even if something later in the toplevel fails
+  kernel:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-nix
+        with:
+          cachix-name: ${{ vars.CACHIX_CACHE_NAME }}
+          cachix-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Build kernel (all outputs)
+        run: |
+          nix build \
+            ".#nixosConfigurations.${HOST}.config.boot.kernelPackages.kernel^*" \
+            --no-link --print-build-logs
+
+  system:
+    needs: kernel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-nix
+        with:
+          cachix-name: ${{ vars.CACHIX_CACHE_NAME }}
+          cachix-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Build NixOS system
+        run: |
+          nix build \
+            ".#nixosConfigurations.${HOST}.config.system.build.toplevel" \
+            --no-link --print-build-logs

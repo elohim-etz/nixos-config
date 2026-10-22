@@ -25,6 +25,7 @@
   apps = {
     "Mod+T".spawn = ["kitty"];
     "Mod+E".spawn = ["nautilus"];
+    "Mod+Y".spawn = ["yazi"];
     "Mod+A".spawn = [
       "sh"
       "-c"
@@ -130,15 +131,15 @@
   media = lib.mergeAttrsList (
     map (b: on b.keys (locked b.action)) [
       {
-        keys = ["XF86AudioPlay" "Shift+F1"];
+        keys = ["XF86AudioPlay" "F1"];
         action.spawn-sh = "playerctl play-pause";
       }
       {
-        keys = ["XF86AudioPrev" "Shift+F5"];
+        keys = ["XF86AudioPrev" "F5"];
         action.spawn-sh = "playerctl previous";
       }
       {
-        keys = ["XF86AudioNext" "Shift+F6"];
+        keys = ["XF86AudioNext" "F6"];
         action.spawn-sh = "playerctl next";
       }
       {
@@ -146,7 +147,7 @@
         action.spawn-sh = "playerctl stop";
       }
       {
-        keys = ["XF86AudioMute" "Shift+F4"];
+        keys = ["XF86AudioMute" "F4"];
         action.spawn-sh = cmd.sinkMute;
       }
       {
@@ -163,19 +164,19 @@
       }
       # Fine-grained steps on the F-row.
       {
-        keys = ["Shift+F3"];
+        keys = ["F3"];
         action.spawn-sh = cmd.volumeUp "0.05";
       }
       {
-        keys = ["Shift+F2"];
+        keys = ["F2"];
         action.spawn-sh = cmd.volumeDown "0.05";
       }
       {
-        keys = ["XF86MonBrightnessUp" "Shift+F12"];
+        keys = ["XF86MonBrightnessUp" "F12"];
         action.spawn = brightness "+10%";
       }
       {
-        keys = ["XF86MonBrightnessDown" "Shift+F11"];
+        keys = ["XF86MonBrightnessDown" "F11"];
         action.spawn = brightness "10%-";
       }
     ]

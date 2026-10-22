@@ -27,7 +27,7 @@ _: {
       name = "scrcpy";
       genericName = "Android Remote Control";
       comment = "Display and control your Android device";
-      exec = "scrcpy --no-audio --video-codec=h264 --video-encoder=OMX.MTK.VIDEO.ENCODER.AVC --render-driver=opengl --no-vd-system-decorations --select-usb";
+      exec = "scrcpy --no-audio --video-codec=h264 --video-encoder=OMX.MTK.VIDEO.ENCODER.AVC --render-driver=opengl --no-vd-system-decorations --select-usb --hwdec=vaapi";
       icon = "scrcpy";
       terminal = false;
       categories = ["Utility" "RemoteAccess"];

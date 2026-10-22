@@ -53,9 +53,6 @@
 
         "workbench.settings.applyToAllProfiles" = [];
 
-        "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nil";
-
         "[json]" = {
           "editor.defaultFormatter" = "vscode.json-language-features";
         };
