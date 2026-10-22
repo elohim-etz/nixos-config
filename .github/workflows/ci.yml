@@ -21,7 +21,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-nix
         with:
           cachix-name: ${{ vars.CACHIX_CACHE_NAME }}
@@ -35,7 +35,7 @@ jobs:
     needs: check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-nix
         with:
           cachix-name: ${{ vars.CACHIX_CACHE_NAME }}
@@ -50,7 +50,7 @@ jobs:
     needs: kernel
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-nix
         with:
           cachix-name: ${{ vars.CACHIX_CACHE_NAME }}
