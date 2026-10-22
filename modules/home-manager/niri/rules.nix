@@ -49,7 +49,7 @@ in {
       ]
       {open-maximized = true;}
     )
-    (windowRule [{ app-id = "^\\.scrcpy-wrapped$"; }] {
+    (windowRule [{app-id = "^\\.scrcpy-wrapped$";}] {
       default-column-width.fixed = 472;
       default-window-height.proportion = 1.0;
       open-floating = false;
