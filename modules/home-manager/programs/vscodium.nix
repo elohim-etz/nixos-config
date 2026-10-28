@@ -14,6 +14,8 @@
         "workbench.colorTheme" = "Catppuccin Mocha";
         "window.menuBarVisibility" = "toggle";
         "window.titleBarStyle" = "native";
+        "window.customMenuBarAltFocus" = false;
+
         "editor.fontSize" = 16;
         "editor.scrollbar.vertical" = "hidden";
         "editor.scrollbar.verticalScrollbarSize" = 0;

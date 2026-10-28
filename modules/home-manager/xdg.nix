@@ -41,7 +41,7 @@ _: {
         "image/png" = ["satty.desktop" "brave-origin.desktop"];
         "image/jpeg" = ["satty.desktop" "brave-origin.desktop"];
         "image/webp" = ["brave-origin.desktop" "satty.desktop"];
-        "image/gif" = ["satty.desktop" "brave-origin.desktop"];
+        "image/gif" = ["brave-origin.desktop"];
         "image/bmp" = ["satty.desktop" "brave-origin.desktop"];
         "image/tiff" = ["satty.desktop" "brave-origin.desktop"];
         "image/avif" = ["satty.desktop" "brave-origin.desktop"];

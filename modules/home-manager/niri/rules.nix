@@ -49,14 +49,6 @@ in {
       ]
       {open-maximized = true;}
     )
-    (windowRule [{app-id = "^\\.scrcpy-wrapped$";}] {
-      default-column-width.fixed = 472;
-      default-window-height.proportion = 1.0;
-      open-floating = false;
-      open-maximized = false;
-      open-maximized-to-edges = false;
-      open-fullscreen = false;
-    })
     (windowRule [{app-id = "^org.gnome.Nautilus$";}] {
       default-column-width.proportion = 0.5;
       open-floating = false;

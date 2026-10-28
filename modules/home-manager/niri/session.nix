@@ -3,6 +3,10 @@ _: {
     prefer-no-csd = {};
     hotkey-overlay.skip-at-startup = {};
 
+    xwayland-satellite = {
+      off = {};
+    };
+
     environment = {
       CLUTTER_BACKEND = "wayland";
       ELECTRON_OZONE_PLATFORM_HINT = "auto";

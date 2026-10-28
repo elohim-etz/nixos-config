@@ -25,7 +25,7 @@
   apps = {
     "Mod+T".spawn = ["kitty"];
     "Mod+E".spawn = ["nautilus"];
-    "Mod+Y".spawn = ["yazi"];
+    "Mod+Y".spawn = ["kitty" "-e" "yazi"];
     "Mod+A".spawn = [
       "sh"
       "-c"
