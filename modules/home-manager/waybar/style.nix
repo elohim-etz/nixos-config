@@ -67,7 +67,7 @@
 
   /* Center - workspaces */
   #workspaces {
-    padding: 0 7px 0 4px;
+    padding: 0 0px 0 9px;
   }
   #workspaces button {
     color: ${colors.surface2};
