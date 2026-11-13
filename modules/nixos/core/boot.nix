@@ -25,7 +25,7 @@
       "vm.swappiness" = 100;
       "vm.page-cluster" = 0;
       "vm.watermark_boost_factor" = 0;
-      "vm.watermark_scale_factor" = 125;
+      "vm.watermark_scale_factor" = 10;
     };
 
     tmp.cleanOnBoot = true;

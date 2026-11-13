@@ -88,24 +88,9 @@
           fi
         }
 
-        zstyle ':fzf-tab:*' fzf-flags \
-          --style=full \
-          --border=rounded \
-          --layout=reverse \
-          --height=75% \
-          --margin=1 \
-          --padding=1 \
-          --pointer='▶' \
-          --marker='✓' \
-          --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-          --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-          --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-          --color=selected-bg:#45475a \
-          --color=label:#cdd6f4 \
-          --color=input-border:#b4befe \
-          --color=list-border:#89b4fa
-
-          bindkey '^I^I' autosuggest-accept
+        bindkey '^I' expand-or-complete
+        bindkey '^[[C' forward-char
+        bindkey '^[[Z' autosuggest-accept
       '';
 
       shellAliases = {
@@ -128,15 +113,6 @@
       };
 
       plugins = [
-        {
-          name = "fzf-tab";
-          src = pkgs.fetchFromGitHub {
-            owner = "Aloxaf";
-            repo = "fzf-tab";
-            rev = "v1.1.2";
-            sha256 = "sha256-Qv8zAiMtrr67CbLRrFjGaPzFZcOiMVEFLg1Z+N6VMhg=";
-          };
-        }
         {
           name = "zsh-z";
           src = pkgs.fetchFromGitHub {

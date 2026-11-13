@@ -76,6 +76,7 @@ assets-status:
 
 clean-all:
     sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old
+    sudo nixos-rebuild boot --flake .#{{host}}
     sudo nix-collect-garbage -d
     sudo nix-store --optimise
     rm -f result result-*

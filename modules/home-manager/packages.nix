@@ -41,6 +41,7 @@
     (wallpaper-picker.override {inherit themeColors;})
     libnotify
     networkmanagerapplet
+    appimage-run
 
     # Apps
     ayugram-desktop
