@@ -1,6 +1,7 @@
 _: {
   programs.git = {
     enable = true;
+    lfs.enable = true;
 
     signing = {
       key = "ABB6A31D16C85F49";
